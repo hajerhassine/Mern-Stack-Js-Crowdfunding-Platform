@@ -43,7 +43,7 @@ export const createEvent = async (req, res) => {
 
 export const updateEvent = async (req, res) => {
     const { id } = req.params;
-    const { title, message, creator, selectedFile, tags } = req.body;
+    const { name_event, descrption_event, modality, category, sponsors, participant_number, fee_participant, start_date, end_date, program  } = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
