@@ -24,7 +24,7 @@ function FAQ(props){
 
            
 
-       
+        
             <section className="page-title-area">
                 <div className="container">
                     <div className="row align-items-center justify-content-between">
@@ -47,30 +47,26 @@ function FAQ(props){
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-xl-8 col-lg-10">
-                            <div class="col-xl-12">
                             <div className="faq-accordion-tab">
-                                <div     class="faq_search-top_title">
-                            <p>Frequently Asked Questions</p>
-                            <h3>How Can I Help ?</h3>
-
-                                </div>
-                                </div>
                                 <div className="tab-nav-area text-center">
-                           
-
                                     <ul className="nav nav-tabs" id="faqTab" role="tablist">
-                                 
                                         <li className="nav-item">
-                                         
-                                            <a className="nav-link active" data-toggle="tab" href="#general" role="tab">Basic Questions</a>
+                                            <a className="nav-link active" data-toggle="tab" href="#general" role="tab">General</a>
                                         </li>
                                         <li className="nav-item">
-                                            <a className="nav-link" data-toggle="tab" href="#speakers" role="tab">Backer Questions</a>
+                                            <a className="nav-link" data-toggle="tab" href="#speakers" role="tab">Speakers</a>
                                         </li>
-                                       
-                                       
                                         <li className="nav-item">
-                                            <a className="nav-link" data-toggle="tab" href="#customers" role="tab">creator Questions</a>
+                                            <a className="nav-link" data-toggle="tab" href="#pricing" role="tab">Pricing</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" data-toggle="tab" href="#support" role="tab">Support</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" data-toggle="tab" href="#history" role="tab">History</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" data-toggle="tab" href="#customers" role="tab">Customers</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -79,7 +75,7 @@ function FAQ(props){
                                         <div className="accordion" id="accordionFaqOne">
                                             <div className="accordion-item">
                                                 <h5 className="accordion-title" data-toggle="collapse" aria-expanded="true" data-target="#accordion-1-1">
-                                                How donations transferred to the charity?
+                                                    Better Research, Better Design, Better Results
                                                 </h5>
                                                 <div id="accordion-1-1" className="collapse show" data-parent="#accordionFaqOne">
                                                     <div className="accordion-content">
@@ -91,7 +87,7 @@ function FAQ(props){
                                             </div>
                                             <div className="accordion-item">
                                                 <h5 className="accordion-title" data-toggle="collapse" aria-expanded="false" data-target="#accordion-1-2">
-                                                What information should I share on my project page?
+                                                    Smashing Book Excerpt Bringing Personality Back Web
                                                 </h5>
                                                 <div id="accordion-1-2" className="collapse" data-parent="#accordionFaqOne">
                                                     <div className="accordion-content">
@@ -103,7 +99,7 @@ function FAQ(props){
                                             </div>
                                             <div className="accordion-item">
                                                 <h5 className="accordion-title" data-toggle="collapse" aria-expanded="false" data-target="#accordion-1-3">
-                                                What is a creator obligated to do once their project is funded?
+                                                    Using Low Vision As My Tool To Help Me Teach WordPress
                                                 </h5>
                                                 <div id="accordion-1-3" className="collapse" data-parent="#accordionFaqOne">
                                                     <div className="accordion-content">
@@ -115,7 +111,7 @@ function FAQ(props){
                                             </div>
                                             <div className="accordion-item">
                                                 <h5 className="accordion-title" data-toggle="collapse" aria-expanded="false" data-target="#accordion-1-4">
-                                                How do backers know if a project will follow through?
+                                                    How To Improve Your Design Process With Data-Based Personas
                                                 </h5>
                                                 <div id="accordion-1-4" className="collapse" data-parent="#accordionFaqOne">
                                                     <div className="accordion-content">
@@ -127,7 +123,7 @@ function FAQ(props){
                                             </div>
                                             <div className="accordion-item">
                                                 <h5 className="accordion-title" data-toggle="collapse" aria-expanded="false" data-target="#accordion-1-5">
-                                                How does my project become a Project We Love?
+                                                    Better Research, Better Design, Better Results
                                                 </h5>
                                                 <div id="accordion-1-5" className="collapse" data-parent="#accordionFaqOne">
                                                     <div className="accordion-content">
@@ -139,7 +135,7 @@ function FAQ(props){
                                             </div>
                                             <div className="accordion-item">
                                                 <h5 className="accordion-title" data-toggle="collapse" aria-expanded="false" data-target="#accordion-1-6">
-                                                A project I'm backing just succeeded and my pledge was declined. What do I do?
+                                                    Smashing Book Excerpt Bringing Personality Back Web
                                                 </h5>
                                                 <div id="accordion-1-6" className="collapse" data-parent="#accordionFaqOne">
                                                     <div className="accordion-content">
@@ -151,7 +147,7 @@ function FAQ(props){
                                             </div>
                                             <div className="accordion-item">
                                                 <h5 className="accordion-title" data-toggle="collapse" aria-expanded="false" data-target="#accordion-1-7">
-                                                What should I consider when setting my funding goal?
+                                                    Using Low Vision As My Tool To Help Me Teach WordPress
                                                 </h5>
                                                 <div id="accordion-1-7" className="collapse" data-parent="#accordionFaqOne">
                                                     <div className="accordion-content">
@@ -163,7 +159,7 @@ function FAQ(props){
                                             </div>
                                             <div className="accordion-item">
                                                 <h5 className="accordion-title" data-toggle="collapse" aria-expanded="false" data-target="#accordion-1-8">
-                                                What fee do you take for a project?
+                                                    How To Improve Your Design Process With Data-Based Personas
                                                 </h5>
                                                 <div id="accordion-1-8" className="collapse" data-parent="#accordionFaqOne">
                                                     <div className="accordion-content">
@@ -173,8 +169,30 @@ function FAQ(props){
                                                     </div>
                                                 </div>
                                             </div>
-                                           
-                                           
+                                            <div className="accordion-item">
+                                                <h5 className="accordion-title" data-toggle="collapse" aria-expanded="false" data-target="#accordion-1-9">
+                                                    Smashing Book Excerpt Bringing Personality Back Web
+                                                </h5>
+                                                <div id="accordion-1-9" className="collapse" data-parent="#accordionFaqOne">
+                                                    <div className="accordion-content">
+                                                        Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium dolore seyse
+                                                        mque laudantium totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+                                                        quasi architecto beatae vitae dicta sunt explicabo.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="accordion-item">
+                                                <h5 className="accordion-title" data-toggle="collapse" aria-expanded="false" data-target="#accordion-1-10">
+                                                    Using Low Vision As My Tool To Help Me Teach WordPress
+                                                </h5>
+                                                <div id="accordion-1-10" className="collapse" data-parent="#accordionFaqOne">
+                                                    <div className="accordion-content">
+                                                        Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium dolore seyse
+                                                        mque laudantium totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+                                                        quasi architecto beatae vitae dicta sunt explicabo.
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="tab-pane fade" id="speakers" role="tabpanel">
