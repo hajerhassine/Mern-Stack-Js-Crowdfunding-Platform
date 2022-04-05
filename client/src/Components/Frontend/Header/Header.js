@@ -56,7 +56,7 @@ class Header extends React.Component{
                                             </li>
 
                                             <li className="current">
-                                                <a href="#">FAQ</a>
+                                                <a href="/FAQ">FAQ</a>
                                                 <ul className="submenu">
                                                     <li><a href="about.html">About</a></li>
                                                     <li><a href="company-overview.html">Company Overview</a></li>

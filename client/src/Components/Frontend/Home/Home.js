@@ -1,21 +1,19 @@
-import React, { Component , useState, useEffect  } from "react";
+import React, { Component ,  useEffect  } from "react";
+import { useDispatch, useSelector } from 'react-redux'
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Projecti from "../Project/projecti";
-import axios from 'axios';
+import { listprojects } from "./../../../actions/projectActions";
 
 const Home= () => {
-    const [projects, setProjects] = useState([])
+    const dispatch = useDispatch()
 
-    useEffect(() => {
-      const fetchProjects = async () => {
-        const { data } = await axios.get('/api/projects')
+    const projectList = useSelector((state) => state.projectList)
+    const { loading, error, projects } = projectList
   
-        setProjects(data)
-      }
-  
-      fetchProjects()
-    }, [])
+     useEffect(() => {
+    dispatch(listprojects())
+  }, [dispatch])
          return(
            <div>
                 
@@ -37,7 +35,7 @@ const Home= () => {
                    <div className="row justify-content-center">
                        <div className="col-xl-10">
                            <span className="tagline wow fadeInUp" data-wow-delay="0.3s">Crowdfounding Agency</span>
-                           <h1 className="title wow fadeInUp" data-wow-delay="0.4s">Raise Hand to Promote Best Products</h1>
+                           <h1 className="title wow fadeInUp" data-wow-delay="0.4s">Raise Hand to Promote Best projects</h1>
                            <a href="project-1.html" className="main-btn wow fadeInUp" data-wow-delay="0.5s">
                                Explore Projects <i className="far fa-arrow-right"></i>
                            </a>

@@ -1,22 +1,19 @@
-import React, { Component , useState, useEffect  } from "react";
+import React, { Component ,  useEffect  } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Projecti from "../Project/projecti";
+import { useDispatch, useSelector } from 'react-redux';
+import { listprojects } from "./../../../actions/projectActions";
 
-import axios from 'axios';
 
 const Project= () => {
-	const [projects, setProjects] = useState([])
+	const dispatch = useDispatch()
 
-    useEffect(() => {
-      const fetchProjects = async () => {
-        const { data } = await axios.get('/api/projects')
-  
-        setProjects(data)
-      }
-  
-      fetchProjects()
-    }, [])
+	const projectList = useSelector((state) => state.projectList)
+	const { loading, error, projects } = projectList
+	useEffect(() => {
+		dispatch(listprojects())
+	  }, [dispatch])
         return(
 			
         <div>
