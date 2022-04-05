@@ -50,17 +50,19 @@ class Header extends React.Component{
                                    </ul>
                                </li>
                                <li>
-                                   <a href="events.html">Events</a>
+                                   <a href="/Event">Events</a>
                                </li>
-                               
-                               <li className="current">
-                                   <a href="#">FAQ</a>
+                               <li>
+                                   <a href="project-1.html">Bank</a>
                                    <ul className="submenu">
-                                       <li><a href="about.html">About</a></li>
-                                       <li><a href="company-overview.html">Company Overview</a></li>
-                                      
+                                       <li><a href="project-1.html">Bank Offers</a></li>
+                                       <li><a href="project-2.html">Loan</a></li>
+                                       <li><a href="project-2.html">Your Loan</a></li>
+                                       
                                    </ul>
                                </li>
+                               
+                              
                                <li><a href="contact.html">Contact</a></li>
                            </ul>
                        </div>
@@ -100,10 +102,19 @@ class Header extends React.Component{
                        <a href="events.html">Events</a>
                    </li>
                    <li>
-                       <a href="news-standard.html">News</a>
+                       <a href="/Event">News</a>
                        <ul className="submenu">
                            <li><a href="news-standard.html">News Standard</a></li>
                            <li><a href="news-details.html">News Details</a></li>
+                       </ul>
+                   </li>
+                   <li>
+                       <a href="project-1.html">Banks</a>
+                       <ul className="submenu">
+                           <li><a href="project-1.html">Offers</a></li>
+                           <li><a href="project-2.html">Loans</a></li>
+                           <li><a href="project-3.html">Your Loan</a></li>
+                           
                        </ul>
                    </li>
                    <li className="current">
