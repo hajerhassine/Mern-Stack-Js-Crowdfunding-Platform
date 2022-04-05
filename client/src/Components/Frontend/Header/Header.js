@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link} from "react-router-dom";
+
 
 
 class Header extends React.Component{
@@ -52,6 +54,15 @@ class Header extends React.Component{
                                <li>
                                    <a href="events.html">Events</a>
                                </li>
+                               <li>
+                                   <a href="project-1.html">Banks</a>
+                                   <ul className="submenu">
+                                       <li><Link to="">Banks Offers</Link></li>
+                                       <li> <Link to="/Partners">Our Partners</Link></li>
+                                       <li> <Link to="/Converter">Currency Converter</Link></li>
+                                       
+                                   </ul>
+                               </li>
                                
                                <li className="current">
                                    <a href="#">FAQ</a>
@@ -104,6 +115,15 @@ class Header extends React.Component{
                        <ul className="submenu">
                            <li><a href="news-standard.html">News Standard</a></li>
                            <li><a href="news-details.html">News Details</a></li>
+                       </ul>
+                   </li>
+                   <li>
+                       <a href="project-1.html">Banks</a>
+                       <ul className="submenu">
+                           <li><a href="project-1.html">Offers</a></li>
+                           <li><a href="project-2.html">Loans</a></li>
+                           <li><a href="project-3.html">Your Loan</a></li>
+                           
                        </ul>
                    </li>
                    <li className="current">
