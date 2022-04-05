@@ -10,6 +10,7 @@ import Header from './Components/Frontend/Header/Header';
 import Project from './Components/Frontend/Project/Project';
 import Finance from './Components/Frontend/Finance/Finance';
 import Login from './Components/Frontend/Login/login';
+import ProjectDetails from './Components/Frontend/Project/ProjectDetails';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <ClientRoute path="/project" component={Project} />
       <ClientRoute path="/banking" component={Finance} />
       <ClientRoute path="/login" component={Login} />
+      <ClientRoute path="/ProjectDetails/:id" component={ProjectDetails} />
     </Switch>
   </Router>
   );
