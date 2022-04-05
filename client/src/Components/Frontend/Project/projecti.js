@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Rating from "./Rating";
 
 
+
 const Projecti = ({ project }) => {
   return (
       
@@ -52,8 +53,8 @@ const Projecti = ({ project }) => {
                                        <span className="value-title">Raised of <span className="value">{project.price}</span></span>
                                        <span className="stats-percentage">{project.p}%</span>
                                    </div>
-                                   <div className="stats-bar" data-value={`${project.p}`}>
-                                    <div className="bar-line"></div>
+                                   <div className="stats-bar" data-value={ `${project.p}` }>
+                                    <div className="bar-line" style={{width: `${project.p}%`}} ></div>
                                    </div>
                                </div>
                                <span className="date"><i className="far fa-calendar-alt"></i> 25 February 2021</span>

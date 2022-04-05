@@ -1,34 +1,21 @@
 import express from 'express'
-import asyncHandler from 'express-async-handler'
 const router = express.Router()
-import project from '../models/projectmodel.js'
+import {
+  getprojects,
+  getprojectById,
+  deleteproject,
+  createproject,
+  updateproject,
+} from '../controllers/projectController.js'
 
-// @desc    Fetch all projects
-// @route   GET /api/projects
-// @access  Public
-router.get(
-  '/',
-  asyncHandler(async (req, res) => {
-    const projects = await project.find({})
 
-    res.json(projects)
-  })
-)
-
-// @desc    Fetch single project
-// @route   GET /api/projects/:id
-// @access  Public
-router.get(
-  '/:id',
-  asyncHandler(async (req, res) => {
-    const projects = await project.findById(req.params.id)
-
-    if (projects) {
-      res.json(projects)
-    } else {
-      res.status(404).json({ message: 'project not found' })
-    }
-  })
-)
+router.route('/').get(getprojects)
+router.route('/:id').get(getprojectById).delete(deleteproject)
+router.route('/').get(getprojects).post(createproject)
+router
+  .route('/:id')
+  .get(getprojectById)
+  .delete(deleteproject)
+  .put(updateproject)
 
 export default router

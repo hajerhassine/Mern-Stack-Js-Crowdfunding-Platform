@@ -1,21 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux'
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-import axios from 'axios';
+import { listprojectDetails } from "./../../../actions/projectActions";
 
 const ProjectDetails = ({ match }) => {
-	const [project, setProject] = useState({})
+	const dispatch = useDispatch()
 
+	const projectDetails = useSelector((state) => state.projectDetails)
+	const { loading, error, project } = projectDetails
 	useEffect(() => {
-	  const fetchProject = async () => {
-		const { data } = await axios.get(`/api/projects/${match.params.id}`)
-  
-		setProject(data)
-	  }
-  
-	  fetchProject()
-	}, [match])  
+		dispatch(listprojectDetails(match.params.id))
+	  }, [dispatch, match])
 return( 
         <>
             
@@ -80,7 +77,7 @@ return(
 								<div class="percent-raised">{project.p}%</div>
 							</div>
 							<div className="stats-bar" data-value={`${project.p}`}>
-								<div className="bar-line"></div>
+								<div className="bar-line" style={{width: `${project.p}%`}}></div>
 							</div>
 						</div>
 						<div class="project-form">
@@ -110,7 +107,7 @@ return(
                                             {project.description}
 											</p>
 											<img class="mt-50 mb-50" src="/assets/img/project/project-details-2.jpg" alt="Image"/>
-											<h4 class="description-title">Why Donate Our Products</h4>
+											<h4 class="description-title">Why Donate Our projects</h4>
 											<p>
 												Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi temporadunt ut labore et dolore magnam aliquam quaerat voluptate enim ad minima veniam suscipit
 											</p>

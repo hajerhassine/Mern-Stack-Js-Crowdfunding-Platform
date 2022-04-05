@@ -5,7 +5,6 @@ import Projecti from "../Project/projecti";
 import { useDispatch, useSelector } from 'react-redux';
 import { listprojects } from "./../../../actions/projectActions";
 
-
 const Project= () => {
 	const dispatch = useDispatch()
 

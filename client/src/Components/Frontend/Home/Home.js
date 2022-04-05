@@ -15,8 +15,9 @@ const Home= () => {
     dispatch(listprojects())
   }, [dispatch])
          return(
+             
            <div>
-                
+           <Header/>     
            <div id="preloader">
            <div id="loading-center">
                <div id="loading-center-absolute">
@@ -28,7 +29,7 @@ const Home= () => {
            </div>
        </div>
    
-     <Header/>
+     
        <section className="hero-area-one">
            <div className="hero-text">
                <div className="container">
@@ -211,15 +212,15 @@ const Home= () => {
                </div>
                <div className="row project-slider-one project-items project-style-one no-shadow">
                  
-                             
-    {projects.map((project) => (
-            <div className="col">  
-             <div className="project-item">
-    <Projecti project={project} > </Projecti>
-    </div>
-    </div>
-    ))}
-    </div>
+               
+                    {projects.map((project) => (
+                        <div className="col" >  
+                            <div className="project-item ">
+                                <Projecti project={project} > </Projecti>
+                            </div>
+                        </div>
+                    ))}
+                    </div>
            
               
            </div>
