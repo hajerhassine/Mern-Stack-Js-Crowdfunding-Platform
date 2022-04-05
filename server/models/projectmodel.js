@@ -24,35 +24,35 @@ const projectSchema = mongoose.Schema(
     },
     image: {
       type: String,
-      required: true,
+     // required: true,
     },
     category: {
       type: String,
-      required: true,
+    //  required: true,
     },
     description: {
       type: String,
-      required: true,
+     // required: true,
     },
     reviews: [reviewSchema],
     rating: {
       type: Number,
-      required: true,
+  //    required: true,
       default: 0,
     },
     numReviews: {
       type: Number,
-      required: true,
+    //  required: true,
       default: 0,
     },
     price: {
       type: Number,
-      required: true,
+     // required: true,
       default: 0,
     },
     p: {
       type: Number,
-      required: true,
+    //  required: true,
       default: 0,
     },
   },

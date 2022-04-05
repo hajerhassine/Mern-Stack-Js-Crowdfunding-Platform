@@ -1,10 +1,20 @@
 import asyncHandler from 'express-async-handler'
 import project from '../models/projectmodel.js'
+
 // @desc    Fetch all projects
 // @route   GET /api/projects
 // @access  Public
 const getprojects = asyncHandler(async (req, res) => {
-  const projects = await project.find({})
+  const keyword = req.query.keyword
+  ? {
+      name: {
+        $regex: req.query.keyword,
+        $options: 'i',
+      },
+    }
+  : {}
+
+const projects = await project.find({ ...keyword })
   res.json(projects)
 })
 // @desc    Fetch single project
@@ -38,16 +48,25 @@ const deleteproject = asyncHandler(async (req, res) => {
 // @route   POST /api/projects
 // @access  Private/Admin
 const createproject = asyncHandler(async (req, res) => {
+  const {
+    name,
+    price,
+    description,
+     image,
+    // brand,
+     category,
+     p,
+  } = req.body
   const projects = new project({
-    name: 'Sample name',
-    price: 0,
+    name: name,
+    price: price,
    // user: req.user._id,
-    image: '/images/sample.jpg',
-    brand: 'Sample brand',
-    category: 'Sample category',
+    image: image,
+    
+    category: category,
     countInStock: 0,
     numReviews: 0,
-    description: 'Sample description',
+    description: description,
   })
 
   const createdproject = await projects.save()
@@ -57,12 +76,14 @@ const createproject = asyncHandler(async (req, res) => {
 // @desc    Update a project
 // @route   PUT /api/projects/:id
 // @access  Private/Admin
+
 const updateproject = asyncHandler(async (req, res) => {
+
   const {
-    name
-    // price,
+    name,
+    price,
     // description,
-    // image,
+     image,
     // brand,
     // category,
     // countInStock,
@@ -72,9 +93,9 @@ const updateproject = asyncHandler(async (req, res) => {
 
   if (projects) {
     projects.name = name
-  //   projects.price = price
+    projects.price = price
   //   projects.description = description
-  //   projects.image = image
+    projects.image = image
   //  // project.brand = brand
   //   projects.category = category
   //   projects.p = p

@@ -11,6 +11,8 @@ import Project from './Components/Frontend/Project/Project';
 import Finance from './Components/Frontend/Finance/Finance';
 import Login from './Components/Frontend/Login/login';
 import ProjectDetails from './Components/Frontend/Project/ProjectDetails';
+import projectListScreen from './Components/Frontend/Project/projectListScreen';
+import Addproject from './Components/Frontend/Project/Addproject';
 
 function App() {
   return (
@@ -20,10 +22,12 @@ function App() {
       <ClientRoute path="/Home" component={Home} />
       <ClientRoute path="/Event" component={Event} />
       <ClientRoute path="/FAQ" component={FAQ} />
+      <ClientRoute path='/search/:keyword' component={Project} />
       <ClientRoute path="/project" component={Project} />
       <ClientRoute path="/banking" component={Finance} />
       <ClientRoute path="/login" component={Login} />
       <ClientRoute path="/ProjectDetails/:id" component={ProjectDetails} />
+      <ClientRoute path="/addproject" component={Addproject} />
     </Switch>
   </Router>
   );

@@ -4,19 +4,23 @@ import Footer from "../Footer/Footer";
 import Projecti from "../Project/projecti";
 import { useDispatch, useSelector } from 'react-redux';
 import { listprojects } from "./../../../actions/projectActions";
+import { Route } from 'react-router-dom';
+import SearchBox from "./SearchBox";
 
-const Project= () => {
+const Project= ({ match }) => {
+	const keyword = match.params.keyword
 	const dispatch = useDispatch()
 
 	const projectList = useSelector((state) => state.projectList)
 	const { loading, error, projects } = projectList
 	useEffect(() => {
-		dispatch(listprojects())
-	  }, [dispatch])
+		dispatch(listprojects(keyword))
+	}, [dispatch, keyword])
         return(
 			
         <div>
 					<Header/>
+					
 					<div id="preloader">
 					<div id="loading-center">
 						<div id="loading-center-absolute">
@@ -49,7 +53,9 @@ const Project= () => {
 				{/* <!--====== Page Title End ======-->
 
 				<!--====== Project Area Start ======--> */}
+				
 				<section className="project-section section-gap-extra-bottom primary-soft-bg">
+				<Route render={({ history }) => <SearchBox history={history} />} />
 					<div className="container">
 						<div className="row project-items justify-content-center project-style-one">
 							

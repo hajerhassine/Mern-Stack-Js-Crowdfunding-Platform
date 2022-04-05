@@ -101,7 +101,7 @@ return(
 							<div class="tab-pane fade show active" id="description" role="tabpanel">
 								<div class="row justify-content-center">
 									<div class="col-lg-8">
-										<div class="description-content">
+										<div class="description-content" >
 											<h4 class="description-title">{project.name}</h4>
 											<p>
                                             {project.description}
