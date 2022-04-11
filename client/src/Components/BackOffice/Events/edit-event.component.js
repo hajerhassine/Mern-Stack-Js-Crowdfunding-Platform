@@ -12,17 +12,25 @@ export default class EditExercise extends Component {
         super(props);
 
         // this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangeName = this.onChangeName.bind(this);
+        this.onChangeTitle = this.onChangeTitle.bind(this);
         this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
+        this.onChangeModality = this.onChangeModality.bind(this);
+        this.onChangeCategory = this.onChangeCategory.bind(this);
+        this.onChangeSponsors = this.onChangeSponsors.bind(this);
+        this.onChangeParticipant_Number = this.onChangeParticipant_Number.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.deleteEvent = this.deleteEvent.bind(this);
 
         this.state = {
-            
-            name: '',
+            // username: '',
+            title: '',
             description: '',
-            date: new Date()
+            date: new Date(),
+            modality: '',
+            category: '',
+            sponsors: '',
+            participant_number: ''
             // ,
             // users: []
         }
@@ -34,9 +42,13 @@ export default class EditExercise extends Component {
             .then(response => {
                 this.setState({
                     // username: response.data.username,
-                    name: response.data.name,
+                    title: response.data.title,
                     description: response.data.description,
-                    date: new Date(response.data.date)
+                    date: new Date(response.data.date),
+                    modality: response.data.modality,
+                    category: response.data.category,
+                    sponsors: response.data.sponsors,
+                    participant_number: response.data.participant_number,
                 })
             })
             .catch(function (error) {
@@ -59,9 +71,9 @@ export default class EditExercise extends Component {
     //     });
     // }
 
-    onChangeName(e) {
+    onChangeTitle(e) {
         this.setState({
-            name: e.target.value
+            title: e.target.value
         });
     }
 
@@ -77,23 +89,46 @@ export default class EditExercise extends Component {
             date: date
         });
     }
-    
+    onChangeModality(e) {
+        this.setState({
+            modality: e.target.value
+        });
+    }
+    onChangeCategory(e) {
+        this.setState({
+            category: e.target.value
+        });
+    }
+    onChangeSponsors(e) {
+        this.setState({
+            sponsors: e.target.value
+        });
+    }
+    onChangeParticipant_Number(e) {
+        this.setState({
+            participant_number: e.target.value
+        });
+    }
     
     onSubmit(e) {
         e.preventDefault();
 
         const event = {
             // username: this.state.username,
-            name: this.state.name,
+            title: this.state.title,
             description: this.state.description,
             date: this.state.date,
+            modality: this.state.modality,
+            category: this.state.category,
+            sponsors: this.state.sponsors,
+            participant_number: this.state.participant_number,
         };
         
         let api_uri = routeGenerator.getURI('events/update/' + this.props.match.params.id);
         axios.post(api_uri, event)
             .then(res => console.log(res.data));
 
-        window.location = '/';
+        window.location = '/listevent';
     }
 
     deleteEvent(e) {
@@ -103,7 +138,7 @@ export default class EditExercise extends Component {
         axios.delete(api_uri)
             .then(response => { console.log(response.data) });
 
-        window.location = '/';
+            window.location = '/listevent';
     }
     
     render() {
@@ -126,12 +161,12 @@ export default class EditExercise extends Component {
         </div>
         <div className="card-body">
           <div className="form-group">
-          <label>Event Name: </label>
+          <label>Title: </label>
           <input type="text"
                             required
                             className="form-control"
-                            value={this.state.name}
-                            onChange={this.onChangeName}
+                            value={this.state.title}
+                            onChange={this.onChangeTitle}
                         />
           </div>
           <div className="form-group">
@@ -155,7 +190,65 @@ export default class EditExercise extends Component {
                             />
                         </div>
           </div>
+          <div className="form-group">
+          <label>Modality: </label>
+          <select className="custom-select form-select-sm"   aria-label=".form-select-sm example"required
+                            
+                            value={this.state.modality}
+                            onChange={this.onChangeModality}> 
+                            <option value=""> </option>
+                            <option value="Presential"> Presential</option>
+                            <option value="Online"> Online</option>
+                            
+                          
+
+                          </select>
+          </div>
+        
          
+         
+          <div className="form-group">
+          <label>Category: </label>
+          <select className="custom-select form-select-sm"   aria-label=".form-select-sm example" required
+                            
+                            value={this.state.category}
+                            onChange={this.onChangeCategory}> 
+                            <option value=""> </option>
+                            <option value="Education"> Education</option>
+                            <option value="Commercial"> Commercial</option>
+                            <option value="Art"> Art</option>
+                            <option value="Technlogy"> Technlogy</option>
+                            <option value=" Health"> Health</option>
+                            <option value="Design"> Design</option>
+                            <option value="Agriculture"> Agriculture</option>
+                            <option value="Liberal"> Liberal</option>
+                            
+                          
+
+                          </select>
+          </div>
+
+
+
+          <div className="form-group">
+          <label>Sponsors: </label>
+          <input type="text"
+                            required
+                            className="form-control"
+                            value={this.state.sponsors}
+                            onChange={this.onChangeSponsors}
+                        />
+          </div>
+          <div className="form-group">
+          <label>Participant Number: </label>
+          <input type="text"
+                            required
+                            className="form-control"
+                            value={this.state.participant_number}
+                            onChange={this.onChangeParticipant_Number}
+                        />
+          </div>
+
         </div>
         <div className="card-footer text-right">
             <tr>

@@ -1,7 +1,7 @@
 module.exports = {
 
     getURI(uriSegment = "") {
-        return "http://localhost:6060/api/" + uriSegment;
+        return "http://localhost:5000/api/" + uriSegment;
     }
 
 }

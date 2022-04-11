@@ -22,15 +22,22 @@ exports.deleteEvent = (req, res) => {
 
 exports.addEvent = (req, res) => {
    
-    const name = req.body.name;
+    const title = req.body.title;
     const description = req.body.description;
     const date = Date.parse(req.body.date);
-
+    const modality = req.body.modality;
+    const category = req.body.category; 
+    const sponsors = req.body.sponsors; 
+    const participant_number = req.body.participant_number;
     const newEvent = new Event({
         
-        name,
+        title,
         description,
         date,
+        modality,
+        category,
+        sponsors,
+        participant_number
     });
 
     newEvent.save()
@@ -40,17 +47,23 @@ exports.addEvent = (req, res) => {
 
 exports.updateEvent = (req, res) => {
     
-    const name = req.body.name;
+    const title = req.body.title;
     const description = req.body.description;
     const date = Date.parse(req.body.date);
-
+    const modality = req.body.modality;
+    const category = req.body.category;
+    const sponsors = req.body.sponsors;
+    const participant_number = req.body.participant_number;
     Event.findById(req.params.id)
         .then(event => {
            
-            event.name = name;
+            event.title = title;
             event.description = description;
             event.date = date;
-
+            event.modality = modality;
+            event.category = category;
+            event.sponsors = sponsors;
+            event.participant_number = participant_number;
             event.save()
                 .then(() => res.json('event updated'))
                 .catch(err => res.status(400).json(`error : ${err}`));

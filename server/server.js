@@ -1,46 +1,44 @@
 'use strict';
 
-const http = require('http');
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
+require("dotenv").config({path: "./config.env"});
 const socket = require('socket.io');
-const axios = require('axios');
-
-// routes
+var QuestionRouter = require('./routes/routerquestions');
+var CategoriesRouter = require('./routes/routercategories');
+const connectDB = require('./config/db');
+const errorHandler=require('./middleware/error')
+const cors=require('cors')
+const bankingRoutes =require('./routes/bankingpartners.js');
 const eventsRouter = require('./routes/events.route');
-
-
+const axios = require('axios');
+const http = require('http');
+const express = require("express");
 const app = express();
-const port = process.env.PORT || 6060;
-
-app.use(cors());
-app.use(express.json());
-
-// client
-// app.use('/', express.static('../client/build'));
-
-// api end points
-app.get('/', (req, res) => { res.send('hello world') });
+var bodyParser = require('body-parser')
+const projectRoutes = require( './routes/projectRoutes.js');
+const path =require( 'path');
+const uploadRoutes = require('./routes/uploadRoutes.js');
+//connect DB 
+connectDB();
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(cors({origin:"http://localhost:3000"}));
 app.use('/api/events', eventsRouter);
-
-
-
-// mongo connection
-const ATLAS_URI = 'mongodb+srv://lancini:lancini2022@lancinicluster.pnavc.mongodb.net/lanciniDatabase';
-mongoose.connect(ATLAS_URI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
-const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log("...mongodb connected...");
-});
-
-
-// server start
-const server = http.createServer(app);
-server.listen(port, () => {
-    console.log(`server is running on port: ${port}`);
-});
-
+app.use(express.json());
+app.use(errorHandler);
+app.use("/auth",require("./routes/auth"));
+app.use("/api", require("./routes/routercategories"));
+app.use("/api", require("./routes/routerquestions"));
+app.use("/private",require("./routes/private"));
+app.use('/bankingpartners', bankingRoutes);
+app.use('/api/projects', projectRoutes)
+app.use('/api/upload', uploadRoutes)
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+const PORT = process.env.PORT || 5000;
+const server = app.listen(PORT, () => console.log(`server running on port ${PORT}`));
+process.on("unhandledRejection",(err,promise)=>{
+    console.log(`Logged Error : ${err}`);
+    server.close(()=>process.exit(1));
+})
 
 
 // socket setup
@@ -52,11 +50,9 @@ io.on('connection', socket => {
     interval = setInterval(() => getApiAndEmit(socket), 1000);
 })
 
-
-// socket function
 const getApiAndEmit = async socket => {
     try {
-        const res = await axios.get('http://127.0.0.1:6060/api/events');
+        const res = await axios.get('http://127.0.0.1:5000/api/events');
         io.emit('events', res.data);
     } catch (error) {
         console.error(`Error: ${error.code}`);

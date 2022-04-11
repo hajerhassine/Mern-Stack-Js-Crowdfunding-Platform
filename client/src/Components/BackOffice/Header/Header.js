@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 
 class Header extends React.Component{
+  logout() {
+    localStorage.clear();
+      
+}
     render(){
+      
         return(
         <>
   <nav className="navbar navbar-expand-lg main-navbar sticky">
@@ -126,7 +132,7 @@ class Header extends React.Component{
                   </span>
                 </a> <a href="#" className="dropdown-item"> <span className="dropdown-item-icon bg-info text-white"> <i className="fas
 												fa-bell"></i>
-                  </span> <span className="dropdown-item-desc"> Welcome to Lancini
+                  </span> <span className="dropdown-item-desc"> Welcome to Otika
                     template! <span className="time">Yesterday</span>
                   </span>
                 </a>
@@ -149,9 +155,9 @@ class Header extends React.Component{
                 Settings
               </a>
               <div className="dropdown-divider"></div>
-              <a href="auth-login.html" className="dropdown-item has-icon text-danger"> <i className="fas fa-sign-out-alt"></i>
-                Logout
-              </a>
+              <div>
+   <Link to='/login' onClick={this.logout()}>LOGOUT</Link>
+</div>
             </div>
           </li>
         </ul>

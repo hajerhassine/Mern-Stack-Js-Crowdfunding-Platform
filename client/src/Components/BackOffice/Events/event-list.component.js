@@ -13,12 +13,17 @@ const routeGenerator = require('../shared/routeGenerator');
 const Event = props => (
     
     <tr>
-  
-        <td>{props.event.name}</td>
+        {/* <td>{props.event.username}</td> */}
+        <td>{props.event.title}</td>
         <td>{props.event.description}</td>
         <td>{props.event.date}</td>
+        <td>{props.event.modality}</td>
+        <td>{props.event.category}</td>
+        <td>{props.event.sponsors}</td>
+        <td>{props.event.participant_number}</td>
         <td>
             <Link to={"/edit/event/" + props.event._id}><button className="btn btn-sm btn-primary">edit</button></Link>
+          
             <button className="btn btn-sm btn-danger ml-1" onClick={() => { props.deleteEvent(props.event._id) }}>delete</button>
         </td>
     </tr>
@@ -151,9 +156,9 @@ export default class EventList extends Component {
                   <div className="card-header-form">
                     <form>
                       <div className="input-group">
-                        <input type="text" className="form-control" placeholder="Search"/>
+                 
                         <div className="input-group-btn">
-                          <button className="btn btn-primary"><i className="fas fa-search"></i></button>
+                        <Link to={"/createevent" }><button className="btn btn-sm btn-primary">Add</button></Link>
                         </div>
                       </div>
                     </form>
@@ -164,9 +169,13 @@ export default class EventList extends Component {
                     <table className="table table-striped">
                       <thead>
                         <tr>
-                            <th>Event Name</th>
+                            <th>Title</th>
                             <th>Description</th>
                             <th>Date</th>
+                            <th>Modality</th>
+                            <th>Category</th>
+                            <th>Sponsors</th>
+                            <th>Participant Number</th>
                             <th></th>
                         </tr>
                       </thead>
@@ -186,11 +195,9 @@ export default class EventList extends Component {
               </div>
             </div>
           </div>
-          <div className="row">
        
-          </div>
         </section>
-       
+      
       </div>
       
     

@@ -1,132 +1,63 @@
 
-import React, { Component  ,  useState, useEffect  } from 'react';
+import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import "./finance.css";
-
-const Finance = () => {
-    const [LoanData , setLoanData]= useState({
-        FirstName:'', LastName : '' , PhoneNumber:'', EmailAdress:'', LoanType:'' , Amount:'', RepayementDeadline:''
-    });
-    const handleSubmit = () => {
-
-    }
 
 
-
+function Finance(props){
         return(
-        <>
+        <div>
           <Header/>
+           
+
            
                         {/* <!-- Contact Info End --> */}
                         <div className="contact-from-area">
-                            <div className="row no-gutters">   
+                            <div className="row no-gutters">
+                                
                                 <div className="col-lg-7">
-                                    <div className="loan-form">
-                                        <form onSubmit={handleSubmit}>
-                                            <h3 className="form-title">Loan request</h3>
+                                    <div className="contact-form">
+                                        <form action="#">
+                                            <h3 className="form-title">Send Us Message</h3>
                                             <div className="row">
                                                 <div className="col-lg-6">
                                                     <div className="form-field mb-25">
-                                                    <label for="name">First Name</label>
-                                                        <input
-                                                            class="my-2"
-                                                            name="FirstName"
-                                                            type="text"
-                                                            placeholder="Enter your first name"
-                                                            value={LoanData.FirstName}
-                                                            onChange={(e)=> setLoanData({ ...LoanData , FirstName: e.target.value})}
-                                                            />
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-6">
-                                                    <div className="form-field mb-25">
-                                                        <label for="name">Last Name</label>
-                                                        <input
-                                                            class="my-2"
-                                                            name="LastName"
-                                                            type="text"
-                                                            placeholder="Enter your last name"
-                                                            value={LoanData.LastName}
-                                                            onChange={(e)=> setLoanData({ ...LoanData , LastName: e.target.value})}
-                                                            />
+                                                        <label for="name">Your Name</label>
+                                                        <input type="text" placeholder="Willie M. Stanley" id="name"/>
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-6">
                                                     <div className="form-field mb-25">
                                                         <label for="phone-number">Phone Number</label>
-                                                        <input
-                                                            class="my-2"
-                                                            name="PhoneNumber"
-                                                            type="text"
-                                                            placeholder="Enter your phone number"
-                                                            value={LoanData.PhoneNumber}
-                                                            onChange={(e)=> setLoanData({ ...LoanData , PhoneNumber: e.target.value})}
-                                                            />
+                                                        <input type="text" placeholder="Willie M. Stanley" id="phone-number"/>
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-6">
                                                     <div className="form-field mb-25">
                                                         <label for="email">Email Address</label>
-                                                        <input
-                                                            class="my-2"
-                                                            name="EmailAdress"
-                                                            type="text"
-                                                            placeholder="Enter your email adress"
-                                                            value={LoanData.EmailAdress}
-                                                            onChange={(e)=> setLoanData({ ...LoanData , EmailAdress: e.target.value})}
-                                                            />
+                                                        <input type="text" placeholder="support@gmail.com" id="email"/>
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-6">
                                                     <div className="form-field mb-25">
-                                                        <label for="subject">Loan type</label>
-                                                        <input
-                                                            class="my-2"
-                                                            name="LoanType"
-                                                            type="text"
-                                                            placeholder="Enter your loan's type "
-                                                            value={LoanData.LoanType}
-                                                            onChange={(e)=> setLoanData({ ...LoanData , LoanType: e.target.value})}
-                                                            />
+                                                        <label for="subject">Subject</label>
+                                                        <input type="text" placeholder="I would like to" id="subject"/>
                                                     </div>
-                                                    
                                                 </div>
-                                                <div className="col-lg-6">
-                                                    <div className="form-field mb-25">
-                                                        <label for="subject">Amount</label>
-                                                        <input
-                                                            class="my-2"
-                                                            name="Amount"
-                                                            type="text"
-                                                            placeholder="Enter your amount"
-                                                            value={LoanData.Amount}
-                                                            onChange={(e)=> setLoanData({ ...LoanData , Amount: e.target.value})}
-                                                            />
+                                                <div className="col-12">
+                                                    <div className="form-field mb-30">
+                                                        <label for="message">Write Message</label>
+                                                        <textarea id="message" placeholder="Hello"></textarea>
                                                     </div>
-                                                    
                                                 </div>
-                                                <div className="col-lg-6">
-                                                    <div className="form-field mb-25">
-                                                        <label for="subject">Repayement deadline </label>
-                                                        <input
-                                                            class="my-2"
-                                                            name="RepayementDeadline"
-                                                            type="text"
-                                                            placeholder="Enter your repayment deadline"
-                                                            value={LoanData.RepayementDeadline}
-                                                            onChange={(e)=> setLoanData({ ...LoanData , RepayementDeadline: e.target.value})}
-                                                            />
-                                                    </div>
-                                                    
-                                                </div>
-                                               
                                                 <div className="col-12">
                                                     <div className="form-field">
-                                                        <button className="main-btn"> Submit <i className="far fa-arrow-right"></i></button>
+                                                        <button className="main-btn">Send Us Message <i className="far fa-arrow-right"></i></button>
                                                     </div>
                                                 </div>
-                                             
+                                                <div class="view-more-btn text-center mt-80">
+                                                <a href="project-1.html" class="main-btn bordered-btn"><i class="far fa-arrow-right"></i></a>
+                                            </div>
                                             </div>
                                         </form>
                                     </div>
@@ -135,7 +66,7 @@ const Finance = () => {
                         </div>
                     
                 <Footer/>
-    </>
+    </div>
     )
 }
 

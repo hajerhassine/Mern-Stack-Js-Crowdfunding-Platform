@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import { NavLink,Link } from 'react-router-dom';
+import { useState } from "react";
 
 
 class Header extends React.Component{
+    logout() {
+        localStorage.clear();
+          
+    }
+
     render(){
+      
         return(
         <div>
            {/* <!--====== Header Start ======--> */}
@@ -35,41 +43,34 @@ class Header extends React.Component{
                        </div>
                        <div className="nav-menu">
                            <ul>
+                           
+                        <li>
+                        <Link to="/Home">Home</Link> 
+                        
+                    </li>
+                               
                                <li>
-                                   <a href="index.html">Home</a>
-                                   <ul className="submenu">
-                                      
-                                   </ul>
+                               <Link to="/myProfile">Profile</Link> 
+                                  
                                </li>
                                <li>
-                                   <a href="project-1.html">Project</a>
-                                   <ul className="submenu">
-                                       <li><a href="project-1.html">Project One</a></li>
-                                       <li><a href="project-2.html">Project Two</a></li>
-                                       
-                                   </ul>
+                               <Link to="/project">Projects</Link> 
+                                  
                                </li>
                                <li>
-                                   <a href="/Event">Events</a>
-                               </li>
-                               <li>
-                                   <a href="project-1.html">Bank</a>
-                                   <ul className="submenu">
-                                       <li><a href="project-1.html">Bank Offers</a></li>
-                                       <li><a href="project-2.html">Loan</a></li>
-                                       <li><a href="project-2.html">Your Loan</a></li>
-                                       
-                                   </ul>
+                               <Link to="/Event">Events</Link> 
                                </li>
                                
-                              
+                               <li >
+                               <Link to="/FAQ">FAQ</Link>
+                                
+                               </li>
                                <li><a href="contact.html">Contact</a></li>
                            </ul>
                        </div>
                        <div className="navbar-extra d-flex align-items-center">
-                           <a href="project-1.html" className="main-btn nav-btn d-none d-sm-inline-block">
-                               Donate Now <i className="far fa-arrow-right"></i>
-                           </a>
+                       <Link to='/loginInvestor' className="main-btn nav-btn d-none d-sm-inline-block" onClick={this.logout()}>LOGOUT</Link>
+                       
                            <a href="#" className="nav-toggler">
                                <span></span>
                            </a>
@@ -77,67 +78,7 @@ class Header extends React.Component{
                    </div>
                </div>
            </div>
-           <div className="mobile-menu-panel">
-               <div className="panel-logo">
-                   <a href="index.html"><img src="assets/img/logo-white.png" alt="Funden"/></a>
-               </div>
-               <ul className="panel-menu">
-                   <li>
-                       <a href="index.html">Home</a>
-                       <ul className="submenu">
-                           <li><a href="index.html">Home One</a></li>
-                           <li><a href="index-2.html">Home Two</a></li>
-                       </ul>
-                   </li>
-                   <li>
-                       <a href="project-1.html">Project</a>
-                       <ul className="submenu">
-                           <li><a href="project-1.html">Project One</a></li>
-                           <li><a href="project-2.html">Project Two</a></li>
-                           <li><a href="project-3.html">Project Three</a></li>
-                           <li><a href="project-details.html">Project Details</a></li>
-                       </ul>
-                   </li>
-                   <li>
-                       <a href="events.html">Events</a>
-                   </li>
-                   <li>
-                       <a href="/Event">News</a>
-                       <ul className="submenu">
-                           <li><a href="news-standard.html">News Standard</a></li>
-                           <li><a href="news-details.html">News Details</a></li>
-                       </ul>
-                   </li>
-                   <li>
-                       <a href="project-1.html">Banks</a>
-                       <ul className="submenu">
-                           <li><a href="project-1.html">Offers</a></li>
-                           <li><a href="project-2.html">Loans</a></li>
-                           <li><a href="project-3.html">Your Loan</a></li>
-                           
-                       </ul>
-                   </li>
-                   <li className="current">
-                       <a href="#">Pages</a>
-                       <ul className="submenu">
-                           <li><a href="about.html">About</a></li>
-                           <li><a href="company-overview.html">Company Overview</a></li>
-                           <li><a href="team-member.html">Team Member</a></li>
-                           <li><a href="pricing.html">Pricing</a></li>
-                           <li><a href="faq.html">FAQ</a></li>
-                       </ul>
-                   </li>
-                   <li><a href="contact.html">Contact</a></li>
-               </ul>
-               <div className="panel-extra">
-                   <a href="#" className="main-btn btn-white">
-                       Donate Now <i className="far fa-arrow-right"></i>
-                   </a>
-               </div>
-               <a href="#" className="panel-close">
-                   <i className="fal fa-times"></i>
-               </a>
-           </div>
+         
        </header>
        
         </div>
