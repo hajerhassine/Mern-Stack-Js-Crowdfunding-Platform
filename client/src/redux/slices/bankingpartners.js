@@ -20,9 +20,9 @@ export const createBankingPartner = (bankingpartner) => async dispatch => {
   }
 };
 
-export const updateBankingPartner = (id, category) => async dispatch => {
+export const updateBankingPartner = (id, bankingpartner) => async dispatch => {
   try {
-    const  data = await api.updateBankingPartners(id, category);
+    const  data = await api.updateBankingPartners(id, bankingpartner);
 
 const datas = {"_id": id, ...data.data}
 console.log(datas)

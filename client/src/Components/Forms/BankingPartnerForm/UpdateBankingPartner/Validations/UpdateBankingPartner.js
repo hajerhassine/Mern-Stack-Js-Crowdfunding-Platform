@@ -15,6 +15,9 @@ const Formup = (props) => {
     initialValues: {
       bank_name: bankingpartner.bank_name,
       description: bankingpartner.description,
+      offer:bankingpartner.offer,
+      email:bankingpartner.email,
+      image:bankingpartner.image
     
       
     },
@@ -31,7 +34,7 @@ const Formup = (props) => {
       <div className="col-lg-3">
         <div className="card shadow mb-4">
           <div className="card-header py-3">
-            <h6 className="m-0 font-weight-bold text-primary">Update Review</h6>
+            <h6 className="m-0 font-weight-bold text-primary">Update Bank Partner</h6>
           </div>
           <div className="card-body ">
             <form onSubmit={formik.handleSubmit}>
@@ -61,6 +64,46 @@ const Formup = (props) => {
                   <FormError>{formik.errors.message}</FormError>
                 )}
               </div>
+              <div>
+                <input
+                  className="my-2"
+                  name="message"
+                  type="text"
+                  placeholder={bankingpartner.offer}
+                  value={formik.bankingpartner.offer}
+                  onChange={formik.handleChange}
+                />
+                {formik.errors.message&& formik.touched.message&& (
+                  <FormError>{formik.errors.message}</FormError>
+                )}
+              </div>
+              <div>
+                <input
+                  className="my-2"
+                  name="message"
+                  type="text"
+                  placeholder={bankingpartner.email}
+                  value={formik.bankingpartner.email}
+                  onChange={formik.handleChange}
+                />
+                {formik.errors.message&& formik.touched.message&& (
+                  <FormError>{formik.errors.message}</FormError>
+                )}
+              </div>
+              <div>
+                <input
+                  className="my-2"
+                  name="message"
+                  type="text"
+                  placeholder={bankingpartner.image}
+                  value={formik.bankingpartner.image}
+                  onChange={formik.handleChange}
+                />
+                {formik.errors.message&& formik.touched.message&& (
+                  <FormError>{formik.errors.message}</FormError>
+                )}
+              </div>
+              
              
               <div className="mb-4"></div>
 

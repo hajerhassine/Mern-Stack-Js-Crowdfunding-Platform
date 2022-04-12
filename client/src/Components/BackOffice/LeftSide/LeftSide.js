@@ -18,7 +18,7 @@ class LeftSide extends React.Component{
               <a href="index.html" className="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li className="dropdown">
-              <a href="#" ><i data-feather="briefcase"></i><li><Link to="/Banks">Banks</Link></li></a>  
+              <a href="#" ><i data-feather="briefcase"></i><li><Link  className="nav-link" to="/Banks">Banks</Link></li></a>  
             </li>
             <li className="dropdown">
               <a href="#" ><i data-feather="command"></i><span>Apps</span></a>

@@ -10,7 +10,7 @@ import './style.css';
 
 
 function BankingPartner(props) {
-    const dispatch= useDispatch()
+  const dispatch= useDispatch()
 const [update, setUpdate] = useState(false)
 const [bank_name, setBankName] = useState(props.bankingpartner.bank_name);
 
@@ -42,7 +42,7 @@ setUpdate(!update)
 
         {update===true || <div><div className="kl"  >
             <div onClick={()=>{  handle()}}>{bank_name}</div>
-                <button className="btn btn-danger" onClick={()=>{  dispatch(deletBankingPartner(props.bankingpartner._id))}}>delete</button>
+                <button className="btn btn-danger" onClick={()=>{dispatch(deletBankingPartner(props.bankingpartner._id))}}>delete</button>
                 </div>
         </div>}
           {update===false || <div>

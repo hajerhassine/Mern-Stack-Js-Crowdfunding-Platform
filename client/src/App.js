@@ -21,6 +21,8 @@ import Converter from './Components/Frontend/Converter/Converter';
 import { getBankingPartners } from './redux/slices/bankingpartners';
 import Partners from './Components/Frontend/Partners/Partners';
 import banksback from './Components/BankingPartners/BankingPartners'
+import Banks from './Components/BanksPartners/BanksPartnersList'
+import addBank from './Components/Forms/BankingPartnerForm/AddBankingPartner/AddBankingPartnerForm'
 
 function App() {
   
@@ -50,6 +52,8 @@ useEffect(() => {
       <AdminRoute exact path="/leftside" component={leftside} />
       <AdminRoute exact path="/Form" component={Form} />
       <AdminRoute exact path="/banking" component={banksback} />
+      <AdminRoute exact path="/finallist" component={Banks} />
+      <AdminRoute exact path="/addbank" component={addBank} />
 
 
       {/* <AdminRoute exact path="/addanking" component={Form} />
