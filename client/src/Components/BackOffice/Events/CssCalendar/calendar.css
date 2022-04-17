@@ -1,0 +1,31 @@
+.calendar{
+    width: 800px;
+    height: 350px;
+ 
+    margin: auto;
+  
+    padding-top: 10px;
+    position: relative;
+   
+}
+.hajer{
+    background-color:#02a95c;
+    width: 80px;
+    height:25px;
+  
+    border-radius: 8px;
+
+
+}
+.hajoura{
+    background-color:#dc3545;
+    width: 80px;
+    height:25px;
+  
+    border-radius: 8px;
+ 
+
+} 
+
+
+

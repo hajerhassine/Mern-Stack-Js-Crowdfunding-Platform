@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import moment from 'moment';
 import Header from "../Header/Header";
+import "./CssCalendar/calendar.css";
 
 import LeftSide from "../LeftSide/LeftSide";
 
@@ -21,10 +22,13 @@ const Event = props => (
         <td>{props.event.category}</td>
         <td>{props.event.sponsors}</td>
         <td>{props.event.participant_number}</td>
+        <td>{props.event.fee_participation}</td>
+        <td>{props.event.program}</td>
         <td>
-            <Link to={"/edit/event/" + props.event._id}><button className="btn btn-sm btn-primary">edit</button></Link>
-          
-            <button className="btn btn-sm btn-danger ml-1" onClick={() => { props.deleteEvent(props.event._id) }}>delete</button>
+           <td><tr><Link to={"/edit/event/" + props.event._id}><button className="btn  btn-sm btn-info ">  edit </button></Link></tr>
+           <tr><button className="btn btn-sm btn-danger" onClick={() => { props.deleteEvent(props.event._id) }}>delete</button></tr></td>
+            
+            
         </td>
     </tr>
 )
@@ -158,7 +162,9 @@ export default class EventList extends Component {
                       <div className="input-group">
                  
                         <div className="input-group-btn">
-                        <Link to={"/createevent" }><button className="btn btn-sm btn-primary">Add</button></Link>
+                        <Link to={"/createevent" }><button className="btn btn-sm btn-success">Add</button></Link>
+                        {/* 
+                         */}
                         </div>
                       </div>
                     </form>
@@ -176,6 +182,8 @@ export default class EventList extends Component {
                             <th>Category</th>
                             <th>Sponsors</th>
                             <th>Participant Number</th>
+                            <th>Fee Participation</th>
+                            <th>Program</th>
                             <th></th>
                         </tr>
                       </thead>

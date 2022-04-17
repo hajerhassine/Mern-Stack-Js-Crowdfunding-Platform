@@ -17,6 +17,8 @@ var bodyParser = require('body-parser')
 const projectRoutes = require( './routes/projectRoutes.js');
 const path =require( 'path');
 const uploadRoutes = require('./routes/uploadRoutes.js');
+const uploadImageEvent = require('./routes/uploadImageEvent.js');
+
 //connect DB 
 connectDB();
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -32,6 +34,7 @@ app.use("/private",require("./routes/private"));
 app.use('/bankingpartners', bankingRoutes);
 app.use('/api/projects', projectRoutes)
 app.use('/api/upload', uploadRoutes)
+app.use('/api/upload',uploadImageEvent)
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => console.log(`server running on port ${PORT}`));

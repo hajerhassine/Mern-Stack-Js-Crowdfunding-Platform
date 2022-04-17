@@ -19,6 +19,8 @@ export default class EditExercise extends Component {
         this.onChangeCategory = this.onChangeCategory.bind(this);
         this.onChangeSponsors = this.onChangeSponsors.bind(this);
         this.onChangeParticipant_Number = this.onChangeParticipant_Number.bind(this);
+        this.onChangeFee_Participation = this.onChangeFee_Participation.bind(this);
+        this.onChangeProgram = this.onChangeProgram.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.deleteEvent = this.deleteEvent.bind(this);
 
@@ -30,7 +32,9 @@ export default class EditExercise extends Component {
             modality: '',
             category: '',
             sponsors: '',
-            participant_number: ''
+            participant_number: '',
+            fee_participation:'',
+            program:'',
             // ,
             // users: []
         }
@@ -49,6 +53,8 @@ export default class EditExercise extends Component {
                     category: response.data.category,
                     sponsors: response.data.sponsors,
                     participant_number: response.data.participant_number,
+                    fee_participation: response.data.fee_participation,
+                    program: response.data.program,
                 })
             })
             .catch(function (error) {
@@ -109,6 +115,16 @@ export default class EditExercise extends Component {
             participant_number: e.target.value
         });
     }
+    onChangeFee_Participation(e) {
+        this.setState({
+            fee_participation: e.target.value
+        });
+    }
+    onChangeProgram(e) {
+        this.setState({
+            program: e.target.value
+        });
+    }
     
     onSubmit(e) {
         e.preventDefault();
@@ -122,6 +138,8 @@ export default class EditExercise extends Component {
             category: this.state.category,
             sponsors: this.state.sponsors,
             participant_number: this.state.participant_number,
+            fee_participation: this.state.fee_participation,
+            program: this.state.program,
         };
         
         let api_uri = routeGenerator.getURI('events/update/' + this.props.match.params.id);
@@ -246,6 +264,24 @@ export default class EditExercise extends Component {
                             className="form-control"
                             value={this.state.participant_number}
                             onChange={this.onChangeParticipant_Number}
+                        />
+          </div>
+          <div className="form-group">
+          <label>Fee Participation: </label>
+          <input type="text"
+                            required
+                            className="form-control"
+                            value={this.state.fee_participation}
+                            onChange={this.onChangeFee_Participation}
+                        />
+          </div>
+          <div className="form-group">
+          <label>Program: </label>
+          <textarea
+                            required
+                            className="form-control"
+                            value={this.state.program}
+                            onChange={this.onChangeProgram}
                         />
           </div>
 

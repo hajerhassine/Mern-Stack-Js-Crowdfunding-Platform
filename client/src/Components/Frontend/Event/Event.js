@@ -7,9 +7,33 @@ import {WhatsappIcon} from "react-share";
 import {WhatsappShareButton} from "react-share";
 import { useDispatch, useSelector } from "react-redux";
 
+import { Link } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import axios from 'axios';
+import moment from 'moment';
+//const routeGenerator = require('../shared/routeGenerator');
 
 
    function Event(props){
+       
+  
+const Event = props => (
+    <tr>
+    {/* <td>{props.event.username}</td> */}
+    <td>{props.event.title}</td>
+    <td>{props.event.description}</td>
+    <td>{props.event.date}</td>
+    <td>{props.event.modality}</td>
+    <td>{props.event.category}</td>
+    <td>{props.event.sponsors}</td>
+    <td>{props.event.participant_number}</td>
+    <td>{props.event.fee_participation}</td>
+    <td>{props.event.program}</td>
+
+    </tr>
+    
+    )
     const shareUrl = 'https://www.youtube.com/watch?v=9WzIACv_mxs';
          return(
              
@@ -125,6 +149,7 @@ import { useDispatch, useSelector } from "react-redux";
             <Footer/>
     </div>
     )
+    
 }
 
     export default Event;

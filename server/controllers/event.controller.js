@@ -31,6 +31,8 @@ exports.addEvent = (req, res) => {
     const participant_number = req.body.participant_number; 
     const fee_participation = req.body.fee_participation;
     const program = req.body.program; 
+    const image = req.body.image; 
+
     const newEvent = new Event({
         
         title,
@@ -41,7 +43,8 @@ exports.addEvent = (req, res) => {
         sponsors,
         participant_number,
         fee_participation,
-        program
+        program,
+        image
         
     });
 
@@ -61,6 +64,7 @@ exports.updateEvent = (req, res) => {
     const participant_number = req.body.participant_number;
     const fee_participation = req.body.fee_participation;
     const program = req.body.program;
+   
     Event.findById(req.params.id)
         .then(event => {
            
