@@ -6,6 +6,7 @@ import Questions from "../accordion/Questions";
 import { useDispatch, useSelector } from "react-redux";
 import { FindAllQuestion } from "../../../Redux/actions/QuestionsAction";
 import { FindAllCategories } from "../../../Redux/actions/CategoriesAction";
+import axios from 'axios';
 //import i18next from '../i18n';
 
 
@@ -25,6 +26,8 @@ function FAQ(props) {
   
 
   useEffect(async()=>{
+  // var x= await axios.get("http://127.0.0.1:5000")
+  // console.log(x.data);
       await dispatch(FindAllCategories())
       await dispatch(FindAllQuestion())
       document.getElementsByClassName('pivot')[0].click(); 
@@ -657,6 +660,7 @@ function FAQ(props) {
           </div>
         </div>
       </section>
+      
       {/* <!--====== FAQ Area End ======-->
 
             <!--====== Feature Section Start ======--> */}

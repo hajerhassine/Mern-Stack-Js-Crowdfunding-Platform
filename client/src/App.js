@@ -57,6 +57,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector  } from "react-redux";
 import EventCreator from './Components/Frontend/Event/EventCreator';
 import EventCreatorDetail from './Components/Frontend/Event/EventCreatorDetail';
+
+import KommunicateChat from './chat';
 function App() {
   const dispatch = useDispatch();
 useEffect(() => {
@@ -124,7 +126,9 @@ useEffect(() => {
       
     </Switch>
   </Router>
+
   );
+  <KommunicateChat />
 }
 
 export default App;
