@@ -1,16 +1,17 @@
-import express from 'express'
+const express = require('express');
 const router = express.Router()
 router.use(express.json());
-import {
+const {
   getprojects,
   getprojectById,
   deleteproject,
   createproject,
   updateproject,
-} from '../controllers/projectController.js'
+  createprojectReview,
+} = require ('../controllers/projectController.js')
 
 router.route('/').get(getprojects).post(createproject)
-
+router.route('/:id/reviews').post(createprojectReview)
 router.route('/:id').get(getprojectById).delete(deleteproject)
 router.route('/').get(getprojects).post(createproject)
 router
@@ -19,4 +20,4 @@ router
   .delete(deleteproject)
   .put(updateproject)
 
-export default router
+module.exports = router;

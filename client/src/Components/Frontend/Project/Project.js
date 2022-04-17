@@ -18,7 +18,7 @@ const Project= ({ match }) => {
 	}, [dispatch, keyword])
         return(
 			
-        <div>
+        <>
 					<Header/>
 					
 					<div id="preloader">
@@ -82,7 +82,7 @@ const Project= ({ match }) => {
 
 
 
-        </div>
+        </>
 		)
 	}
 

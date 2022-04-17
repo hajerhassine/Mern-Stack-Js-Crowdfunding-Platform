@@ -1,29 +1,15 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import { projectListReducer , projectDetailsReducer,projectCreateReducer,} from "./reducers/projectReducers"
-
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import {composeWithDevTools} from 'redux-devtools-extension';
+import {donerLoginReducer} from "./reducers/donerReducers";
 const reducer = combineReducers({
-  projectList: projectListReducer,
-  projectDetails: projectDetailsReducer,
-  projectCreate: projectCreateReducer,
-})
-
-
-
-
-const initialState = {}
-
-
-
-const middleware = [thunk]
-
-
-
+  donerLogin:donerLoginReducer
+});
+const initialState ={};
+const middleware = [thunk];
 const store = createStore(
-  reducer,
-  initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
-)
-
-export default store
+    reducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(...middleware)
+));
+export default store;

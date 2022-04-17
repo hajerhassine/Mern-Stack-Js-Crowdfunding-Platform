@@ -2058,7 +2058,7 @@ a:hover {
 
 .project-items .project-item .stats-bar {
 	width: 100%;
-	background: var(--primary-soft-color);
+	background: var(--white);
 	height: 3px;
 	margin-top: 8px;
 	position: relative;

@@ -10,16 +10,27 @@ import {
   createproject,
 } from "../../../actions/projectActions";
 import { PROJECT_CREATE_RESET } from "../../../constants/projectConstants";
+import jwt_decode from 'jwt-decode';
+import { FilePond, registerPlugin } from 'react-filepond'
 
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+
+import 'filepond/dist/filepond.min.css'
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css'
+
+registerPlugin(FilePondPluginImagePreview)
 const Addproject = ({ history, match }) => {
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
   const [image, setImage] = useState('')
+  const [video, setVideo] = useState('')
   const [brand, setBrand] = useState('')
   const [category, setCategory] = useState('')
   const [countInStock, setCountInStock] = useState(0)
   const [description, setDescription] = useState('')
+  const [username, setUsername] = useState("");
   const [uploading, setUploading] = useState(false)
+  const [files, setFiles] = useState([])
   const dispatch = useDispatch()
   const projectList = useSelector((state) => state.projectList)
   const { loading, error, projects } = projectList
@@ -28,8 +39,27 @@ const Addproject = ({ history, match }) => {
 //     loading: loadingDelete,
 //     error: errorDelete,
 //     success: successDelete,
-//   } = projectDelete
+//   } = projectDeletez
+const [Userid, setUserId] = useState("");
 
+function  componentWillMount() {
+ console.log(jwt_decode(sessionStorage.getItem('authToken')).id)
+ let decode=jwt_decode(sessionStorage.getItem('authToken')).id;
+ //console.log(localStorage.getItem('authToken'))
+ setUserId(decode)
+ console.log(Userid)
+ 
+ axios.get('http://localhost:5000/auth/findCreatorById/'+decode,{mode:'cors'}).then(
+   (response) => {
+     let data=response.data
+     console.log(response.data)
+     setUsername(data.username)
+    })}
+
+    if(!Userid){
+      componentWillMount()
+    
+    }
   const projectCreate = useSelector((state) => state.projectCreate)
   const {
     // loading: loadingCreate,
@@ -37,7 +67,33 @@ const Addproject = ({ history, match }) => {
     success: successCreate,
     project: createdproject,
   } = projectCreate
+
+
   const uploadFileHandler = async (e) => {
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('image', file)
+    setUploading(true)
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+      
+
+      const { data } = await axios.post('/api/upload', formData, config)
+
+      setImage(data)
+      setUploading(false)
+    } catch (error) {
+      console.error(error)
+      setUploading(false)
+    }
+  }
+  //video
+  const uploadvideoHandler = async (e) => {
     const file = e.target.files[0]
     const formData = new FormData()
     formData.append('image', file)
@@ -52,8 +108,8 @@ const Addproject = ({ history, match }) => {
 
       const { data } = await axios.post('/api/upload', formData, config)
 
-      setImage(data)
-      setUploading(false)
+      setVideo(data)
+    setUploading(false)
     } catch (error) {
       console.error(error)
       setUploading(false)
@@ -99,7 +155,7 @@ const Addproject = ({ history, match }) => {
     const { data } =  axios.post(
         "api/projects",
         {
-            name,price,category,image,description
+            name,price,Userid,category,image,description,username,video
         }
     );
   }
@@ -138,23 +194,59 @@ const Addproject = ({ history, match }) => {
                                     <div class="col-lg-6">
                                         <div class="form-field mb-25">
                                             <label for="email">category</label>
-                                            <input type="text"  placeholder='Enter category'
-                value={category}
-                onChange={(e) => setCategory(e.target.value)} />
+                                            <select className="custom-select form-select-sm"   aria-label=".form-select-sm example"value={category}
+                            onChange={(e) => setCategory(e.target.value)}placeholder='choose the category'> 
+                            <option value=""> </option>
+                            <option value="Education"> Education</option>
+                            <option value="Commercial"> Commercial</option>
+                            <option value="Art"> Art</option>
+                            <option value="Technlogy"> Technlogy</option>
+                            <option value=" Health"> Health</option>
+                            <option value="Design"> Design</option>
+                            <option value="Agriculture"> Agriculture</option>
+                            <option value="Liberal"> Liberal</option>
+                            
+                            
+                          
+
+                          </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-field mb-25">
+                                            <label for="subject">Image</label>
+                                            <input type='text'
+                placeholder='Enter image url'
+                value={files}
+                onChange={(e) => setImage(e.target.value)}/>
+                 <input type="file" id='image-file'
+                label='Choose File'
+                
+                custom
+                
+                onChange={uploadFileHandler}/>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-field mb-25">
-                                            <label for="subject">Subject</label>
-                                            <input type='text'
-                placeholder='Enter image url'
-                value={image}
-                onChange={(e) => setImage(e.target.value)}/>
-                 <input type="file" id='image-file'
+                                            <label for="subject">Video</label>
+                                            
+                 <input type="file" id='video-file'
                 label='Choose File'
+                
                 custom
                 
-                onChange={uploadFileHandler}/>
+                onChange={uploadvideoHandler}/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-field mb-25">
+                                            <label for="subject">tttttttttttttttttttttttttttttttttt</label>
+                                            
+                                            <FilePond value={image}  server="http://localhost:5000/api/upload"/>
                                         </div>
                                     </div>
                                     <div class="col-12">
