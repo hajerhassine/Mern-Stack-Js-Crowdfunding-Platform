@@ -6,7 +6,8 @@ const bankingpartnersSchema = mongoose.Schema({
     description: { type: String, required:  true },
     offer : { type: String, required:  true },
     email:{type: String, required:  true },
-    image: { type: String, required:  true }
+    bankImage:{type: String, required:  true },
+    
 
 });
 

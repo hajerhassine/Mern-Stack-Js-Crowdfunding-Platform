@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 
 class Header extends React.Component{
+  logout() {
+    localStorage.clear();
+      
+}
     render(){
+      
         return(
         <>
   <nav className="navbar navbar-expand-lg main-navbar sticky">
@@ -149,9 +155,9 @@ class Header extends React.Component{
                 Settings
               </a>
               <div className="dropdown-divider"></div>
-              <a href="auth-login.html" className="dropdown-item has-icon text-danger"> <i className="fas fa-sign-out-alt"></i>
-                Logout
-              </a>
+              <div>
+   <Link to='/login' onClick={this.logout()}>LOGOUT</Link>
+</div>
             </div>
           </li>
         </ul>

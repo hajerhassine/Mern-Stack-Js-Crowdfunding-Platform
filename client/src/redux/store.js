@@ -1,11 +1,17 @@
-import {configureStore} from '@reduxjs/toolkit';
-import bankingpartnersReducer from "./slices/bankingpartners";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import rootReducer from "./reducers";
+import {composeWithDevTools} from 'redux-devtools-extension'
 
-export default configureStore({
-    
-reducer:{
-    bankingpartners: bankingpartnersReducer,
-}
+const initialState = {};
 
+const middleware = [thunk];
 
-})
+const store = createStore(
+  rootReducer,
+  initialState,
+  
+  composeWithDevTools(applyMiddleware(...middleware))
+);
+
+export default store;

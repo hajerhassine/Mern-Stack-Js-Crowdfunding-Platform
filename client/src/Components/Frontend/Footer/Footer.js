@@ -6,7 +6,7 @@ class Footer extends React.Component{
         return(
         <div>
         <footer className="site-footer with-footer-cta with-footer-bg">
-        {/* <div className="footer-cta">
+        <div className="footer-cta">
             <div className="container">
                 <div className="row justify-content-lg-between justify-content-center align-items-center">
                     <div className="col-lg-7 col-md-8 col-sm-10">
@@ -20,7 +20,7 @@ class Footer extends React.Component{
                     </div>
                 </div>
             </div>
-        </div> */}
+        </div>
         <div className="footer-content-area">
             <div className="container">
                 <div className="footer-widgets">

@@ -621,7 +621,7 @@ $(function () {
     if (!mouse_is_inside) $(".settingSidebar").removeClass("showSettingPanel");
   });
 
-  //$(".settingSidebar-body").niceScroll();
+  $(".settingSidebar-body").niceScroll();
 
   // theme change event
   $(".choose-theme li").on("click", function () {
