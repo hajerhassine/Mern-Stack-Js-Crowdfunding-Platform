@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import store from './Redux/store';
 import * as serviceWorker from './serviceWorker';
 
+import { persistStore } from "redux-persist";
+let persistor = persistStore(store);
 ReactDOM.render(
   <Provider store={store}>
     <App />
@@ -19,4 +21,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 serviceWorker.unregister();
-//reportWebVitals();
+reportWebVitals();

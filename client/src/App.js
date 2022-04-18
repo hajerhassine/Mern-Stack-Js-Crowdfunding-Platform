@@ -51,6 +51,8 @@ import Category from './Components/BackOffice/FAQ/Category';
 import QuestionDetail from './Components/BackOffice/FAQ/QuestionDetail';
 import Converter from './Components/Frontend/Converter/Converter';
 import { getBankingPartners } from './Redux/slices/bankingpartners';
+import { getEvents } from './Redux/slices/events';
+
 import Partners from './Components/Frontend/Partners/Partners';
 import banksback from './Components/BankingPartners/BankingPartners';
 import React, { useEffect, useState } from "react";
@@ -62,6 +64,14 @@ function App() {
 useEffect(() => {
 
   dispatch(getBankingPartners());
+  
+}, [dispatch]);
+
+
+
+useEffect(() => {
+
+  dispatch(getEvents());
   
 }, [dispatch]);
   return (
@@ -104,6 +114,7 @@ useEffect(() => {
       <ClientRoute path="/ProjectDetails/:id" component={ProjectDetails} />
       <ClientRoute path="/addproject" component={Addproject} />
       <ClientRoute path='/search/:keyword' component={Project} />
+      
       <ClientRoute path="/project" component={Project} />
       <AdminRoute exact path="/admin" component={HomeBack} />
       <AdminRoute exact path="/login" component={Login} />

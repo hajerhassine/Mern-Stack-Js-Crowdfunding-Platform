@@ -51,7 +51,6 @@ const Project= ({ match }) => {
 					</div>
 				</section>
 				{/* <!--====== Page Title End ======-->
-
 				<!--====== Project Area Start ======--> */}
 				
 				<section className="project-section section-gap-extra-bottom primary-soft-bg">
