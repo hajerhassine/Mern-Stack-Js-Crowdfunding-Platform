@@ -52,6 +52,7 @@ import QuestionDetail from './Components/BackOffice/FAQ/QuestionDetail';
 import Converter from './Components/Frontend/Converter/Converter';
 import { getBankingPartners } from './Redux/slices/bankingpartners';
 import Partners from './Components/Frontend/Partners/Partners';
+import PartnersDetails from './Components/Frontend/Partners/PartnersDetails'
 // import banksback from './Components/BankingPartners/BankingPartners';
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector  } from "react-redux";
@@ -104,6 +105,7 @@ useEffect(() => {
       />
       <ClientRoute path="/converter" component={Converter} />
       <ClientRoute path="/Partners" component={Partners} />
+      <ClientRoute path="/PartnersDetails/:id" component={PartnersDetails} />
       <ClientRoute path="/ProjectDetails/:id" component={ProjectDetails} />
       <ClientRoute path="/addproject" component={Addproject} />
       <ClientRoute path='/search/:keyword' component={Project} />
