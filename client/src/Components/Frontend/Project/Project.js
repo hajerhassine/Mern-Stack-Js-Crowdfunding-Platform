@@ -6,16 +6,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listprojects } from "./../../../actions/projectActions";
 import { Route } from 'react-router-dom';
 import SearchBox from "./SearchBox";
+import Paginate from '../../BackOffice/Project/Paginate'
+import './main.css'
+
 
 const Project= ({ match }) => {
 	const keyword = match.params.keyword
+	const pageNumber = match.params.pageNumber || 1
 	const dispatch = useDispatch()
 
 	const projectList = useSelector((state) => state.projectList)
-	const { loading, error, projects } = projectList
+	const { loading, error, projects, page, pages } = projectList
 	useEffect(() => {
-		dispatch(listprojects(keyword))
-	}, [dispatch, keyword])
+		dispatch(listprojects(keyword, pageNumber))
+	}, [dispatch, keyword, pageNumber])
         return(
 			
         <>
@@ -66,7 +70,11 @@ const Project= ({ match }) => {
     </div>
     </div>
 ))}
-							
+<Paginate 
+            pages={pages}
+            page={page}
+            keyword={keyword ? keyword : ''}
+          />						
 						
 							<div className="col-12">
 								<div className="view-more-btn text-center mt-40">

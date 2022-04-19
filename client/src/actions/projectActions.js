@@ -14,12 +14,14 @@ import {
   PROJECT_CREATE_REVIEW_FAIL,
 } from "./../constants/projectConstants";
 
-export const listprojects = (keyword = '') => async (dispatch) => {
+export const listprojects =  (keyword = '', pageNumber = '') => async (dispatch) => {
   try {
     dispatch({ type: PROJECT_LIST_REQUEST })
 
-    const { data } = await axios.get(`/api/projects?keyword=${keyword}`)
-
+    
+    const { data } = await axios.get(
+      `/api/projects?keyword=${keyword}&pageNumber=${pageNumber}`
+    )
     dispatch({
       type: PROJECT_LIST_SUCCESS,
       payload: data,

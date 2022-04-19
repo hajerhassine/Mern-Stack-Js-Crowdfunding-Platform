@@ -55,6 +55,7 @@ import Partners from './Components/Frontend/Partners/Partners';
 import banksback from './Components/BankingPartners/BankingPartners';
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector  } from "react-redux";
+
 function App() {
   const dispatch = useDispatch();
 useEffect(() => {
@@ -100,8 +101,13 @@ useEffect(() => {
       <ClientRoute path="/Partners" component={Partners} />
       <ClientRoute path="/ProjectDetails/:id" component={ProjectDetails} />
       <ClientRoute path="/addproject" component={Addproject} />
+      
       <ClientRoute path='/search/:keyword' component={Project} />
-      <ClientRoute path="/project" component={Project} />
+    
+      <ClientRoute exact path='/search/:keyword/page/:pageNumber' component={Project} />
+      <ClientRoute exact path="/project" component={Project} />
+      <ClientRoute exact path="/project/search/:keyword/page/:pageNumber" component={Project} />
+      
       <AdminRoute exact path="/admin" component={HomeBack} />
       <AdminRoute exact path="/login" component={Login} />
       <AdminRoute exact path="/List" component={List} />
@@ -118,7 +124,8 @@ useEffect(() => {
       <AdminRoute exact path="/createevent" component={CreateEvent} />
       <AdminRoute exact path="/edit/event/:id" component={EditEvent} />
       <AdminRoute exact path="/ProjectListScreen" component={ProjectListScreen} />
-      
+      <AdminRoute exact path="/ProjectListScreen/:pageNumber" component={ProjectListScreen} />
+      <ClientRoute exact path='/page/:pageNumber' component={Project} />
     </Switch>
   </Router>
   );

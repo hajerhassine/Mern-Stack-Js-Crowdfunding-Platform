@@ -5,6 +5,8 @@ const project =require ('../models/projectmodel.js')
 // @route   GET /api/projects
 // @access  Public
 const getprojects = asyncHandler(async (req, res) => {
+  const pageSize = 3
+  const page = Number(req.query.pageNumber) || 1
   const keyword = req.query.keyword
   ? {
       name: {
@@ -13,9 +15,12 @@ const getprojects = asyncHandler(async (req, res) => {
       },
     }
   : {}
+  const count = await project.countDocuments({ ...keyword })
+  const projects = await project.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1))
 
-const projects = await project.find({ ...keyword })
-  res.json(projects)
+  res.json({ projects, page, pages: Math.ceil(count / pageSize) })
 })
 // @desc    Fetch single project
 // @route   GET /api/projects/:id
