@@ -58,9 +58,15 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector  } from "react-redux";
 import EventCreator from './Components/Frontend/Event/EventCreator';
 import EventCreatorDetail from './Components/Frontend/Event/EventCreatorDetail';
+//Banks
 import AddBankPartner from './Components/Banks/AddBankPartner';
 import BanksPartnersList from './Components/Banks/BanksPartnersList';
 import EditBankPartner from './Components/Banks/EditBankPartner';
+import Request from './Components/Frontend/Partners/Request';
+//ContactUs
+import ContactUs from './Components/Frontend/ContactUs/ContactUs';
+
+
 function App() {
   const dispatch = useDispatch();
 useEffect(() => {
@@ -103,10 +109,13 @@ useEffect(() => {
         path="/passwordreset/:resetToken"
         component={ResetPasswordScreen}
       />
+      {/* contactsus */}
+      <ClientRoute path="/ContactUs" component={ContactUs} />
       <ClientRoute path="/converter" component={Converter} />
       <ClientRoute path="/Partners" component={Partners} />
       <ClientRoute path="/PartnersDetails/:id" component={PartnersDetails} />
       <ClientRoute path="/ProjectDetails/:id" component={ProjectDetails} />
+      <ClientRoute path="/Request" component={Request} />
       <ClientRoute path="/addproject" component={Addproject} />
       <ClientRoute path='/search/:keyword' component={Project} />
       <ClientRoute path="/project" component={Project} />
@@ -118,9 +127,12 @@ useEffect(() => {
       <AdminRoute exact path="/creators" component={ContentCreator} />
       <AdminRoute exact path="/doners" component={ContentDoner} />
       {/* <AdminRoute exact path="/banking" component={banksback} /> */}
+
+      {/* Banks */}
       <AdminRoute exact path="/bankslist" component={BanksPartnersList} />
       <AdminRoute exact path="/addbankspartners" component={AddBankPartner} />
       <AdminRoute exact path="/editbankpartner/:id" component={EditBankPartner} />
+
       <Route path="/CategoryQt"  component={Category} />
       <Route path="/Questions" exact component={Questions} />
       <Route path="/Questions/:id"  exact component={QuestionDetail} />

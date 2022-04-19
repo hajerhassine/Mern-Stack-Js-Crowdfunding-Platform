@@ -63,9 +63,9 @@ class Header extends React.Component{
                                
                                <li >
                                <Link to="/FAQ">FAQ</Link>
-                                
+                               
                                </li>
-                               <li><a href="contact.html">Contact</a></li>
+                               <li><Link to="/ContactUs">Contact</Link></li>
                            </ul>
                        </div>
                        <div className="navbar-extra d-flex align-items-center">
