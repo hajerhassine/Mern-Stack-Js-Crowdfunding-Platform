@@ -6,11 +6,20 @@ import axios from 'axios';
 import moment from 'moment';
 import Header from "../Header/Header";
 import "./CssCalendar/calendar.css";
-
+import PrintIcon from '@material-ui/icons/Print'
+import jsPDF from 'jspdf';
+import 'jspdf-autotable'
 import LeftSide from "../LeftSide/LeftSide";
 
 const routeGenerator = require('../shared/routeGenerator');
+ // download data in pdf format
+ const downloadData=()=>{
 
+    const pdf = new jsPDF();
+    pdf.autoTable({html:'#table'})
+    pdf.save('ListOfEvent.pdf');
+  
+  }
 const Event = props => (
     
     <tr>
@@ -117,6 +126,7 @@ export default class EventList extends Component {
 
             <div className="main-content">
         <section className="section">
+    
        
           <div className="row">
             <div className="col-12">
@@ -128,9 +138,11 @@ export default class EventList extends Component {
                       <div className="input-group">
                  
                         <div className="input-group-btn">
-                        <Link to={"/createevent" }><button className="btn btn-sm btn-success">Add</button></Link>
-                        {/* 
-                         */}
+                            <tr>
+                       <td> <Link to={"/createevent" }><button className="btn btn-sm btn-success">Add</button></Link></td> <td><br/></td>
+                  
+                      
+              </tr>
                         </div>
                       </div>
                     </form>
@@ -138,7 +150,7 @@ export default class EventList extends Component {
                 </div>
                 <div className="card-body p-0">
                   <div className="table-responsive">
-                    <table className="table table-striped">
+                    <table className="table table-striped" id='table'>
                       <thead>
                         <tr>
                             <th>Title</th>
@@ -164,12 +176,16 @@ export default class EventList extends Component {
                   
                  
                     </table>
+                    
                   </div>
                 </div>
               </div>
             </div>
           </div>
-       
+          <td> <button className='btn btn-sm btn-primary'
+                      onClick={downloadData}>
+               Export to Pdf
+              </button></td>
         </section>
       
       </div>

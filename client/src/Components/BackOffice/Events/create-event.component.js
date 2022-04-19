@@ -49,26 +49,10 @@ export default class CreateEvent extends Component {
         // }
         this.setState({ date: new Date(eventDate) });
         
-        // let api_uri = routeGenerator.getURI("users");
-        // axios.get(api_uri)
-        //     .then(response => {
-        //         if (response.data.length > 0) {
-        //             this.setState({
-        //                 users: response.data.map(user => user.username),
-        //                 username: response.data[0].username
-        //             })
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     })
+      
     }
 
-    // onChangeUsername(e) {
-    //     this.setState({
-    //         username: e.target.value
-    //     });
-    // }
+  
 
     onChangeTitle(e) {
         this.setState({

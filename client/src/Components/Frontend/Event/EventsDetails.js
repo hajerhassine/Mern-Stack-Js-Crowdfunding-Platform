@@ -23,14 +23,7 @@ const EventsDetails = (props) => {
 
 
 
-  // const events = useSelector(state => state.events.events);
-  // const [eventt, setEvent] = useState(JSON.parse(localStorage.getItem("selectEvent")));
-  // useEffect(() => {
-  
 
-  //   console.log(eventt);
-  
-  // }, [event]);
 
 
   return (
@@ -57,7 +50,7 @@ const EventsDetails = (props) => {
                                                 <img className="mt-50 mb-50" src="assets/img/event/01.jpg" alt="Image"/>
                                                 <h4 className="description-title">Program</h4>
               <p>
-                {/* {event.program} */}
+                {event.program}
               </p>
                                                 
                                             </div>

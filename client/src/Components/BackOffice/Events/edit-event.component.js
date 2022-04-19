@@ -61,21 +61,10 @@ export default class EditExercise extends Component {
                 console.log(error);
             })
 
-        // api_uri = routeGenerator.getURI("users/");
-        // axios.get(api_uri)
-        //     .then(response => {
-        //         this.setState({ users: response.data.map(user => user.username) });
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     })
+     
     }
 
-    // onChangeUsername(e) {
-    //     this.setState({
-    //         username: e.target.value
-    //     });
-    // }
+  
 
     onChangeTitle(e) {
         this.setState({
@@ -297,7 +286,7 @@ export default class EditExercise extends Component {
           <input type="reset" value="Delete" className="btn btn-danger ml-1" onClick={this.deleteEvent}/>
           </td>
           </tr>
-          {/* <button className="btn btn-danger ml-1" onClick={this.deleteEvent}>Delete Event</button> */}
+         
         </div>
       </form>
     </div>

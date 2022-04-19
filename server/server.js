@@ -24,6 +24,7 @@ connectDB();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors({origin:"http://localhost:3000"}));
+
 app.use('/api/events', eventsRouter);
 app.use(express.json());
 app.use(errorHandler);
@@ -34,7 +35,7 @@ app.use("/private",require("./routes/private"));
 app.use('/bankingpartners', bankingRoutes);
 app.use('/api/projects', projectRoutes)
 app.use('/api/upload', uploadRoutes)
-app.use('/api/upload',uploadImageEvent)
+app.use('/api/events/upload',uploadImageEvent)
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => console.log(`server running on port ${PORT}`));

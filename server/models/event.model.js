@@ -11,8 +11,10 @@ const eventSchema = new mongoose.Schema({
     participant_number: { type: Number, required: true },
     fee_participation: { type: Number },
     program: { type: String},
-    eventImage:{type: String, required:  true },
-  
+    eventImage:{type: String },
+
+    
+    
 },
  {
     timestamps: true,

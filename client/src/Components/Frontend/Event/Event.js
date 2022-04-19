@@ -15,7 +15,7 @@ const event = useSelector(state => state.event.event);
   const shareUrl = 'https://www.youtube.com/watch?v=9WzIACv_mxs';
   return (
     <>
-    <Header></Header>
+    <Header/>
     <section className="event-area section-gap-extra-bottom">
                     <div className="container">
                     {event.map((event ,id)=>(
@@ -80,7 +80,7 @@ const event = useSelector(state => state.event.event);
                 
                 <script src="assets/js/main.js"></script>
                 </section>
-                <Footer></Footer>
+                <Footer/>
     </>
   )
 }
