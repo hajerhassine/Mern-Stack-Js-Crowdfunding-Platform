@@ -7,6 +7,7 @@ import HomeCreator from "./Components/Frontend/Home/HomeCreator";
 import ClientRoute from "./Routes/ClientRoute";
 import { BrowserRouter as Router, Routes,Route, Switch } from "react-router-dom";
 import FAQ from './Components/Frontend/FAQ/FAQ';
+
 import Header from './Components/Frontend/Header/Header';
 import Project from './Components/Frontend/Project/Project';
 import Finance from './Components/Frontend/Finance/Finance';
@@ -57,9 +58,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector  } from "react-redux";
 import EventCreator from './Components/Frontend/Event/EventCreator';
 import EventCreatorDetail from './Components/Frontend/Event/EventCreatorDetail';
-
+import Chats from './Components/Frontend/Chats.js/Chats';
 import KommunicateChat from './chat';
 function App() {
+
+
   const dispatch = useDispatch();
 useEffect(() => {
 
@@ -67,6 +70,8 @@ useEffect(() => {
   
 }, [dispatch]);
   return (
+  
+  
     <Router>
     <Switch>
     <PrivateRoute exact path="/" component={PrivateScreen} />
@@ -76,6 +81,7 @@ useEffect(() => {
       <ClientRoute exact path="/HomeCreator" component={HomeCreator} />
       <ClientRoute path="/Event" component={Event} />
       <ClientRoute path="/FAQ" component={FAQ} />
+     
       <ClientRoute path="/project" component={Project} />
       <ClientRoute path="/bankings" component={Finance} />
       <ClientRoute path="/Event" component={Event} />
@@ -91,6 +97,7 @@ useEffect(() => {
       <ClientRoute exact path="/myProfile" component={ProfileInvestor} />
       <ClientRoute exact path="/myProfileDoner" component={ProfileDoner} />
       <ClientRoute exact path="/myProfileCreator" component={ProfileCreator} />
+      <ClientRoute exact path="/Chats" component={Chats}/>
       <ClientRoute
         exact
         path="/forgotpassword"
@@ -126,9 +133,9 @@ useEffect(() => {
       
     </Switch>
   </Router>
-
+   
   );
-  <KommunicateChat />
+ <KommunicateChat />
 }
 
 export default App;

@@ -1,4 +1,6 @@
 var express = require('express');
+const socket=require('socket.io');
+
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -9,6 +11,23 @@ var QuestionRouter = require('./routes/routerquestions');
 var CategoriesRouter = require('./routes/routercategories');
 
 var app = express();
+//const cors= require('cors');
+//app.use(cors());
+//app.use(express.json());
+
+
+
+  
+  
+  
+  
+  
+  
+
+
+
+
+
 
 app.use(logger('dev'));
 app.use(express.json());

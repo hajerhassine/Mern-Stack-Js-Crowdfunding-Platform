@@ -42,13 +42,40 @@ process.on("unhandledRejection",(err,promise)=>{
 
 
 // socket setup
-const io = socket(server);
+/*const io = socket(server);
 let interval;
 io.on('connection', socket => {
     console.log(`socket connected, id = ${socket.id}`);
     if (interval) clearInterval(interval);
     interval = setInterval(() => getApiAndEmit(socket), 1000);
-})
+})*/
+
+//chat process
+const io = require('socket.io')(server, {
+    cors: {
+      origin: '*',
+      credentials:true
+    }
+  });
+  io.on('connection',(socket)=> {
+    console.log(socket.id);
+  
+    //recieving an event
+    socket.on('join_room',(data)=> {
+        socket.join(data)
+        console.log("User Joined Room:" +data)
+    })
+   //create an event (2events exactly here )
+    socket.on("send_message", (data)=> {
+        console.log(data);
+        socket.to(data.room).emit("recieve_message", data.content);
+    })
+  
+    socket.on('disconnect',()=>{
+        console.log('USER DISCONNECTED')
+    })
+  })
+
 
 const getApiAndEmit = async socket => {
     try {
