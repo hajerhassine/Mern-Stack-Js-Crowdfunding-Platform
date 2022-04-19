@@ -4,7 +4,7 @@ import eventsReducer from "./slices/events";
 export default configureStore({
     
 reducer:{
-    events: eventsReducer,
+    event: eventsReducer,
 }
 
 

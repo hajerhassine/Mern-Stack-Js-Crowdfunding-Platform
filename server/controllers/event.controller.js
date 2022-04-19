@@ -31,7 +31,7 @@ exports.addEvent = (req, res) => {
     const participant_number = req.body.participant_number; 
     const fee_participation = req.body.fee_participation;
     const program = req.body.program; 
-    const image = req.body.image; 
+    const eventImage = req.body.eventImage; 
 
     const newEvent = new Event({
         
@@ -44,7 +44,7 @@ exports.addEvent = (req, res) => {
         participant_number,
         fee_participation,
         program,
-        image
+        eventImage
         
     });
 
@@ -64,6 +64,7 @@ exports.updateEvent = (req, res) => {
     const participant_number = req.body.participant_number;
     const fee_participation = req.body.fee_participation;
     const program = req.body.program;
+    const eventImage = req.body.eventImage;
    
     Event.findById(req.params.id)
         .then(event => {
@@ -77,6 +78,7 @@ exports.updateEvent = (req, res) => {
             event.participant_number = participant_number;
             event.fee_participation = fee_participation;
             event.program = program;
+            event.eventImage = eventImage;
             event.save()
                 .then(() => res.json('event updated'))
                 .catch(err => res.status(400).json(`error : ${err}`));

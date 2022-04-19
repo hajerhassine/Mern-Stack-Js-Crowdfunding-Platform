@@ -21,7 +21,7 @@ import CreateEvent from './Components/BackOffice/Events/create-event.component';
 import ListEvent from './Components/BackOffice/Events/event-list.component'; 
 import EditEvent from './Components/BackOffice/Events/edit-event.component'; 
 import EventList from './Components/BackOffice/Contents/EventList';
-import EventDetails from './Components/Frontend/Event/EventDetails';
+import EventsDetails from './Components/Frontend/Event/EventsDetails';
 import ProjectDetails from './Components/Frontend/Project/ProjectDetails';
 import ProjectListScreen from './Components/BackOffice/Project/projectListScreen';
 import Addproject from './Components/Frontend/Project/Addproject';
@@ -52,13 +52,14 @@ import QuestionDetail from './Components/BackOffice/FAQ/QuestionDetail';
 import Converter from './Components/Frontend/Converter/Converter';
 import { getBankingPartners } from './Redux/slices/bankingpartners';
 import { getEvents } from './Redux/slices/events';
-
+import PartnersDetails from './Components/Frontend/Partners/PartnersDetails'
 import Partners from './Components/Frontend/Partners/Partners';
 import banksback from './Components/BankingPartners/BankingPartners';
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector  } from "react-redux";
 import EventCreator from './Components/Frontend/Event/EventCreator';
 import EventCreatorDetail from './Components/Frontend/Event/EventCreatorDetail';
+import AddEvent from './Components/Events/AddEvent';
 function App() {
   const dispatch = useDispatch();
 useEffect(() => {
@@ -87,7 +88,8 @@ useEffect(() => {
       <ClientRoute path="/project" component={Project} />
       <ClientRoute path="/bankings" component={Finance} />
       <ClientRoute path="/Event" component={Event} />
-      <ClientRoute path="/EventDetails" component={EventDetails} />
+      <ClientRoute path="/PartnersDetails/:id" component={PartnersDetails} />
+      <ClientRoute path="/EventsDetails/:id" component={EventsDetails} />
       <ClientRoute path="/EventCreator" component={EventCreator} />
       <ClientRoute path="/EventDetailsCreator" component={EventCreatorDetail} />
       <ClientRoute exact path="/loginDoner" component={LoginDonerScreen} />
@@ -130,6 +132,7 @@ useEffect(() => {
       <AdminRoute exact path="/EventCalendar" component={EventCalendar} />
       <AdminRoute exact path="/listevent" component={ListEvent} />
       <AdminRoute exact path="/createevent" component={CreateEvent} />
+      {/* <AdminRoute exact path="/createevent" component={AddEvent} /> */}
       <AdminRoute exact path="/edit/event/:id" component={EditEvent} />
       <AdminRoute exact path="/ProjectListScreen" component={ProjectListScreen} />
       

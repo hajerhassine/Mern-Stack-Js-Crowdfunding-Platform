@@ -16,10 +16,10 @@ export const deleteBankingPartners = (id) => axios.delete(`${url}/bankingpartner
 
 //events
 
-export const fetchEvents = ()=> axios.get(`${url}/events`);
-export const createEvents = (newEvents)=> axios.post(`${url}/events`, newEvents);
-export const updateEvents = (id, updatedEvents) => axios.patch(`${url}/events/${id}`, updatedEvents);
-export const deleteEvents = (id) => axios.delete(`${url}/events/${id}`);
+export const fetchEvents = ()=> axios.get(`${url}/api/events`);
+// export const createEvents = (newEvents)=> axios.post(`${url}/api/events`, newEvents);
+// export const updateEvents = (id, updatedEvents) => axios.patch(`${url}/api/events/${id}`, updatedEvents);
+// export const deleteEvents = (id) => axios.delete(`${url}/api/events/${id}`);
 
 
 

@@ -2,8 +2,9 @@ import { combineReducers } from "redux";
 import CategoriesReducer from './CategoriesReducer'
 import ErrorsReducer from './ErrorsReducer';
 import QuestionsReducer from './QuestionsReducer';
-import { projectListReducer , projectDetailsReducer,projectCreateReducer,} from "./../../reducers/projectReducers"
+import { projectListReducer , projectDetailsReducer,projectCreateReducer} from "./../../reducers/projectReducers"
 import bankingpartnersReducer from "./../slices/bankingpartners";
+import eventsReducer from "./../slices/events";
 export default combineReducers({
     questions: QuestionsReducer,
     categories: CategoriesReducer,
@@ -11,5 +12,6 @@ export default combineReducers({
     projectList: projectListReducer,
     projectDetails: projectDetailsReducer,
     projectCreate: projectCreateReducer,
-    errors: ErrorsReducer
+    errors: ErrorsReducer,
+    event: eventsReducer
 })

@@ -1,11 +1,13 @@
-const path =require( 'path')
-const express =require( 'express')
-const multer =require(  'multer')
+const path = require('path')
+
+const  express = require('express')
+
+const multer = require('multer')
 const router = express.Router()
 
-const storage = multer.diskStorage({
+const storage = multer.diskStorage({ 
   destination(req, file, cb) {
-    cb(null, './../client/public/assets/img/event/')
+    cb(null,'../client/public/eventuploads')
   },
   filename(req, file, cb) {
     cb(
@@ -19,7 +21,6 @@ function checkFileType(file, cb) {
   const filetypes = /jpg|jpeg|png/
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
   const mimetype = filetypes.test(file.mimetype)
-  
 
   if (extname && mimetype) {
     return cb(null, true)
@@ -35,8 +36,8 @@ const upload = multer({
   },
 })
 
-router.post('/', upload.single('image'), (req, res) => {
-  res.send(`${req.file.filename}`)
+router.post('/', upload.single('eventImage'), (req, res) => {
+  res.send(`/${req.file.filename}`)
 })
 
-module.exports = router
+module.exports= router

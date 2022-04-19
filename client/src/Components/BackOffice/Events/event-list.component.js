@@ -117,40 +117,6 @@ export default class EventList extends Component {
 
             <div className="main-content">
         <section className="section">
-        {/* <section className="section">
-        <div className="form-inline">
-                        <h3>Events</h3>
-                        <Header></Header>
-                        <div className="input-group input-group-sm ml-4">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">From</span>
-                            </div>
-                            <DatePicker
-                                className="form-control form-control-sm"
-                                selected={this.state.startDate}
-                                onChange={this.onChangeStartDate}
-                            />
-                        </div>
-
-                        <div className="input-group input-group-sm ml-2">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">To</span>
-                            </div>
-                            <DatePicker
-                                className="form-control form-control-sm"
-                                selected={this.state.endDate}
-                                onChange={this.onChangeEndDate}
-                            />
-                        </div>
-
-                        <div className="input-group input-group-sm ml-2">
-                            <input type="submit" value="Search" className="btn btn-sm btn-secondary" />
-                        </div>
-                    </div>
-       
-         
-         
-        </section> */}
        
           <div className="row">
             <div className="col-12">
