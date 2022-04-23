@@ -59,7 +59,9 @@ import { useDispatch, useSelector  } from "react-redux";
 import EventCreator from './Components/Frontend/Event/EventCreator';
 import EventCreatorDetail from './Components/Frontend/Event/EventCreatorDetail';
 import Chats from './Components/Frontend/Chats.js/Chats';
-import KommunicateChat from './chat';
+import Cbot from './Components/Frontend/chatbot/chatbot';
+import Icon from './Components/Frontend/chatbot/Icon';
+//import KommunicateChat from './chat';
 function App() {
 
 
@@ -98,6 +100,7 @@ useEffect(() => {
       <ClientRoute exact path="/myProfileDoner" component={ProfileDoner} />
       <ClientRoute exact path="/myProfileCreator" component={ProfileCreator} />
       <ClientRoute exact path="/Chats" component={Chats}/>
+      <ClientRoute exact path="/cb" component={Cbot}/>
       <ClientRoute
         exact
         path="/forgotpassword"
@@ -132,10 +135,12 @@ useEffect(() => {
       <AdminRoute exact path="/ProjectListScreen" component={ProjectListScreen} />
       
     </Switch>
+    <Icon/>
   </Router>
    
   );
- <KommunicateChat />
+
+
 }
 
 export default App;
