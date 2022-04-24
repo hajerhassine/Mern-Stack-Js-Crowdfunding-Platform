@@ -1,153 +1,69 @@
-import React, { Component } from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import React from 'react'
+import Footer from '../Footer/Footer'
+import Header from '../Header/Header'
+import { useDispatch, useSelector } from "react-redux";
+import { Link} from "react-router-dom";
+import {FacebookShareButton} from "react-share";
+import {FacebookIcon} from "react-share";
+import {WhatsappIcon} from "react-share"; 
+import {WhatsappShareButton} from "react-share";
+const Events =  (props) => {
 
-   function Event(props){
-     
-         return(
-             
-           <div>
-               <Header/>
+const event = useSelector(state => state.event.event);
 
-            <section class="event-area section-gap-extra-bottom">
-                    <div class="container">
-                        <div class="event-items">
-                            <div class="single-event-item mb-30 wow fadeInUp" data-wow-delay="0s">
-                                <div class="event-thumb">
+  console.log(event);
+  const shareUrl = 'https://www.youtube.com/watch?v=9WzIACv_mxs';
+  return (
+    <>
+    <Header/>
+    <section className="event-area section-gap-extra-bottom">
+                    <div className="container">
+                    {event.map((event ,id)=>(
+                        <div className="event-items" key = {id}>
+                            <div className="single-event-item mb-30 wow fadeInUp" data-wow-delay="0s">
+                            <div className="event-thumb">
                                     <img src="assets/img/event/01.jpg" alt="Image"/>
                                 </div>
-                                <div class="event-content">
-                                    <ul class="meta">
+                                
+                                <div className="event-content">
+                                    <ul className="meta">
                                         <li>
-                                            <a href="project-details.html" class="category">Music Party</a>
+                                            <a href="project-details.html" className="category">{event.category}</a>
                                         </li>
-                                        <li>
-                                            <a href="#" class="date"><i class="fal fa-map-marker-alt"></i>25 Main Street ,New York</a>
-                                        </li>
+                                       
                                     </ul>
-                                    <h4 class="event-title"><a href="#">Combining UX Design & Psychology</a></h4>
+                                    <h4 className="event-title"><a href="#">{event.title}</a></h4>
                                     <p>
-                                        Sed ut perspiciatis unde omnis iste natus error voluptatem accus laudantium totam rem aperiam eaque
+                                    {event.description}
                                     </p>
                                 </div>
-                                <div class="event-button">
-                                    <a href="project-details.html" class="main-btn bordered-btn">Join Event <i class="far fa-arrow-right"></i></a>
+                                
+                                <div className="event-button">
+                                <Link className="nav-link" to={`/EventsDetails/${event._id}`}>  <a href="project-details.html" className="main-btn bordered-btn">
+                                    More Details <i className="far fa-arrow-right"></i></a></Link>
+                          
                                 </div>
+                                <div className="event-button">
+                 <FacebookShareButton
+          url={shareUrl}
+          quote={"heyy join a video streaming noww !!"} hashtag="#React"
+        >
+          <FacebookIcon size={40} round={true} />
+        </FacebookShareButton>
+                 <WhatsappShareButton
+          url={shareUrl}
+          quote={'Title or jo bhi aapko likhna ho'}
+          hashtag={'#portfolio...'}
+        >
+          <WhatsappIcon size={40} round={true} />
+        </WhatsappShareButton>
+                                </div> 
+                                
                             </div>
-                            <div class="single-event-item mb-30 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="event-thumb">
-                                    <img src="assets/img/event/02.jpg" alt="Image"/>
-                                </div>
-                                <div class="event-content">
-                                    <ul class="meta">
-                                        <li>
-                                            <a href="project-details.html" class="category">Meetup</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="date"><i class="fal fa-map-marker-alt"></i>25 Main Street ,New York</a>
-                                        </li>
-                                    </ul>
-                                    <h4 class="event-title"><a href="#">App Development Hawaiian Airlines</a></h4>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error voluptatem accus laudantium totam rem aperiam eaque
-                                    </p>
-                                </div>
-                                <div class="event-button">
-                                    <a href="project-details.html" class="main-btn bordered-btn">Join Event <i class="far fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="single-event-item mb-30 wow fadeInUp" data-wow-delay="0.2s">
-                                <div class="event-thumb">
-                                    <img src="assets/img/event/03.jpg" alt="Image"/>
-                                </div>
-                                <div class="event-content">
-                                    <ul class="meta">
-                                        <li>
-                                            <a href="project-details.html" class="category">Meetup</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="date"><i class="fal fa-map-marker-alt"></i>25 Main Street ,New York</a>
-                                        </li>
-                                    </ul>
-                                    <h4 class="event-title"><a href="#">App Development Hawaiian Airlines</a></h4>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error voluptatem accus laudantium totam rem aperiam eaque
-                                    </p>
-                                </div>
-                                <div class="event-button">
-                                    <a href="project-details.html" class="main-btn bordered-btn">Join Event <i class="far fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="single-event-item mb-30 wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="event-thumb">
-                                    <img src="assets/img/event/04.jpg" alt="Image"/>
-                                </div>
-                                <div class="event-content">
-                                    <ul class="meta">
-                                        <li>
-                                            <a href="project-details.html" class="category">Meetup</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="date"><i class="fal fa-map-marker-alt"></i>25 Main Street ,New York</a>
-                                        </li>
-                                    </ul>
-                                    <h4 class="event-title"><a href="#">Combining UX Design & Psychology</a></h4>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error voluptatem accus laudantium totam rem aperiam eaque
-                                    </p>
-                                </div>
-                                <div class="event-button">
-                                    <a href="project-details.html" class="main-btn bordered-btn">Join Event <i class="far fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="single-event-item mb-30 wow fadeInUp" data-wow-delay="0.4s">
-                                <div class="event-thumb">
-                                    <img src="assets/img/event/05.jpg" alt="Image"/>
-                                </div>
-                                <div class="event-content">
-                                    <ul class="meta">
-                                        <li>
-                                            <a href="project-details.html" class="category">Meetup</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="date"><i class="fal fa-map-marker-alt"></i>25 Main Street ,New York</a>
-                                        </li>
-                                    </ul>
-                                    <h4 class="event-title"><a href="#">App Development Hawaiian Airlines</a></h4>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error voluptatem accus laudantium totam rem aperiam eaque
-                                    </p>
-                                </div>
-                                <div class="event-button">
-                                    <a href="project-details.html" class="main-btn bordered-btn">Join Event <i class="far fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="single-event-item wow fadeInUp" data-wow-delay="0.5s">
-                                <div class="event-thumb">
-                                    <img src="assets/img/event/06.jpg" alt="Image"/>
-                                </div>
-                                <div class="event-content">
-                                    <ul class="meta">
-                                        <li>
-                                            <a href="project-details.html" class="category">Meetup</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="date"><i class="fal fa-map-marker-alt"></i>25 Main Street ,New York</a>
-                                        </li>
-                                    </ul>
-                                    <h4 class="event-title"><a href="#">App Development Hawaiian Airlines</a></h4>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error voluptatem accus laudantium totam rem aperiam eaque
-                                    </p>
-                                </div>
-                                <div class="event-button">
-                                    <a href="project-details.html" class="main-btn bordered-btn">Join Event <i class="far fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="view-more-btn text-center mt-80">
-                                <a href="project-1.html" class="main-btn bordered-btn">View More Events <i class="far fa-arrow-right"></i></a>
-                            </div>
+    
+                            
                         </div>
+                        ))}
                     </div>
                 
                 <script src="assets/js/jquery.min.js"></script>
@@ -164,9 +80,9 @@ import Footer from "../Footer/Footer";
                 
                 <script src="assets/js/main.js"></script>
                 </section>
-            <Footer/>
-    </div>
-    )
+                <Footer/>
+    </>
+  )
 }
 
-    export default Event;
+export default Events

@@ -69,6 +69,11 @@ const InvestorSchema = new mongoose.Schema({
     type:String,
     enum:["Technology","Commercial" ,"Health","Design","Art","Agriculture","Liberal"]
 },
+valid : {
+
+  type : Boolean, 
+  default : false
+}, 
 AmountcanInvest:Number,
 Typeinvestor: {
   type:String,
@@ -83,6 +88,11 @@ CurrentFundSize:Number,
 Minrange:Number,
 Maxrange:Number,
 SweetSpot:Number,
+Verified: {
+
+  type : Boolean, 
+  default :true
+},
 Legalname:String});
 InvestorSchema.pre("save",async function(next) {
     if(!this.isModified("password")){
@@ -112,6 +122,7 @@ InvestorSchema.pre("save",async function(next) {
   
     return resetToken;
   };
+
   
   const Investor = mongoose.model("Investor",InvestorSchema)
   module.exports = Investor;

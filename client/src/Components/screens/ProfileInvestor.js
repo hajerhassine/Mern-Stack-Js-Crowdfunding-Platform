@@ -51,19 +51,14 @@ const ProfileInvestor = ({ history }) => {
        setUsername(data.username)
        setLastname(data.lastname)
        setEmail(data.email)
-       setTypeinvestor(data.Typeinvestor)
+      
        setAmountcanInvest(data.AmountcanInvest)
-       setMinrange(data.Minrange)
-       setMaxrange(data.Maxrange)
-       setSweetSpot(data.SweetSpot)
-       setCurrentinvesting(data.currentinvesting)
-       setPosition(data.Position)
-       setCompany(data.Company)
-       setInvestmentOnRecord(data.InvestmentOnRecord)
-       setCurrentFundSize(data.CurrentFundSize)
+       
+     
+       
        setSectorInterest(data.SectorInterest)
-       setNumCin(data.NumCin)
-       setLegalname(data.Legalname)
+       
+       
        setPicture(data.picture)
 
     }
@@ -155,7 +150,7 @@ const ProfileInvestor = ({ history }) => {
               <div class="block-title text-left">
 
 
-                <h3>Register</h3>
+                <h3>My profile</h3>
               </div>
 
             </div>
@@ -232,148 +227,25 @@ const ProfileInvestor = ({ history }) => {
                       />
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="input-group">
-                      <label htmlFor="Typeinvestor">Type investor:</label>
-                      <input
-                        type="type"
-                        required
-                        id="typeinvestor"
-                        autoComplete="true"
-                        placeholder="Type investor"
-                        value={Typeinvestor}   onChange={(e) =>   setTypeinvestor(e.target.value)}
-                      />
-                      
-                      
-                    </div>
-                  </div>
+                  
                 
-                    <div class="col-md-6">
-                    <div class="input-group">
-                      <label htmlFor="Amount">  Amount can invest:</label>
-                      <input
-                        type="AmountcanInvest"
-                        required
-                        id="AmountcanInvest"
-                        autoComplete="true"
-                        placeholder="Enter AmountcanInvest"
-                        value={AmountcanInvest}
-                        onChange={(e) => setAmountcanInvest(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="input-group">
-                      <label htmlFor="Minrange"> Minrange</label>
-                      <input
-                        type="Minrange"
-                        required
-                        id="Minrange"
-                        autoComplete="true"
-                        placeholder="Enter Minrange"
-                        value={Minrange}
-                        onChange={(e) => setMinrange(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="input-group">
-                      <label htmlFor="Minrange"> Maxrange</label>
-                      <input
-                        type="Maxrange"
-                        required
-                        id="Maxrange"
-                        autoComplete="true"
-                        placeholder="Enter Maxrange"
-                        value={Maxrange}
-                        onChange={(e) => setMaxrange(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="input-group">
-                      <label htmlFor="Minrange"> SweetSpot</label>
-                      <input
-                        type="SweetSpot"
-                        required
-                        id="SweetSpot"
-                        autoComplete="true"
-                        placeholder="Enter SweetSpot"
-                        value={SweetSpot}
-                        onChange={(e) => setSweetSpot(e.target.value)}
-                      />
-                    </div>
-                  </div>
                   <div class="col-md-6">
                   <div class="input-group">
-                    <label htmlFor="currentinvesting"> currentinvesting</label>
+                    <label htmlFor="AmountCanInvest">AmountCanInvest:</label>
                     <input
-                      type="currentinvesting"
-                      required
-                      id="currentinvesting"
-                     
-                      placeholder="Enter currentinvesting"
-                      value={currentinvesting}
-                      onChange={(e) => setCurrentinvesting(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="input-group">
-                    <label htmlFor="Position"> Position</label>
-                    <input
-                      type="Position"
-                      required
-                      id="Position"
-                      autoComplete="true"
-                      placeholder="Enter Position"
-                      value={Position}
-                      onChange={(e) => setPosition(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div class="col-md-6">
-                <div class="input-group">
-                  <label htmlFor="Company"> Company</label>
-                  <input
-                    type="Company"
+                    type="AmountCanInvest"
                     required
-                    id="Company"
+                    id="AmountCanInvest"
                     autoComplete="true"
-                    placeholder="Enter Company"
-                    value={Company}
-                    onChange={(e) => setCompany(e.target.value)}
+                    placeholder="Enter AmountCanInvest"
+                    value={AmountcanInvest}   onChange={(e) =>   setAmountcanInvest(e.target.value)}
                   />
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-6">
-              <div class="input-group">
-                <label htmlFor="InvestmentOnRecord"> InvestmentOnRecord</label>
-                <input
-                  type="InvestmentOnRecord"
-                  required
-                  id="InvestmentOnRecord"
-                  autoComplete="true"
-                  placeholder="Enter InvestmentOnRecord"
-                  value={InvestmentOnRecord}
-                  onChange={(e) => setInvestmentOnRecord(e.target.value)}
-                />
-              </div>
-            </div>
-            <div class="col-md-6">
-            <div class="input-group">
-              <label htmlFor="CurrentFundSize"> CurrentFundSize</label>
-              <input
-                type="CurrentFundSize"
-                required
-                id="CurrentFundSize"
-                autoComplete="true"
-                placeholder="Enter CurrentFundSize"
-                value={CurrentFundSize}
-                onChange={(e) => setCurrentFundSize(e.target.value)}
-              />
-            </div>
-          </div>
+                  
+                 
+                  
+               
           <div class="col-md-6">
                     <div class="input-group">
                       <label htmlFor="SectorInterest">SectorInterest:</label>
@@ -387,34 +259,8 @@ const ProfileInvestor = ({ history }) => {
                     />
                     </div>
                   </div>
-                  <div class="col-md-6">
-            <div class="input-group">
-              <label htmlFor="NumCin"> NumCin</label>
-              <input
-                type="NumCin"
-                required
-                id="NumCin"
-                autoComplete="true"
-                placeholder="Enter NumCin"
-                value={NumCin}
-                onChange={(e) => setNumCin(e.target.value)}
-              />
-            </div>
-          </div>
-          <div class="col-md-6">
-          <div class="input-group">
-            <label htmlFor="LegalName"> LegalName</label>
-            <input
-              type="LegalName"
-              required
-              id="LegalName"
-              autoComplete="true"
-              placeholder="Enter LegalName"
-              value={Legalname}
-              onChange={(e) => setLegalname(e.target.value)}
-            />
-          </div>
-        </div>
+                  
+          
         <div class="col-md-6">
         <div class="input-group">
           <label htmlFor="Picture">Picture:</label>
@@ -428,19 +274,7 @@ const ProfileInvestor = ({ history }) => {
           />
         </div>
       </div>
-      <div class="col-md-6">
-                    <div class="input-group">
-                      <label htmlFor="ScanCin">Scan CIN:</label>
-                      <input
-                        
-                    onChange={(e) => postDetails(e.target.files[0])}
-                        id="custom-file"
-                        type="file"
-                        label="Upload ScanCin"
-                        custom
-                      />
-                    </div>
-                  </div>
+    
                   <div class="col-md-12">
                     <div class="input-group contact__btn">
                       <button type="submit" className="btn btn-primary">

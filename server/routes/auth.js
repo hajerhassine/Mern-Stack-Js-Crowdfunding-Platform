@@ -3,23 +3,29 @@ const router = express.Router();
 
 const { register, login, forgotpassword, resetpassword  } = require('../controllers/auth');
 const { CompleteprofileInvestor } = require('../controllers/investor');
-const {loginInvestor,registerInvestor,updateInvestor,getAllInvestor,DeleteInvestor,change_password,findInvestorById,resetpasswordInvestor,forgotpasswordInvestor} = require('../controllers/investor');
+
+const {loginInvestor,verify,verified,registerInvestor,updateInvestor,getAllInvestor,DeleteInvestor,change_password,findInvestorById,resetpasswordInvestor,forgotpasswordInvestor} = require('../controllers/investor');
 const{loginCreator,registerCreator,forgotpasswordCreator,resetpasswordCreator,CompleteprofileCreator,updateCreator,getAllCreator,findCreatorById,deleteCreator} = require('../controllers/creator');
 const{loginDoner,getAllDoner,registerDoner,CompleteprofileDoner,updateDoner,findDonerById,DeleteDoner, forgotpasswordDoner,resetpasswordDoner} = require('../controllers/doner');
 const{loginAdmin,registerAdmin} = require('../controllers/admin');
+const{loginOrganizer,registerOrganizer} = require('../controllers/organizer');
 router.route("/register").post(register);
 router.route("/loginInvestor").post(loginInvestor);
+router.route("/loginOrganizer").post(loginOrganizer);
 router.route("/login").post(login);
-router.route("/registerInvestor").post(registerInvestor);
-router.route("/forgotpassword").post(forgotpassword);
 
+router.route("/registerInvestor").post(registerInvestor);
+router.route("/registerOrganizer").post(registerOrganizer);
+router.route("/forgotpassword").post(forgotpassword);
+//router.get("/verify/:userId/uniqueString",verify);
+//router.get("/verified",verified);
 router.route("/forgotpasswordInvestor").post(forgotpasswordInvestor);
 router.route("/resetpasswordInvestor/:resetToken").put(resetpasswordInvestor);
 router.put("/updateInvestor/:id",updateInvestor);
 router.route("/getAllInvestor").get(getAllInvestor);
 router.route("/change_password").post(change_password);
 router.get('/investorId/:id' ,findInvestorById );
-router.delete('/deleteInvestor/:id' , DeleteInvestor);
+router.put('/deleteInvestor/:id' , DeleteInvestor);
 router.route("/CompleteprofileInvestor/:id").put(CompleteprofileInvestor);
 //router.route("/updateInvestorProfile").put(updateInvestorProfile);
 router.route("/loginCreator").post(loginCreator);

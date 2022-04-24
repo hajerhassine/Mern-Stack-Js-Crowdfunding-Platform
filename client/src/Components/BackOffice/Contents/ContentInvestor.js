@@ -1,11 +1,11 @@
-import React, { Component,useState,useEffect } from 'react';
+import React, { Component,useState,useEffect,useRef} from 'react';
 import axios from "axios";
 import Header from '../Header/Header';
 import LeftSide from '../LeftSide/LeftSide';
 
 
 const ContentInvestor = () => {
-
+  const buttonRef = useRef();
  const [data,setData]=useState([]);
  useEffect(()=>{
      getInvestors();
@@ -20,8 +20,8 @@ const ContentInvestor = () => {
 
 
 const onDeleteUser = async (id) => {
-    if (window.confirm("Ae you sure that you wanted to delete this user")){
-        const response = await axios.delete
+    if (window.confirm("Ae you sure that you wanted to desactivate this user")){
+        const response = await axios.put
         ('http://localhost:5000/auth/deleteInvestor/${id}');
         if (response.status === 200){
             
@@ -74,12 +74,15 @@ const onDeleteUser = async (id) => {
                       <th> Position</th>
                       <th>Company</th>
                       <th> SectorInterest</th>
+                      <th> Valid</th>
                       <th> Actions</th>
                       </tr>
                       </thead>
                       <tbody>
           {data && data.map((item,index)=>{
+            
               return(
+                
                   <tr key={index}>
                    
                    <td> {item.username}</td>
@@ -93,8 +96,10 @@ const onDeleteUser = async (id) => {
                    <td> {item.Position}</td>
                    <td> {item.Company}</td>
                    <td> {item.SectorInterest}</td>
+                   <td> {item.valid}</td>
                    <td> 
-                   <button className="btn btn-outline-primary" onClick={()=> onDeleteUser(item.id)}>Delete</button></td>
+                   <button className="btn btn-primary mt-2"
+                   ref={buttonRef} onClick={()=> onDeleteUser(item.id)}>desactivate</button></td>
                   </tr>
               )
           })}
