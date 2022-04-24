@@ -53,6 +53,7 @@ import Converter from './Components/Frontend/Converter/Converter';
 import { getBankingPartners } from './Redux/slices/bankingpartners';
 import Partners from './Components/Frontend/Partners/Partners';
 import PartnersDetails from './Components/Frontend/Partners/PartnersDetails'
+import Map from './Components/Frontend/ContactUs/Map'
 // import banksback from './Components/BankingPartners/BankingPartners';
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector  } from "react-redux";
@@ -65,6 +66,9 @@ import EditBankPartner from './Components/Banks/EditBankPartner';
 import Request from './Components/Frontend/Partners/Request';
 //ContactUs
 import ContactUs from './Components/Frontend/ContactUs/ContactUs';
+//Banks Offers
+import BanksOffers from './Components/Frontend/BanksOffers/BanksOffers';
+
 
 
 function App() {
@@ -80,6 +84,7 @@ useEffect(() => {
     <PrivateRoute exact path="/" component={PrivateScreen} />
      
       <ClientRoute path="/Home" component={Home} />
+      <ClientRoute path="/Map" component={Map} />
       <ClientRoute path="/HomeDoner" component={HomeDoner} />
       <ClientRoute exact path="/HomeCreator" component={HomeCreator} />
       <ClientRoute path="/Event" component={Event} />
@@ -111,6 +116,7 @@ useEffect(() => {
       />
       {/* contactsus */}
       <ClientRoute path="/ContactUs" component={ContactUs} />
+      <ClientRoute path="/BanksOffers" component={BanksOffers} />
       <ClientRoute path="/converter" component={Converter} />
       <ClientRoute path="/Partners" component={Partners} />
       <ClientRoute path="/PartnersDetails/:id" component={PartnersDetails} />
