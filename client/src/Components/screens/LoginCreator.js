@@ -7,9 +7,9 @@ const LoginCreator = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+sessionStorage.clear();
   useEffect(() => {
-    if (localStorage.getItem('authToken')) {
+    if (sessionStorage.getItem('authToken')) {
       history.push("/LoginCreator");
     }
   }, [history]);

@@ -4,19 +4,13 @@ import { useState } from "react";
 
 
 class Header extends React.Component{
-    
-    logout() {
-        localStorage.clear();
-          
-    }
+  
 
     render(){
       
         return(
         <div>
            {/* <!--====== Header Start ======--> */}
-
-           
            <header className="site-header sticky-header">
            <div className="header-topbar d-none d-sm-block">
                <div className="container">
@@ -42,61 +36,45 @@ class Header extends React.Component{
                <div className="container">
                    <div className="navbar-inner">
                        <div className="site-logo">
-                           <a href="index.html"><img src="/assets/img/logo.png" alt="Funden" width={130}/></a>
+                           <a href="index.html"><img src="assets/img/logo.png" alt="Funden" width={130}/></a>
                        </div>
                        <div className="nav-menu">
                            <ul>
-                            {localStorage.getItem("role")=="INV"?
-                                <ul>
-                                <li>
-                                <a href="index.html">Home1</a>
-                                <ul className="submenu">
-                                   
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="index.html">Home1</a>
-                                <ul className="submenu">
-                                   
-                                </ul>
-                            </li>
-                                </ul>
-                        :
-                        <li>
-                        <a href="index.html">Home2</a>
-                        <ul className="submenu">
                            
-                        </ul>
-                    </li>}
-                               <li>
-                               <Link to='/loginInvestor' onClick={this.logout()}>LOGOUT</Link>
-                                   <ul className="submenu">
-                                      
-                                   </ul>
-                               </li>
+                        <li>
+                        <Link to="/Home">Home</Link> 
+                        
+                    </li>
+                               
                                <li>
                                <Link to="/myProfile">Profile</Link> 
                                   
                                </li>
                                <li>
-                                   <a href="events.html">Events</a>
+                               <Link to="/project">Projects</Link> 
+                                  
+                               </li>
+                               <li>
+                               <Link to="/Event">Events</Link> 
                                </li>
                                
-                               <li className="current">
-                                   <a href="#">FAQ</a>
-                                   <ul className="submenu">
-                                       <li><a href="about.html">About</a></li>
-                                       <li><a href="company-overview.html">Company Overview</a></li>
-                                      
-                                   </ul>
+                               <li >
+                               <Link to="/FAQ">FAQ</Link>
+                                
                                </li>
-                               <li><a href="contact.html">Contact</a></li>
+                               <li >
+                               <Link to="/Chats">Chat</Link>
+                                
+                               </li>
+                               <li >
+                               <Link to="/ContactUs">Contact</Link>
+                                
+                               </li>
                            </ul>
                        </div>
                        <div className="navbar-extra d-flex align-items-center">
-                       <Link to="/loginInvestor" className="main-btn nav-btn d-none d-sm-inline-block">
-                               Login<i className="far fa-arrow-right"></i>
-                               </Link> 
+                       <Link to='/loginInvestor' className="main-btn nav-btn d-none d-sm-inline-block" >LOGOUT</Link>
+                       
                            <a href="#" className="nav-toggler">
                                <span></span>
                            </a>

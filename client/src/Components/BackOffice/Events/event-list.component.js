@@ -5,11 +5,21 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import moment from 'moment';
 import Header from "../Header/Header";
-
+import "./CssCalendar/calendar.css";
+import PrintIcon from '@material-ui/icons/Print'
+import jsPDF from 'jspdf';
+import 'jspdf-autotable'
 import LeftSide from "../LeftSide/LeftSide";
 
 const routeGenerator = require('../shared/routeGenerator');
+ // download data in pdf format
+ const downloadData=()=>{
 
+    const pdf = new jsPDF();
+    pdf.autoTable({html:'#table'})
+    pdf.save('ListOfEvent.pdf');
+  
+  }
 const Event = props => (
     
     <tr>
@@ -17,9 +27,17 @@ const Event = props => (
         <td>{props.event.title}</td>
         <td>{props.event.description}</td>
         <td>{props.event.date}</td>
+        <td>{props.event.modality}</td>
+        <td>{props.event.category}</td>
+        <td>{props.event.sponsors}</td>
+        <td>{props.event.participant_number}</td>
+        <td>{props.event.fee_participation}</td>
+        <td>{props.event.program}</td>
         <td>
-            <Link to={"/edit/event/" + props.event._id}><button className="btn btn-sm btn-primary">edit</button></Link>
-            <button className="btn btn-sm btn-danger ml-1" onClick={() => { props.deleteEvent(props.event._id) }}>delete</button>
+           <td><tr><Link to={"/edit/event/" + props.event._id}><button className="btn  btn-sm btn-info ">  edit </button></Link></tr>
+           <tr><button className="btn btn-sm btn-danger" onClick={() => { props.deleteEvent(props.event._id) }}>delete</button></tr></td>
+            
+            
         </td>
     </tr>
 )
@@ -108,40 +126,7 @@ export default class EventList extends Component {
 
             <div className="main-content">
         <section className="section">
-        {/* <section className="section">
-        <div className="form-inline">
-                        <h3>Events</h3>
-                        <Header></Header>
-                        <div className="input-group input-group-sm ml-4">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">From</span>
-                            </div>
-                            <DatePicker
-                                className="form-control form-control-sm"
-                                selected={this.state.startDate}
-                                onChange={this.onChangeStartDate}
-                            />
-                        </div>
-
-                        <div className="input-group input-group-sm ml-2">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">To</span>
-                            </div>
-                            <DatePicker
-                                className="form-control form-control-sm"
-                                selected={this.state.endDate}
-                                onChange={this.onChangeEndDate}
-                            />
-                        </div>
-
-                        <div className="input-group input-group-sm ml-2">
-                            <input type="submit" value="Search" className="btn btn-sm btn-secondary" />
-                        </div>
-                    </div>
-       
-         
-         
-        </section> */}
+    
        
           <div className="row">
             <div className="col-12">
@@ -151,9 +136,13 @@ export default class EventList extends Component {
                   <div className="card-header-form">
                     <form>
                       <div className="input-group">
-                        <input type="text" className="form-control" placeholder="Search"/>
+                 
                         <div className="input-group-btn">
-                          <button className="btn btn-primary"><i className="fas fa-search"></i></button>
+                            <tr>
+                       <td> <Link to={"/createevent" }><button className="btn btn-sm btn-success">Add</button></Link></td> <td><br/></td>
+                  
+                      
+              </tr>
                         </div>
                       </div>
                     </form>
@@ -161,12 +150,18 @@ export default class EventList extends Component {
                 </div>
                 <div className="card-body p-0">
                   <div className="table-responsive">
-                    <table className="table table-striped">
+                    <table className="table table-striped" id='table'>
                       <thead>
                         <tr>
                             <th>Title</th>
                             <th>Description</th>
                             <th>Date</th>
+                            <th>Modality</th>
+                            <th>Category</th>
+                            <th>Sponsors</th>
+                            <th>Participant Number</th>
+                            <th>Fee Participation</th>
+                            <th>Program</th>
                             <th></th>
                         </tr>
                       </thead>
@@ -181,51 +176,18 @@ export default class EventList extends Component {
                   
                  
                     </table>
+                    
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="row">
-       
-          </div>
+          <td> <button className='btn btn-sm btn-primary'
+                      onClick={downloadData}>
+               Export to Pdf
+              </button></td>
         </section>
-        <div className="settingSidebar">
-          <a href="javascript:void(0)" className="settingPanelToggle"> <i className="fa fa-spin fa-cog"></i>
-          </a>
-          <div className="settingSidebar-body ps-container ps-theme-default">
-            <div className=" fade show active">
-            
-          
-             
-              <div className="p-15 border-bottom">
-                <div className="theme-setting-options">
-                  <label className="m-b-0">
-                    <input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input"
-                      id="mini_sidebar_setting"/>
-                    <span className="custom-switch-indicator"></span>
-                    <span className="control-label p-l-10">Mini Sidebar</span>
-                  </label>
-                </div>
-              </div>
-              <div className="p-15 border-bottom">
-                <div className="theme-setting-options">
-                  <label className="m-b-0">
-                    <input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input"
-                      id="sticky_header_setting"/>
-                    <span className="custom-switch-indicator"></span>
-                    <span className="control-label p-l-10">Sticky Header</span>
-                  </label>
-                </div>
-              </div>
-              <div className="mt-4 mb-4 p-3 align-center rt-sidebar-last-ele">
-                <a href="#" className="btn btn-icon icon-left btn-primary btn-restore-theme">
-                  <i className="fas fa-undo"></i> Restore Default
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+      
       </div>
       
     

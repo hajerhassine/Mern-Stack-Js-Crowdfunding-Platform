@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Button, FormControl, Paper, Select, TextField} from "@material-ui/core";
 import "./style.css";
 import  Axios  from 'axios';
-import Header from '../Header/Header';
+import HeaderCreator from '../Header/HeaderCreator'
 import Footer from '../Footer/Footer';
 
 const Converter = () => {
@@ -34,7 +34,7 @@ const Converter = () => {
 
   return (
       <>
-      <Header></Header>
+      <HeaderCreator></HeaderCreator>
     
     <div>
 

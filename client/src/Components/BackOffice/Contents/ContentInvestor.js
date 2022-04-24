@@ -96,7 +96,7 @@ const onDeleteUser = async (id) => {
                    <td> {item.Position}</td>
                    <td> {item.Company}</td>
                    <td> {item.SectorInterest}</td>
-                   <td> {item.Verified}</td>
+                   <td> {item.valid}</td>
                    <td> 
                    <button className="btn btn-primary mt-2"
                    ref={buttonRef} onClick={()=> onDeleteUser(item.id)}>desactivate</button></td>

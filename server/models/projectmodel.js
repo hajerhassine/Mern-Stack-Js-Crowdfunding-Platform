@@ -28,6 +28,14 @@ const projectSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    Position: {
+      type: String,
+      //required: true,
+    },
+    email: {
+      type: String,
+      //required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -37,6 +45,10 @@ const projectSchema = mongoose.Schema(
      // required: true,
     },
     video: {
+      type: String,
+     // required: true,
+    },
+    verification: {
       type: String,
      // required: true,
     },

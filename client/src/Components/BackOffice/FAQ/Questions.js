@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AddQuestion, FindAllQuestion } from "../../../Redux/actions/QuestionsAction";
 import RowDetailQuestion from "../../commons/RowDetailQuestion";
-import Header from "../../Frontend/Header/Header";
+
 import InputGroup from "../../commons/InputGroup";
 import { GetCategories } from "../../../Redux/actions/CategoriesAction";
 import SelectGroup from "../../commons/SelectGroup";
 import Alert from "../../commons/Alert";
+import Header from "../Header/Header";
 
+import LeftSide from "../LeftSide/LeftSide";
 
 function Questions() {
   const [form, setForm] = useState({})
@@ -40,7 +42,8 @@ function Questions() {
   return (
     <div>
       
-    
+    <Header></Header>
+    <LeftSide></LeftSide>
       <section className="faq-section section-gap">
         <div className="container">
         {

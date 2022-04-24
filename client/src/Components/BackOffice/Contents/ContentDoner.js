@@ -93,7 +93,7 @@ const onDeleteUser = async (id) => {
                 <td> {item.phone}</td>
                
                 <td> 
-                <button className="btn btn-outline-primary" onClick={()=> onDeleteUser(item.id)}>Delete</button></td>
+                <button className="btn btn-outline-primary" onClick={()=> onDeleteUser(item.id)}>Desactivate</button></td>
                </tr>
               )
           })}

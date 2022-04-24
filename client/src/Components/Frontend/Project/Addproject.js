@@ -24,7 +24,8 @@ const Addproject = ({ history, match }) => {
   const [price, setPrice] = useState(0)
   const [image, setImage] = useState('')
   const [video, setVideo] = useState('')
-  const [brand, setBrand] = useState('')
+  const [email, setEmail] = useState("");
+  const [verification, setVerification] = useState('')
   const [category, setCategory] = useState('')
   const [countInStock, setCountInStock] = useState(0)
   const [description, setDescription] = useState('')
@@ -41,7 +42,7 @@ const Addproject = ({ history, match }) => {
 //     success: successDelete,
 //   } = projectDeletez
 const [Userid, setUserId] = useState("");
-
+const [Position,setPosition]=useState("");
 function  componentWillMount() {
  console.log(jwt_decode(sessionStorage.getItem('authToken')).id)
  let decode=jwt_decode(sessionStorage.getItem('authToken')).id;
@@ -54,6 +55,8 @@ function  componentWillMount() {
      let data=response.data
      console.log(response.data)
      setUsername(data.username)
+     setPosition(data.Position)
+     setEmail(data.email)
     })}
 
     if(!Userid){
@@ -115,6 +118,29 @@ function  componentWillMount() {
       setUploading(false)
     }
   }
+  //verification
+  const uploadverificationHandler = async (e) => {
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('image', file)
+    setUploading(true)
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+
+      const { data } = await axios.post('/api/upload', formData, config)
+
+      setVerification(data)
+    setUploading(false)
+    } catch (error) {
+      console.error(error)
+      setUploading(false)
+    }
+  }
 
 //   const userLogin = useSelector((state) => state.userLogin)
 //   const { userInfo } = userLogin
@@ -155,7 +181,7 @@ function  componentWillMount() {
     const { data } =  axios.post(
         "api/projects",
         {
-            name,price,Userid,category,image,description,username,video
+            name,price,Userid,category,image,description,username,video,Position,verification,email
         }
     );
   }
@@ -180,13 +206,14 @@ function  componentWillMount() {
                                             <label for="name"> Name</label>
                                             <input type="text"  placeholder='Enter name'
                                              value={name}
+                                             required
                                              onChange={(e) => setName(e.target.value)} id="name"/>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-field mb-25">
                                             <label for="phone-number">cost</label>
-                                            <input type="number"  placeholder='DT'
+                                            <input required type="number"  placeholder='DT'
                 value={price}
                 onChange={(e) => setPrice(e.target.value)} />
                                         </div>
@@ -196,11 +223,11 @@ function  componentWillMount() {
                                             <label for="email">category</label>
                                             <select className="custom-select form-select-sm"   aria-label=".form-select-sm example"value={category}
                             onChange={(e) => setCategory(e.target.value)}placeholder='choose the category'> 
-                            <option value=""> </option>
+                            <option value="Technlogy"> Technlogy</option>
                             <option value="Education"> Education</option>
                             <option value="Commercial"> Commercial</option>
                             <option value="Art"> Art</option>
-                            <option value="Technlogy"> Technlogy</option>
+                            
                             <option value=" Health"> Health</option>
                             <option value="Design"> Design</option>
                             <option value="Agriculture"> Agriculture</option>
@@ -217,11 +244,8 @@ function  componentWillMount() {
                                     <div class="col-lg-6">
                                         <div class="form-field mb-25">
                                             <label for="subject">Image</label>
-                                            <input type='text'
-                placeholder='Enter image url'
-                value={files}
-                onChange={(e) => setImage(e.target.value)}/>
-                 <input type="file" id='image-file'
+                                            
+                 <input required type="file" id='image-file'
                 label='Choose File'
                 
                 custom
@@ -233,7 +257,7 @@ function  componentWillMount() {
                                         <div class="form-field mb-25">
                                             <label for="subject">Video</label>
                                             
-                 <input type="file" id='video-file'
+                 <input required type="file" id='video-file'
                 label='Choose File'
                 
                 custom
@@ -241,18 +265,30 @@ function  componentWillMount() {
                 onChange={uploadvideoHandler}/>
                                         </div>
                                     </div>
-
                                     <div class="col-lg-6">
+                                        <div class="form-field mb-25">
+                                            <label for="subject">verification</label>
+                                            
+                 <input required type="file" id='video-file'
+                label='Choose File'
+                
+                custom
+                
+                onChange={uploadverificationHandler}/>
+                                        </div>
+                                    </div>
+
+                                    {/* <div class="col-lg-6">
                                         <div class="form-field mb-25">
                                             <label for="subject">tttttttttttttttttttttttttttttttttt</label>
                                             
                                             <FilePond value={image}  server="http://localhost:5000/api/upload"/>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div class="col-12">
                                         <div class="form-field mb-30">
                                             <label for="message">Description</label>
-                                            <textarea id="message" placeholder=""
+                                            <textarea required id="message" placeholder=""
                                             
                                             value={description}
                                             onChange={(e) => setDescription(e.target.value)} ></textarea>

@@ -4,12 +4,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Login = ({ history }) => {
-  const [email, setEmail] = useState("");
+    const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("authToken")) {
+    if (sessionStorage.getItem("authToken")) {
       history.push("/login");
     }
   }, [history]);
@@ -30,7 +30,7 @@ const Login = ({ history }) => {
         config
       );
       console.log('logged');
-      localStorage.setItem("authToken", data.token);
+      sessionStorage.setItem("authToken", data.token);
 
       history.push("/admin");
     } catch (error) {

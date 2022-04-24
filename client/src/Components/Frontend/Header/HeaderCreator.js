@@ -5,10 +5,7 @@ import { useState } from "react";
 
 class HeaderCreator extends React.Component{
  
-    logout() {
-        localStorage.clear();
-          
-    }
+ 
     render(){
         return(
         <div>
@@ -42,30 +39,10 @@ class HeaderCreator extends React.Component{
                        </div>
                        <div className="nav-menu">
                            <ul>
-                            {localStorage.getItem("role")=="INV"?
-                                <ul>
-                                <li>
-                                <a href="index.html">Home1</a>
-                                <ul className="submenu">
-                                   
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="index.html">Home1</a>
-                                <ul className="submenu">
-                                   
-                                </ul>
-                            </li>
-                                </ul>
-                        :
-                        <li>
-                        <a href="index.html">Home2</a>
-                        <ul className="submenu">
                            
-                        </ul>
-                    </li>}
+                        
                                <li>
-                                   <a href="index.html">Home</a>
+                               <Link to="/HomeCreator">Home</Link> 
                                    <ul className="submenu">
                                       
                                    </ul>
@@ -74,26 +51,48 @@ class HeaderCreator extends React.Component{
                                <Link to="/myProfileCreator">Profile</Link> 
                                   
                                </li>
-                              
                                <li>
-                               <Link to='/loginCreator' onClick={this.logout()}>LOGOUT</Link>
+                               <Link to="/EventCreator">Events</Link> 
                                </li>
-                               <li className="current">
-                                   <a href="#">FAQ</a>
+                             
+                               <li >
+                               <Link >Banks</Link>
                                    <ul className="submenu">
-                                       <li><a href="about.html">About</a></li>
-                                       <li><a href="company-overview.html">Company Overview</a></li>
+                                       <li> <Link to="/Partners">Our partners</Link></li>
+                                       <li><Link to="/converter">converter</Link></li>
                                       
                                    </ul>
                                </li>
-                               <li><a href="contact.html">Contact</a></li>
+                               <li>
+                           
+                                </li>
+                                <li className="current">
+                                <Link to="/project">Projects</Link>
+                                <ul className="submenu">
+                                    <li> <Link to="/addproject">Add project</Link></li>
+                                   
+                                   
+                                </ul>
+                            </li>
+
+                                   
+                               
+                               <ul className="submenu">
+                               <li> <Link to="/bankings">Banks</Link> </li>
+                                       <li><a href="company-overview.html">Company Overview</a></li>
+                                      
+                                   </ul>
+                              
+                                   <li><Link to="/FAQ">FAQ</Link></li>
+                                   <li >
+                                   <Link to="/ContactUs">Contact</Link>
+                                    
+                                   </li>
                            </ul>
 
                        </div>
                        <div className="navbar-extra d-flex align-items-center">
-                       <Link to="/loginCreator" className="main-btn nav-btn d-none d-sm-inline-block">
-                               Login<i className="far fa-arrow-right"></i>
-                               </Link> 
+                       <Link to='/loginCreator' className="main-btn nav-btn d-none d-sm-inline-block" >LOGOUT</Link>
                            <a href="#" className="nav-toggler">
                                <span></span>
                            </a>

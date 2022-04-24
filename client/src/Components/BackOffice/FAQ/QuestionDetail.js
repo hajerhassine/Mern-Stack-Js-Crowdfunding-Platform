@@ -5,7 +5,9 @@ import { AddCategory, GetCategories } from "../../../Redux/actions/CategoriesAct
 import { FindSingleQuestion, UpdateQuestions } from "../../../Redux/actions/QuestionsAction";
 import InputGroup from "../../commons/InputGroup";
 import SelectGroup from "../../commons/SelectGroup";
-import Header from "../../Frontend/Header/Header";
+import Header from "../Header/Header";
+
+import LeftSide from "../LeftSide/LeftSide";
 
 function QuestionDetail(props) {
   const [form, setForm] = useState({})
@@ -33,7 +35,8 @@ function QuestionDetail(props) {
   }
   return (
     <div>
-      
+    <Header></Header>
+    <LeftSide></LeftSide> 
       <section className="faq-section section-gap">
         <div className="container">
           <div className="row">

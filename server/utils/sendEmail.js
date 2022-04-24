@@ -14,6 +14,7 @@ const sendEmail = (options) => {
     to: options.to,
     subject: options.subject,
     html: options.text,
+    
   };
 
   transporter.sendMail(mailOptions, function (err, info) {

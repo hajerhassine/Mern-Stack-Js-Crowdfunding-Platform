@@ -4,7 +4,9 @@ import { AddCategory, GetCategories } from "../../../Redux/actions/CategoriesAct
 import Alert from "../../commons/Alert";
 import InputGroup from "../../commons/InputGroup";
 import RowDetail from "../../commons/RowDetail";
-import Header from "../../Frontend/Header/Header";
+import Header from "../Header/Header";
+
+import LeftSide from "../LeftSide/LeftSide";
 
 function Category() {
   const [form, setForm] = useState({})
@@ -35,7 +37,8 @@ function Category() {
     <div>
       
 
-     
+    <Header></Header>
+    <LeftSide></LeftSide>
       <section className="faq-section section-gap">
         <div className="container">
         {

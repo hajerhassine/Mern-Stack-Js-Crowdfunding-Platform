@@ -39,8 +39,8 @@ const ProfileInvestor = ({ history }) => {
   const [Userid, setUserId] = useState("");
 
  function  componentWillMount() {
-  console.log(jwt_decode(localStorage.getItem('authToken')).id)
-  let decode=jwt_decode(localStorage.getItem('authToken')).id;
+  console.log(jwt_decode(sessionStorage.getItem('authToken')).id)
+  let decode=jwt_decode(sessionStorage.getItem('authToken')).id;
   //console.log(localStorage.getItem('authToken'))
   setUserId(decode)
   console.log(Userid)
@@ -150,7 +150,7 @@ const ProfileInvestor = ({ history }) => {
               <div class="block-title text-left">
 
 
-                <h3>Register</h3>
+                <h3>My profile</h3>
               </div>
 
             </div>

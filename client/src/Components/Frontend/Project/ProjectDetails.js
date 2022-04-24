@@ -5,14 +5,17 @@ import Footer from "../Footer/Footer";
 import Rating from "./Rating";
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap';
 import ReactPlayer from "react-player";
-import { Player } from 'video-react';
+
 
 import { listprojectDetails ,createprojectReview } from "./../../../actions/projectActions";
 import { PROJECT_CREATE_REVIEW_RESET } from "./../../../constants/projectConstants";
 import jwt_decode from 'jwt-decode';
 import axios from "axios";
-import { ReactMediaRecorder } from "react-media-recorder";
+
+import { PayPalButton } from "react-paypal-button-v2";
+import { Collapse} from 'react-bootstrap'
 import {FacebookShareButton,FacebookIcon ,EmailShareButton,WhatsappIcon ,WhatsappShareButton,EmailIcon ,LinkedinShareButton,LinkedinIcon ,FacebookMessengerShareButton,FacebookMessengerIcon} from "react-share";
+
 
 const ProjectDetails = ({ match }) => {
 	
@@ -69,7 +72,11 @@ const ProjectDetails = ({ match }) => {
 			  })
 			)
 		  }
+		  const [isCollapseOpen, setCollapse] = React.useState(false)
 
+		  const initCollapse = () => {
+			return setCollapse(true)
+		  }
 return( 
         <>
             
@@ -177,8 +184,15 @@ return(
 									<li>$500</li>
 									<li>$1000</li>
 								</ul>
-								<button type="submit" className="main-btn">Donate Now <i className="far fa-arrow-right"></i></button>
+								<button onClick={initCollapse} className="main-btn">Donate Now <i className="far fa-arrow-right"></i></button>
 							</form>
+							<Collapse in={isCollapseOpen}>
+							<div id="collapsePanel">
+							<PayPalButton className="card card-body"
+                      amount={2}
+                      //onSuccess={}
+                    /> </div>
+					</Collapse>
 						</div>
 					</div>
 				</div>
@@ -274,13 +288,13 @@ return(
 									</div>
 									<div className="col-lg-4 col-md-6 col-sm-10">
 										<div className="rewards-box mt-md-50">
-											<h4 className="title">Rewards</h4>
-											<img src="/assets/img/project/project-rewards.jpg" alt="Image"/>
-											<span className="rewards-count"><span>$530</span> or More</span>
+											<h4 className="title">{project.creatorname}</h4>
+											<img src={`/assets/img/project/user.png`} style={{width:'70%' }} alt="Image"/>
+											{/* <span className="rewards-count"><span>$530</span> or More</span> */}
 											<p>
-												But must explain to you how all this mistaken idea of denouncing plasue and praising pain was born
+												{project.Position}
 											</p>
-											<div className="delivery-date">
+											{/* <div className="delivery-date">
 												<span>25 Mar 20210</span>
 												Estimated Delivery
 											</div>
@@ -292,7 +306,7 @@ return(
 													<i className="far fa-trophy-alt"></i>29 Rewards Left
 												</li>
 											</ul>
-											<a href="events.html" className="main-btn">Select Rewards <i className="far fa-arrow-right"></i></a>
+											<a href="events.html" className="main-btn">Select Rewards <i className="far fa-arrow-right"></i></a> */}
 										</div>
 									</div>
 								</div>

@@ -36,10 +36,14 @@ const Projecti = ({ project }) => {
                                <div className="cats">
                                    <a >{project.category}</a>
                                </div>
+                               <div class="author">
+								<img src={`/assets/img/project/user.png`} alt="Thumb"/>
+								<a href="#">{project.creatorname}</a>
+							</div>
                                <div className="author">
                                    
                                    <Rating
-                                   value={project.rating}
+                                   value={project.rating} 
                                    text={`${project.numReviews} reviews`}
                                    />
 

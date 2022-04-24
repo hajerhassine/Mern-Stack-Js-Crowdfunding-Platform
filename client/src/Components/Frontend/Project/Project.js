@@ -84,7 +84,7 @@ const Project= ({ match }) => {
 						</div>
 					</div>
 				</section>
-
+			
 
 			<Footer/>
 
