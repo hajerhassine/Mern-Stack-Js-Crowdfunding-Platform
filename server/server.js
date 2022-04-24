@@ -20,6 +20,9 @@ const path =require( 'path');
 const uploadRoutes = require('./routes/uploadRoutes.js'); 
 //rania
 const banksuploadRoutes = require('./routes/banksuploadsRoutes.js');
+// const scrapperRoutes = require('./routes');
+const scraper=require('./routes/scraper.js')
+
 
 
 //connect DB 
@@ -35,6 +38,7 @@ app.use("/api", require("./routes/routercategories"));
 app.use("/api", require("./routes/routerquestions"));
 app.use("/private",require("./routes/private"));
 app.use('/bankingpartners', bankingRoutes);
+app.use('/banksoffers',scraper)
 
 app.use('/api/projects', projectRoutes)
 app.use('/api/upload', uploadRoutes)
