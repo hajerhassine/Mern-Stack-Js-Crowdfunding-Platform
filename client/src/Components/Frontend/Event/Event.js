@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect , useState} from 'react';
+import axios from 'axios';
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +11,9 @@ import {WhatsappShareButton} from "react-share";
 import ReactPaginate from "react-paginate";
 
 const Events =  (props) => {
-
+const [events, setEvent] = useState([]);
+const [currentPage, setCurrentPage] = useState(1);
+const [eventsPerPage] = useState(2);
 const event = useSelector(state => state.event.event);
 
   console.log(event);
@@ -23,6 +26,11 @@ const event = useSelector(state => state.event.event);
     <div className="event-button" >
                                 <Link className="nav-link" to={`/stream`}>  <a href="project-details.html" className="main-btn bordered-btn">
                                     Navigate to Streaming <i className="far fa-arrow-right"></i></a></Link>
+                          
+                                </div>
+                                <div className="event-button" >
+                                <Link className="nav-link" to={`/SendStreamId`}>  <a href="project-details.html" className="main-btn bordered-btn">
+                                    Send Stream Id <i className="far fa-arrow-right"></i></a></Link>
                           
                                 </div>
                     <div className="container">
