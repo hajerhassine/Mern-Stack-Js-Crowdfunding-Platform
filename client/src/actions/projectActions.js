@@ -9,14 +9,19 @@ import {
   PROJECT_CREATE_REQUEST,
   PROJECT_CREATE_SUCCESS,
   PROJECT_CREATE_FAIL,
+  PROJECT_CREATE_REVIEW_REQUEST,
+  PROJECT_CREATE_REVIEW_SUCCESS,
+  PROJECT_CREATE_REVIEW_FAIL,
 } from "./../constants/projectConstants";
 
-export const listprojects = (keyword = '') => async (dispatch) => {
+export const listprojects =  (keyword = '', pageNumber = '') => async (dispatch) => {
   try {
     dispatch({ type: PROJECT_LIST_REQUEST })
 
-    const { data } = await axios.get(`/api/projects?keyword=${keyword}`)
-
+    
+    const { data } = await axios.get(
+      `/api/projects?keyword=${keyword}&pageNumber=${pageNumber}`
+    )
     dispatch({
       type: PROJECT_LIST_SUCCESS,
       payload: data,
@@ -77,6 +82,39 @@ export const createproject = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: PROJECT_CREATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+export const createprojectReview = (projectId, review) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    dispatch({
+      type: PROJECT_CREATE_REVIEW_REQUEST,
+    })
+
+    
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+       
+      },
+    }
+
+    await axios.post(`/api/projects/${projectId}/reviews`, review, config)
+
+    dispatch({
+      type: PROJECT_CREATE_REVIEW_SUCCESS,
+    })
+  } catch (error) {
+    dispatch({
+      type: PROJECT_CREATE_REVIEW_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

@@ -63,6 +63,7 @@ function FAQ(props) {
         </div>
       </section>
       {/* <!--====== Page Title End ======-->
+
             <!--====== FAQ Area Start ======--> */}
       <section className="faq-section section-gap">
         <div className="container">
@@ -657,6 +658,7 @@ function FAQ(props) {
         </div>
       </section>
       {/* <!--====== FAQ Area End ======-->
+
             <!--====== Feature Section Start ======--> */}
       <section className="feature-section primary-soft-bg section-gap">
         <div className="container">
@@ -742,6 +744,7 @@ function FAQ(props) {
         </div>
       </section>
       {/* <!--====== Feature Section End ======-->
+
             <!--====== Latest News Start ======--> */}
       <section className="latest-blog-section section-gap-extra-bottom">
         <div className="container">

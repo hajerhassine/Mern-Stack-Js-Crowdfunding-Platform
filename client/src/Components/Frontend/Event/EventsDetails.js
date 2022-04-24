@@ -42,6 +42,13 @@ const EventsDetails = (props) => {
                                 <div className="tab-pane fade show active" id="description" role="tabpanel">
                                     <div className="row justify-content-center">
                                         <div className="col-lg-8">
+                                        <div className="content">
+                           
+                               </div>
+                               <div class="col-lg-6">
+					<div class="project-summery">
+						<a href="#" class="category">{event.category}</a>
+                               <div className="thumb"></div>
                                             <div className="description-content">
                                                 <h4 className="description-title">{event.title}</h4>
                                                 <p>
@@ -52,33 +59,41 @@ const EventsDetails = (props) => {
               <p>
                 {event.program}
               </p>
+           
                                                 
                                             </div>
+                                            </div></div>
                                         </div>
                                         <div className="col-lg-4 col-md-6 col-sm-10">
                                             <div className="rewards-box mt-md-50">
                                             <a  className="main-btn">Join Event <i className="far fa-arrow-right"></i></a>
                                             <div className="delivery-date">
                                                     <span>Fee Participation</span>
-                                                    30 Dt
-                                                    {/* {event.fee_participation} */}
+                                                  
+                                                    {event.fee_participation}
+                                                    
+                                                    Dt
                                                 </div>
                                                 
                                                
-                                                <div className="delivery-date">
-                                                    <span>Date</span>
-                                                     25 Jul 2022  
-                                                     {/* {event.date} */}
-                                                </div>
+                                         
+                                                   
+                                                    
+                                                 
+                                              
                                                 
                                                 <ul className="rewards-info">
+                                                <li>
+                                                     
+                                                     <span className="date"> <i className="far fa-calendar-alt"></i> {event.date}</span>
+                                                 </li>
                                                     <li>
-                                                        <i className="far fa-user-circle"></i> 10 Participant
-                                                        {/* {event.participant_number} */}
+                                                        <i className="far fa-user-circle"></i> 
+                                                        {event.participant_number} Participant
                                                     </li>
                                                     <li>
-                                                        <i className="far fa-handshake"></i> 10 sponsors
-                                                         {/* {event.sponsors} */}
+                                                        <i className="far fa-handshake"></i>
+                                                         {event.sponsors} sponsors
                                                     </li>
                                                 </ul>
                                                 

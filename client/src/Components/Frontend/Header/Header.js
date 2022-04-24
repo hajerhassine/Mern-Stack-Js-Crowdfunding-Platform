@@ -5,7 +5,7 @@ import { useState } from "react";
 
 class Header extends React.Component{
     logout() {
-        localStorage.clear();
+        sessionStorage.clear();
           
     }
 
@@ -65,7 +65,14 @@ class Header extends React.Component{
                                <Link to="/FAQ">FAQ</Link>
                                 
                                </li>
-                               <li><a href="contact.html">Contact</a></li>
+                               <li >
+                               <Link to="/Chats">Chat</Link>
+                                
+                               </li>
+                               <li >
+                               <Link to="/ContactUs">Contact</Link>
+                                
+                               </li>
                            </ul>
                        </div>
                        <div className="navbar-extra d-flex align-items-center">

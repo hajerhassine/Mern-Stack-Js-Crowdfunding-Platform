@@ -10,11 +10,12 @@ import {
   createproject,
 } from "./../../../actions/projectActions";
 import { PROJECT_CREATE_RESET } from "./../../../constants/projectConstants";
-
+import Paginate from './Paginate'
 const ProjectListScreen = ({ history, match }) => {
+  const pageNumber = match.params.pageNumber || 1
   const dispatch = useDispatch()
   const projectList = useSelector((state) => state.projectList)
-  const { loading, error, projects } = projectList
+  const { loading, error, projects , page, pages} = projectList
 //   const projectDelete = useSelector((state) => state.projectDelete)
 //   const {
 //     loading: loadingDelete,
@@ -45,7 +46,7 @@ const ProjectListScreen = ({ history, match }) => {
     if (successCreate) {
       history.push(`/admin/project/${createdproject._id}/edit`)
     } else {
-      dispatch(listprojects())
+      dispatch(listprojects('', pageNumber))
     }
   }, [
     dispatch,
@@ -54,6 +55,7 @@ const ProjectListScreen = ({ history, match }) => {
    
     successCreate,
     createdproject,
+    pageNumber,
   ])
 
 //   const deleteHandler = (id) => {
@@ -115,6 +117,7 @@ const ProjectListScreen = ({ history, match }) => {
                   
                  
                     </table>
+                    <Paginate pages={pages} page={page} isAdmin={true} />
                   </div>
                 </div>
               </div>

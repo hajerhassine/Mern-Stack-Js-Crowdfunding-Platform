@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,8 @@ import {FacebookShareButton} from "react-share";
 import {FacebookIcon} from "react-share";
 import {WhatsappIcon} from "react-share"; 
 import {WhatsappShareButton} from "react-share";
+import ReactPaginate from "react-paginate";
+
 const Events =  (props) => {
 
 const event = useSelector(state => state.event.event);
@@ -16,7 +18,13 @@ const event = useSelector(state => state.event.event);
   return (
     <>
     <Header/>
+   
     <section className="event-area section-gap-extra-bottom">
+    <div className="event-button" >
+                                <Link className="nav-link" to={`/stream`}>  <a href="project-details.html" className="main-btn bordered-btn">
+                                    Navigate to Streaming <i className="far fa-arrow-right"></i></a></Link>
+                          
+                                </div>
                     <div className="container">
                     {event.map((event ,id)=>(
                         <div className="event-items" key = {id}>

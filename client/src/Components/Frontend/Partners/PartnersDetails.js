@@ -33,6 +33,7 @@ const PartnersDetails = (props) => {
   }, [partner]);
 
 
+  
   return (
     
     <>
@@ -63,13 +64,15 @@ const PartnersDetails = (props) => {
                         <div>
                         {partner.offer}
                         </div>
+                       
+                        
 
 						
 						
 						
 					</div>
           <div class="project-form">
-                    <button type="submit" class="main-btn">Request <i class="far fa-arrow-right"></i></button>
+                    <button type="submit" class="main-btn">Request <i class="far fa-arrow-right" ></i></button>
                     </div>
 				</div>
 			

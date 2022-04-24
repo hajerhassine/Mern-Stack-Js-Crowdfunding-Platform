@@ -14,27 +14,27 @@ export default class CreateEvent extends Component {
 
         // this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangeTitle = this.onChangeTitle.bind(this);
-        this.onChangeDescription = this.onChangeDescription.bind(this);
+        // this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
-        this.onChangeModality = this.onChangeModality.bind(this);
-        this.onChangeCategory = this.onChangeCategory.bind(this);
-        this.onChangeSponsors = this.onChangeSponsors.bind(this);
-        this.onChangeParticipant_Number = this.onChangeParticipant_Number.bind(this);
-        this.onChangeFee_Participation = this.onChangeFee_Participation.bind(this);
-        this.onChangeProgram = this.onChangeProgram.bind(this);
+        // this.onChangeModality = this.onChangeModality.bind(this);
+        // this.onChangeCategory = this.onChangeCategory.bind(this);
+        // this.onChangeSponsors = this.onChangeSponsors.bind(this);
+        // this.onChangeParticipant_Number = this.onChangeParticipant_Number.bind(this);
+        // this.onChangeFee_Participation = this.onChangeFee_Participation.bind(this);
+        // this.onChangeProgram = this.onChangeProgram.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             // username: '',
             title: '',
-            description: '',
+            // description: '',
             date: new Date(),
-            modality: '',
-            category: '', 
-            sponsors: '',
-            participant_number: '',
-            fee_participation:'',
-            program:'',
+            // modality: '',
+            // category: '', 
+            // sponsors: '',
+            // participant_number: '',
+            // fee_participation:'',
+            // program:'',
             // ,,
             // users: []
         }
@@ -60,47 +60,47 @@ export default class CreateEvent extends Component {
         });
     }
 
-    onChangeDescription(e) {
-        this.setState({
-            description: e.target.value
-        });
-    }
+  //   onChangeDescription(e) {
+  //       this.setState({
+  //           description: e.target.value
+  //       });
+  //   }
 
     onChangeDate(date) {
         this.setState({
             date: date
         });
     }
-    onChangeModality(e) {
-      this.setState({
-          modality: e.target.value
-      });
-  }
-  onChangeCategory(e) {
-    this.setState({
-        category: e.target.value
-    });
-}
-onChangeSponsors(e) {
-  this.setState({
-      sponsors: e.target.value
-  });
-}
-onChangeParticipant_Number(e) {
-  this.setState({
-      participant_number: e.target.value
-  });
-}
-onChangeFee_Participation(e) {
-  this.setState({
-      fee_participation: e.target.value
-  });
-}
-onChangeProgram(e) {
-  this.setState({
-      program: e.target.value
-  });
-}
+  //   onChangeModality(e) {
+  //     this.setState({
+  //         modality: e.target.value
+  //     });
+  // }
+//   onChangeCategory(e) {
+//     this.setState({
+//         category: e.target.value
+//     });
+// }
+// onChangeSponsors(e) {
+//   this.setState({
+//       sponsors: e.target.value
+//   });
+// }
+// onChangeParticipant_Number(e) {
+//   this.setState({
+//       participant_number: e.target.value
+//   });
+// }
+// onChangeFee_Participation(e) {
+//   this.setState({
+//       fee_participation: e.target.value
+//   });
+// }
+// onChangeProgram(e) {
+//   this.setState({
+//       program: e.target.value
+//   });
+// }
 
     onSubmit(e) {
         e.preventDefault();
@@ -108,14 +108,14 @@ onChangeProgram(e) {
         const newEvent = {
             // username: this.state.username,
             title: this.state.title,
-            description: this.state.description,
+            // description: this.state.description,
             date: this.state.date,
-            modality: this.state.modality,
-            category: this.state.category,
-            sponsors: this.state.sponsors,
-            participant_number: this.state.participant_number,
-            fee_participation: this.state.fee_participation,
-            program: this.state.program
+            // modality: this.state.modality,
+            // category: this.state.category,
+            // sponsors: this.state.sponsors,
+            // participant_number: this.state.participant_number,
+            // fee_participation: this.state.fee_participation,
+            // program: this.state.program
         };
 
         let api_uri = routeGenerator.getURI("events/add");
@@ -153,7 +153,7 @@ onChangeProgram(e) {
                             onChange={this.onChangeTitle} placeholder='Enter a title'
                         />
                       </div>
-                      <div className="form-group">
+                      {/* <div className="form-group">
                       <label>Description: </label>
                       <input type="text"
                             required
@@ -161,7 +161,7 @@ onChangeProgram(e) {
                             value={this.state.description}
                             onChange={this.onChangeDescription} placeholder='Enter a description'
                         />
-                      </div>
+                      </div> */}
                       <div className="form-group">
                       <label>Date: </label>
                      
@@ -175,7 +175,7 @@ onChangeProgram(e) {
                             />
                         
                       </div>
-                     
+{/*                      
                       <div className="form-group">
                       <label>Modality: </label>
                
@@ -189,8 +189,8 @@ onChangeProgram(e) {
                           </select>
                      
                      
-                      </div>
-                      <div className="form-group">
+                      </div> */}
+                      {/* <div className="form-group">
                       <label>Category: </label>
                 
                           <select className="custom-select form-select-sm"   aria-label=".form-select-sm example"value={this.state.category}
@@ -249,7 +249,7 @@ onChangeProgram(e) {
                             value={this.state.program}
                             onChange={this.onChangeProgram} placeholder='Enter the program'
                         />
-                      </div>
+                      </div> */}
                     </div>
                     <div className="card-footer text-right">
                       <input type="submit" value="Create Event" className="btn btn-primary"/>

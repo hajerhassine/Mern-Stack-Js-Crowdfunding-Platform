@@ -5,6 +5,11 @@ const reviewSchema = mongoose.Schema(
     name: { type: String, required: true },
     rating: { type: Number, required: true },
     comment: { type: String, required: true },
+    creator: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'Creator',
+    },
   },
   {
     timestamps: true,
@@ -13,16 +18,29 @@ const reviewSchema = mongoose.Schema(
 
 const projectSchema = mongoose.Schema(
   {
-    // user: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   required: true,
-    //   ref: 'User',
-    // },
+    creator: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'Creator',
+    },
+   
+    creatorname: {
+      type: String,
+      required: true,
+    },
+    Position: {
+      type: String,
+      //required: true,
+    },
     name: {
       type: String,
       required: true,
     },
     image: {
+      type: String,
+     // required: true,
+    },
+    video: {
       type: String,
      // required: true,
     },
