@@ -10,7 +10,7 @@ import PrintIcon from '@material-ui/icons/Print'
 import jsPDF from 'jspdf';
 import 'jspdf-autotable'
 import LeftSide from "../LeftSide/LeftSide";
-import LeftSideOrganizer from '../LeftSide/LeftSideOrganizer';
+
 
 const routeGenerator = require('../shared/routeGenerator');
  // download data in pdf format
@@ -116,7 +116,7 @@ export default class eventOrganizer extends Component {
         return (
             <div>
  <Header></Header>
-            <LeftSideOrganizer></LeftSideOrganizer> 
+            <LeftSide></LeftSide> 
 
 
 

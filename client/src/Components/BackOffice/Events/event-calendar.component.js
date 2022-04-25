@@ -9,7 +9,7 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction';
 import Header from "../Header/Header";
 import { Link } from 'react-router-dom';
-import LeftSide from "../LeftSide/LeftSide";
+import LeftSideOrganizer from "../LeftSide/LeftSideOrganizer";
 const routeGenerator = require('./../shared/routeGenerator');
 
 export default class EventCalendar extends Component {
@@ -63,7 +63,7 @@ export default class EventCalendar extends Component {
             <div  className='container'>
         
                <Header></Header>
-               <LeftSide></LeftSide>
+               <LeftSideOrganizer></LeftSideOrganizer>
                <div>
              
 <section className='calendar'>
