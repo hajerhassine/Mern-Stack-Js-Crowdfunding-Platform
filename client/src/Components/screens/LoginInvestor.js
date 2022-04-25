@@ -29,7 +29,7 @@ const LoginInvestor = ({ history }) => {
 
     try {
       const { data } = await axios.post(
-        "auth/loginInvestor",
+        "http://localhost:5000/auth/loginInvestor",
         { email, password },
         config
       );

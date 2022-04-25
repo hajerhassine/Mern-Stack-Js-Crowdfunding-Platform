@@ -67,13 +67,39 @@ const InvestorSchema = new mongoose.Schema({
   description:String,
   SectorInterest : {
     type:String,
-    enum:["Technology","Commercial" ,"Health","Design","Art","Agriculture","Liberal"]
+    enum:['HealthIT', 'Technology','DataServices', 'Hardware', 'E-commerce', 'Space',
+    'AudioTech', 'Messaging', 'Enterprise', 'Analytics',
+    'Parenting/Families', 'Lodging/Hospitality', 'GigEconomy',
+    'HumanCapital/HRTech', 'TransportationTech', 'Security',
+    'Direct-to-Consumer(DTC)', 'SMBSoftware', 'Education',
+    'ConsumerInternet', 'Impact', 'RealEstate/PropTech',
+    'ClimateTech/CleanTech', 'DeveloperTools', 'EnterpriseApplications',
+    'Entertainment&Sports', 'FutureofWork', 'ConsumerHealth',
+    'DigitalHealth', 'Travel', 'SocialNetworks', 'AR/VR', 'Pharmaceuticals',
+    'Fashion', 'ConstructionTech', 'Health&HospitalServices', 'AutoTech',
+    'Payments', 'CloudInfrastructure', 'Marketplaces',
+    'EnterpriseInfrastructure', 'Chemicals', 'Semiconductors',
+    'Gaming/eSports', 'Crypto/Web3', 'LegalTech', 'Games', 'Mobility',
+    'AgTech', 'Insurance', 'LocalServices', 'FoodandBeverage',
+    'SocialCommerce', 'Sales&CRM', 'MedicalDevices', 'MarketingTech', 'IoT',
+    'Retail', 'MaterialScience', 'Creator/PassionEconomy', 'EnergyTech',
+    'Robotics', 'GovTech', 'Cybersecurity', 'AI', 'BioTech', 'DeepTech',
+    'Manufacturing', 'Web3/Blockchain', 'SaaS', 'FinTech', 'Media/Content',
+    'DrugDelivery', 'Cosmetics', 'Advertising']
 },
 valid : {
 
   type : Boolean, 
   default : false
 }, 
+category:{
+  type:String,
+  enum:['VC','CEO','Investor','Angel']
+},
+round:{
+  type:String,
+  enum:['seed','pressed','seriea','serieb']
+},
 AmountcanInvest:Number,
 Typeinvestor: {
   type:String,

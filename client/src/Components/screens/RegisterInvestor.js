@@ -30,6 +30,8 @@ const RegisterInvestor = ({ history }) => {
   const [ScanCin,setScanCin]=useState("");
   const [NumCin,setNumCin]=useState("");
   const [picture,setPicture]=useState("");
+  const [category,setCategory]=useState("");
+  const [round,setRound]=useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState(null);
   const [picMessage, setPicMessage] = useState(null);
@@ -82,16 +84,16 @@ const RegisterInvestor = ({ history }) => {
 
     try {
       const { data } = await axios.post(
-        "auth/registerInvestor",
+        "http://localhost:5000/auth/registerInvestor",
         {
-          username, email, password, lastname,AmountcanInvest,picture,NumCin,ScanCin,Legalname,Typeinvestor,Minrange,Maxrange,SweetSpot,currentinvesting,Position,Company,InvestmentOnRecord,CurrentFundSize,SectorInterest
+          username, email, password, lastname,AmountcanInvest,category,round,picture,NumCin,ScanCin,Legalname,Typeinvestor,Minrange,Maxrange,SweetSpot,currentinvesting,Position,Company,InvestmentOnRecord,CurrentFundSize,SectorInterest
         },
         config
       );
 
       localStorage.setItem("authToken", data.token);
 
-      history.push("/HomeInvestor");
+      history.push("/Home");
     } catch (error) {
       setError(error.response.data.error);
       setTimeout(() => {
@@ -222,6 +224,35 @@ const RegisterInvestor = ({ history }) => {
                       />
                     </div>
                   </div>
+
+                  <div class="col-md-6">
+                    <div class="input-group">
+                      <label htmlFor="Amount">    Category:</label>
+                      <input
+                        type="Category"
+                        required
+                        id="Category"
+                        autoComplete="true"
+                        placeholder="Enter category"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                  <div class="input-group">
+                    <label htmlFor="Amount">    Round:</label>
+                    <input
+                      type="Round"
+                      required
+                      id="Round"
+                      autoComplete="true"
+                      placeholder="Enter Round"
+                      value={round}
+                      onChange={(e) => setRound(e.target.value)}
+                    />
+                  </div>
+                </div>
                   <div class="col-md-6">
                     <div class="input-group">
                       <label htmlFor="Minrange"> Minrange</label>
@@ -342,7 +373,7 @@ const RegisterInvestor = ({ history }) => {
                 required
                 id="sector"
                 autoComplete="true"
-                placeholder="Enter CurrentFundSize"
+                placeholder="Enter sector"
                 value={SectorInterest}   onChange={(e) =>   setSectorInterest(e.target.value)}
               />
          
@@ -409,7 +440,7 @@ const RegisterInvestor = ({ history }) => {
                       </button>
 
                       <span className="register-screen__subtext">
-                        Already have an account? <Link to="/login">Login</Link>
+                        Already have an account? <Link to="/loginInvestor">Login</Link>
                       </span>
                     </div>
                   </div>

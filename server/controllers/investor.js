@@ -33,50 +33,15 @@ transporter.verify((error,success)=>{
 
 
 exports.registerInvestor = async (req, res, next) => {
-  const { username, email, password,Verified, lastname,AmountcanInvest,picture,NumCin,ScanCin,Legalname,Typeinvestor,Minrange,Maxrange,SweetSpot,currentinvesting,Position,Company,InvestmentOnRecord,CurrentFundSize,SectorInterest} = req.body;
+  const { username, email, password,lastname,category,round,picture,NumCin,ScanCin,Legalname,AmountcanInvest,Typeinvestor,Minrange,Maxrange,SweetSpot,currentinvesting,Position,Company,InvestmentOnRecord,CurrentFundSize,SectorInterest} = req.body;
 
   try {
     
     const investor = await Investor.create({
-      username, email, password, lastname,Verified:true,AmountcanInvest,picture,NumCin,ScanCin,Legalname,Typeinvestor,Minrange,Maxrange,SweetSpot,currentinvesting,Position,Company,InvestmentOnRecord,CurrentFundSize,SectorInterest
+      username, email, password, lastname,AmountcanInvest,category,round,picture,NumCin,ScanCin,Legalname,Typeinvestor,Minrange,Maxrange,SweetSpot,currentinvesting,Position,Company,InvestmentOnRecord,CurrentFundSize,SectorInterest
 
     });
-    investor.save().then((result)=>{  sendVerificationEmail(result,res)})
-
-    let token = new TokenInvestor({
-      investorId: investor._id.toString(),
-      token: generateToken(investor._id),
-    }).save().then(token => {
-      console.log(token)
-      const id = investor._id.toString()
-      const mail =`http://localhost:3000/auth/registerInvestor/verify/${id}/${token.token}`
-    
-      // send email
-      let transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: process.env.AUTH_EMAIL,
-          pass: process.env.Auth_PASS,
-        },
-      });
-      transporter.verify((error,success)=>{
-        if (error){
-          console.log(error);
-        }else{
-          console.log("Ready for messages");
-          console.log(success);
-        }
-      })
-        // send mail with defined transport object
-        sendEmail( {from: process.env.EMAIL_FROM,
-          to: email,
-          subject: "Verify your email !",
-          text:`<p> Verify your email adress to complete the  signup and login into your account . </p><p>This link <b> expires in 6 hours </b> ${mail}.
-          </p><p>Press  <a >here</a> to proced.</p>`,
-          html: mail,
-         }
-          )})
-        
+  
       
   } catch (err) {
     next(err);
