@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,40 +7,24 @@ import Header from "../Header/Header";
 import LeftSide from "../LeftSide/LeftSide";
 const routeGenerator = require('../shared/routeGenerator');
 
-export default class CreateEvent extends Component {
 
-    constructor(props) {
-        super(props);
+  const CreateEvent = ({ props }) => {
+    
 
-        // this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangeTitle = this.onChangeTitle.bind(this);
-        // this.onChangeDescription = this.onChangeDescription.bind(this);
-        this.onChangeDate = this.onChangeDate.bind(this);
-        // this.onChangeModality = this.onChangeModality.bind(this);
-        // this.onChangeCategory = this.onChangeCategory.bind(this);
-        // this.onChangeSponsors = this.onChangeSponsors.bind(this);
-        // this.onChangeParticipant_Number = this.onChangeParticipant_Number.bind(this);
-        // this.onChangeFee_Participation = this.onChangeFee_Participation.bind(this);
-        // this.onChangeProgram = this.onChangeProgram.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-
-        this.state = {
-            // username: '',
-            title: '',
-            // description: '',
-            date: new Date(),
-            // modality: '',
-            // category: '', 
-            // sponsors: '',
-            // participant_number: '',
-            // fee_participation:'',
-            // program:'',
-            // ,,
-            // users: []
-        }
-    }
-
-    componentDidMount() {
+  
+        const [title, setTitle] = useState('')
+        const [description, setdescription] = useState('')
+        const [date, setDate] = useState(new Date())
+        const [modality, setmodality] = useState('')
+        const [eventImage, seteventImage] = useState('')
+        const [uploading, setUploading] = useState(false)
+        const [category, setcategory] = useState('')
+        const [sponsors, setsponsors] = useState('')
+        const [participant_number, setparticipant_number] = useState('')
+        const [fee_participation, setfee_participation] = useState('')
+        const [program, setprogram] = useState('')
+    
+        function  componentDidMount() {
         // var urlParams = new URLSearchParams(window.location.search);
         // console.log(urlParams.get('date'));
         let eventDate = new URLSearchParams(window.location.search).get('date');
@@ -54,28 +38,28 @@ export default class CreateEvent extends Component {
 
   
 
-    onChangeTitle(e) {
-        this.setState({
-            title: e.target.value
-        });
-    }
+//     onChangeTitle(e) {
+//         this.setState({
+//             title: e.target.value
+//         });
+//     }
 
-  //   onChangeDescription(e) {
-  //       this.setState({
-  //           description: e.target.value
-  //       });
-  //   }
+//     onChangeDescription(e) {
+//         this.setState({
+//             description: e.target.value
+//         });
+//     }
 
-    onChangeDate(date) {
-        this.setState({
-            date: date
-        });
-    }
-  //   onChangeModality(e) {
-  //     this.setState({
-  //         modality: e.target.value
-  //     });
-  // }
+//     onChangeDate(date) {
+//         this.setState({
+//             date: date
+//         });
+//     }
+//     onChangeModality(e) {
+//       this.setState({
+//           modality: e.target.value
+//       });
+//   }
 //   onChangeCategory(e) {
 //     this.setState({
 //         category: e.target.value
@@ -102,29 +86,54 @@ export default class CreateEvent extends Component {
 //   });
 // }
 
-    onSubmit(e) {
+const uploadFileHandler = async (e) => {
+  const file = e.target.files[0]
+  const formData = new FormData()
+  formData.append('image', file)
+  setUploading(true)
+
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    }
+    
+
+    const { data } = await axios.post('/api/upload', formData, config)
+
+    seteventImage(data)
+    setUploading(false)
+  } catch (error) {
+    console.error(error)
+    setUploading(false)
+  }
+}
+
+ const   onSubmit= (e) => {
         e.preventDefault();
         
         const newEvent = {
             // username: this.state.username,
-            title: this.state.title,
-            // description: this.state.description,
-            date: this.state.date,
-            // modality: this.state.modality,
-            // category: this.state.category,
-            // sponsors: this.state.sponsors,
-            // participant_number: this.state.participant_number,
-            // fee_participation: this.state.fee_participation,
-            // program: this.state.program
+            title: title,
+            description: description,
+            date: date,
+            modality: modality,
+            category: category,
+            sponsors: sponsors,
+            participant_number: participant_number,
+            fee_participation: fee_participation,
+            program: program,
+            eventImage: eventImage,
         };
 
         let api_uri = routeGenerator.getURI("events/add");
         axios.post(api_uri, newEvent).then(res => console.log(res.data));
 
-        window.location = '/listevent';
+       window.location = '/listevent';
     }
 
-    render() {
+    
         return (
 
 <div>
@@ -138,7 +147,7 @@ export default class CreateEvent extends Component {
             <div className="row">
               <div className="col-12 col-md-6 col-lg-6">
                 <div className="card">
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={onSubmit}>
                     <div className="card-header">
                       <h4>Create New Event</h4>
                     </div>
@@ -149,38 +158,41 @@ export default class CreateEvent extends Component {
                             type="text"
                             required
                             className="form-control"
-                            value={this.state.title}
-                            onChange={this.onChangeTitle} placeholder='Enter a title'
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                             placeholder='Enter a title'
                         />
                       </div>
-                      {/* <div className="form-group">
+                      <div className="form-group">
                       <label>Description: </label>
                       <input type="text"
                             required
                             className="form-control"
-                            value={this.state.description}
-                            onChange={this.onChangeDescription} placeholder='Enter a description'
+                            value={description}
+                            onChange={(e) => setdescription(e.target.value)}
+                             placeholder='Enter a description'
                         />
-                      </div> */}
+                      </div>
                       <div className="form-group">
                       <label>Date: </label>
                      
                             <DatePicker
                                 className="form-control"
                                 required
-                                selected={this.state.date}
-                                onChange={this.onChangeDate}
+                                selected={date}
+                                onChange={(e) => setDate(e.target.value)}
                                 showTimeSelect
                                 dateFormat="Pp" placeholder='Enter the date of the event'
                             />
                         
                       </div>
-{/*                      
+                     
                       <div className="form-group">
                       <label>Modality: </label>
                
-                          <select className="custom-select form-select-sm"   aria-label=".form-select-sm example"value={this.state.modality}
-                            onChange={this.onChangeModality}  required> 
+                          <select className="custom-select form-select-sm"   aria-label=".form-select-sm example"value={modality}
+                             onChange={(e) => setmodality(e.target.value)}
+                             required> 
                             <option value="" > </option>
                             <option value="presential"> Presential</option>
                             <option value="online"> Online</option>
@@ -189,12 +201,13 @@ export default class CreateEvent extends Component {
                           </select>
                      
                      
-                      </div> */}
-                      {/* <div className="form-group">
+                      </div>
+                      <div className="form-group">
                       <label>Category: </label>
                 
-                          <select className="custom-select form-select-sm"   aria-label=".form-select-sm example"value={this.state.category}
-                            onChange={this.onChangeCategory} placeholder='choose the category' required>  
+                          <select className="custom-select form-select-sm"   aria-label=".form-select-sm example"value={category}
+                           onChange={(e) => setcategory(e.target.value)}
+                           placeholder='choose the category' required>  
                             <option value=""> </option>
                             <option value="Education"> Education</option>
                             <option value="Commercial"> Commercial</option>
@@ -217,8 +230,9 @@ export default class CreateEvent extends Component {
                       <input type="text"
                            
                             className="form-control"
-                            value={this.state.sponsors}
-                            onChange={this.onChangeSponsors} placeholder='Enter list of sponsors' required
+                            value={sponsors}
+                            onChange={(e) => setsponsors(e.target.value)}
+                             placeholder='Enter list of sponsors' required
                         />
                       </div>
                       <div className="form-group">
@@ -226,8 +240,9 @@ export default class CreateEvent extends Component {
                       <input type="text"
                             required
                             className="form-control"
-                            value={this.state.participant_number}
-                            onChange={this.onChangeParticipant_Number} placeholder='Enter the participant number'
+                            value={participant_number}
+                            onChange={(e) => setparticipant_number(e.target.value)}
+                            placeholder='Enter the participant number'
                         />
                       </div>
                       <div className="form-group">
@@ -236,8 +251,9 @@ export default class CreateEvent extends Component {
                         
                             className="form-control"
                             required
-                            value={this.state.fee_participation}
-                            onChange={this.onChangeFee_Participation} placeholder='Enter the fee participation'
+                            value={fee_participation}
+                            onChange={(e) => setfee_participation(e.target.value)}
+                            placeholder='Enter the fee participation'
                         />
                       </div>
                       <div className="form-group">
@@ -246,10 +262,21 @@ export default class CreateEvent extends Component {
                            
                             className="form-control"
                             required
-                            value={this.state.program}
-                            onChange={this.onChangeProgram} placeholder='Enter the program'
+                            value={program}
+                            onChange={(e) => setprogram(e.target.value)}
+                           placeholder='Enter the program'
                         />
-                      </div> */}
+                      </div>
+                      <div className="form-group">
+                      <label>image: </label>
+                      <input required type="file" id='image-file'
+                label='Choose File'
+                
+                custom
+                
+                onChange={uploadFileHandler}/>
+                      </div>
+                      
                     </div>
                     <div className="card-footer text-right">
                       <input type="submit" value="Create Event" className="btn btn-primary"/>
@@ -266,6 +293,9 @@ export default class CreateEvent extends Component {
       </div>
       </div>
       </div>
-        )
+        );
     }
-}
+    export default CreateEvent ;
+
+
+
