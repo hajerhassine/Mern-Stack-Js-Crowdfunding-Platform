@@ -3,7 +3,7 @@ import { Container, Layout } from "./style";
 import SadGirl from "../../assets/SadGirl.svg";
 import Footer from '../../Components/Frontend/Footer/Footer'
 import Header from '../../Components/Frontend/Header/Header'
-
+import Peer from "peerjs";
 // const peer =() =>{(undefined, {
 //   host: "localhost",
 //   secure: false,
@@ -16,6 +16,13 @@ import Header from '../../Components/Frontend/Header/Header'
 //   port: 5000,
 //   path: "peerjs/kingaspx",
 // });
+
+ const peer = new Peer(undefined,{
+  host: "localhost",
+  secure: false,
+  port: 5000,
+  path: "/peerjs/kingaspx",
+});
 
 
 const createEmptyAudioTrack = () => {
@@ -54,10 +61,10 @@ function Home() {
   const myVideo = document.createElement("video");
   myVideo.muted = true;
 
-  // peer.on("open", (id) => {
-  //   console.log(id);
-  //   setId(id);
-  // });
+  peer.on("open", (id) => {
+    console.log(id);
+    setId(id);
+  });
 
   async function addVideoStream(video, stream) {
     try {
@@ -97,9 +104,9 @@ function Home() {
         setIsStreaming(true);
         setIsStreamer(true);
 
-        // peer.on("call", (call) => {
-        //   call.answer(stream);
-        // });
+        peer.on("call", (call) => {
+          call.answer(stream);
+        });
       });
   }
 
@@ -115,6 +122,7 @@ function Home() {
     setIsStreamer(false);
     // window.navigator.mediaDevices.destroy;
 
+
     let div = document.getElementById("video-grid");
     while (div.firstChild) {
       div.removeChild(div.firstChild);
@@ -122,13 +130,13 @@ function Home() {
   }
 
   async function receiveStream() {
-      // const call = peer.call(streamerCode, mediaStream);
+      const call = peer.call(streamerCode, mediaStream);
 
     const video = document.createElement("video");
-    // call.on("stream", (userVideoStream) => {
-    //   addVideoStream(video, userVideoStream);
-    //   setIsStreaming(true);
-    // });
+    call.on("stream", (userVideoStream) => {
+      addVideoStream(video, userVideoStream);
+      setIsStreaming(true);
+    });
   }
 
   return (
