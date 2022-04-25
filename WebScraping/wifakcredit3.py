@@ -10,7 +10,7 @@ import json
 
 list_credit=[]
 
-result = requests.get("http://www.wifakbank.com/particuliers/financement/tamouil-hajiet.php")
+result = requests.get("http://www.wifakbank.com/particuliers/financement/tamouil-akkaret.php")
 
 src=result.content
 # print(src)
@@ -32,7 +32,7 @@ wifak_credit_one={
 }
 
 list_credit.append(wifak_credit_one)
-with open('wifakcredit1.json', 'w') as f:     
+with open('wifakcredit3.json', 'w') as f:     
     json.dump(list_credit, f)
 
 
