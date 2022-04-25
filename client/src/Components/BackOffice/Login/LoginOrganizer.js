@@ -33,7 +33,7 @@ const LoginOrganizer = ({ history }) => {
       console.log('logged');
       localStorage.setItem("authToken", data.token);
 
-      history.push("/admin");
+      history.push("/homeorganizer");
     } catch (error) {
       setError(error.response.data.error);
       setTimeout(() => {
