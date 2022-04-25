@@ -18,7 +18,7 @@ const ForgotPasswordScreen = () => {
 
     try {
       const { data } = await axios.post(
-        "/auth/forgotpasswordDoner",
+        "http://localhost:5000/auth/forgotpasswordInvestor",
         { email },
         config
       );

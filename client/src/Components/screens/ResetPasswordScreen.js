@@ -30,7 +30,7 @@ const ResetPasswordScreen = ({ history, match }) => {
 
     try {
       const { data } = await axios.put(
-        `/auth/resetpasswordDoner/${match.params.resetToken}`,
+        `http://localhost:5000/auth/resetpasswordInvestor/${match.params.resetToken}`,
         {
           password,
         },
@@ -57,7 +57,7 @@ const ResetPasswordScreen = ({ history, match }) => {
         {error && <span className="error-message">{error} </span>}
         {success && (
           <span className="success-message">
-            {success} <Link to="/loginDoner">Login</Link>
+            {success} <Link to="/loginInvestor">Login</Link>
           </span>
         )}
         <div className="form-group">
