@@ -24,7 +24,7 @@ const routeGenerator = require('../shared/routeGenerator');
         const [fee_participation, setfee_participation] = useState('')
         const [program, setprogram] = useState('')
     
-        function  componentDidMount() {
+        const  componentDidMount= async (e) => {
         // var urlParams = new URLSearchParams(window.location.search);
         // console.log(urlParams.get('date'));
         let eventDate = new URLSearchParams(window.location.search).get('date');
@@ -258,13 +258,12 @@ const uploadFileHandler = async (e) => {
                       </div>
                       <div className="form-group">
                       <label>Program: </label>
-                      <textarea 
-                           
-                            className="form-control"
+                      <input type="text"
                             required
+                            className="form-control"
                             value={program}
                             onChange={(e) => setprogram(e.target.value)}
-                           placeholder='Enter the program'
+                             placeholder='Enter a program'
                         />
                       </div>
                       <div className="form-group">

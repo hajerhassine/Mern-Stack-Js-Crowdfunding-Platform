@@ -96,7 +96,8 @@ const EventsDetails = (props) => {
                                                         </li>
                                                         <li>
                                                             <i className="far fa-handshake"></i>
-                                                            {event.sponsors} sponsors
+                                                            
+Sponsored by : {event.sponsors} 
                                                         </li>
                                                     </ul>
 

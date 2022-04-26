@@ -37,7 +37,7 @@ app.use('/api/projects', projectRoutes)
 app.use('/api/upload', uploadRoutes)
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 app.use('/api/events/upload',uploadImageEvent)
-const io = require("socket.io");
+/////////////////////const io = require("socket.io");
 
 // const { ExpressPeerServer } = require("peer");
 const PORT = process.env.PORT || 5000;
@@ -64,14 +64,9 @@ app.get("/", (req, res) => {
 });
 
 
-// // socket setup
-// const io = socket(server);
-// let interval;
-// io.on('connection', socket => {
-//     console.log(`socket connected, id = ${socket.id}`);
-//     if (interval) clearInterval(interval);
-//     interval = setInterval(() => getApiAndEmit(socket), 1000);
-// })
+// socket setup
+
+
 
 const getApiAndEmit = async socket => {
     try {
@@ -83,28 +78,39 @@ const getApiAndEmit = async socket => {
 };
 
 //chat process
-// const io = require('socket.io')(server, {
-//     cors: {
-//       origin: '*',
-//       credentials:true
-//     }
-//   });
-//   io.on('connection',(socket)=> {
-//     console.log(socket.id);
+const io = require('socket.io')(server, {
+    cors: {
+      origin: '*',
+      credentials:true
+    }
+  });
+  let interval;
+io.on('connection', socket => {
+    console.log(`socket connected, id = ${socket.id}`);
+    if (interval) clearInterval(interval);
+    interval = setInterval(() => getApiAndEmit(socket), 1000);
+})
   
-//     //recieving an event
-//     socket.on('join_room',(data)=> {
-//         socket.join(data)
-//         console.log("User Joined Room:" +data)
-//     })
-//    //create an event (2events exactly here )
-//     socket.on("send_message", (data)=> {
-//         console.log(data);
-//         socket.to(data.room).emit("recieve_message", data.content);
-//     })
+  io.on('connection',(socket)=> {
+    console.log(socket.id);
   
-//     socket.on('disconnect',()=>{
-//         console.log('USER DISCONNECTED')
-//     })
-//   }
-  //)
+    //recieving an event
+    socket.on('join_room',(data)=> {
+        socket.join(data)
+        console.log("User Joined Room:" +data)
+    })
+   //create an event (2events exactly here )
+    socket.on("send_message", (data)=> {
+        console.log(data);
+        socket.to(data.room).emit("recieve_message", data.content);
+    })
+  
+    socket.on('disconnect',()=>{
+        console.log('USER DISCONNECTED')
+    })
+    // socket setup
+//const io = socket(server);
+
+  }
+  
+  )

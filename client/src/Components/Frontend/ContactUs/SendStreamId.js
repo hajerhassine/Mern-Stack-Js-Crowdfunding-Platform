@@ -16,16 +16,16 @@ class  SendStreamId  extends Component{
         e.preventDefault()
         const { email, subject, message } = this.state
         let templateParams = {
-          from_name: email,
-          to_name: '4l-upi_H8nfGC-9N3W6e2',
+            email: email,
+          to_name: 'cYgFw6wqRSLRbAMPV',
           subject: subject,
-          message_html: message,
+          message: message,
          }
          emailjs.send(
-          'service_84nukbb',
-          'My Default Templat',
+          'service_8msz1nh',
+          'template_l4mennf',
            templateParams,
-          '4l-upi_H8nfGC-9N3W6e2'
+          'cYgFw6wqRSLRbAMPV'
          )
          this.resetForm()
      }
@@ -60,7 +60,7 @@ class  SendStreamId  extends Component{
                     <div className="col-lg-7">
                         <div className="contact-form">
                             <form onSubmit={this.handleSubmit.bind(this)}>
-                                <h3 className="form-title">Send Us Message</h3>
+                                <h3 className="form-title">Send Stream Id</h3>
                                 <div className="row">
                                 <div className="col-lg-6">
                                         <div className="form-field mb-25">

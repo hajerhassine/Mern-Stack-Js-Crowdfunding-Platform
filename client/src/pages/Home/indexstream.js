@@ -10,19 +10,19 @@ import Peer from "peerjs";
 //   port: 5000,
 //   path: "peerjs/kingaspx",
 // });}
-// const peer = new window.Peer(undefined, {
-//   host: "localhost",
-//   secure: false,
-//   port: 5000,
-//   path: "peerjs/kingaspx",
-// });
-
- const peer = new Peer(undefined,{
+const peer = new window.Peer(undefined, {
   host: "localhost",
   secure: false,
   port: 5000,
-  path: "/peerjs/kingaspx",
+  path: "peerjs/kingaspx",
 });
+
+//  const peer = new Peer(undefined,{
+//   host: "localhost",
+//   secure: false,
+//   port: 5000,
+//   path: "/peerjs/kingaspx",
+// });
 
 
 const createEmptyAudioTrack = () => {
@@ -156,8 +156,8 @@ function Home() {
               <input
                 id="textarea"
                 autoComplete={'off'}
-                placeholder="
-                Tapez le code du streamer ici et appuyez sur ENTER"
+                textAlign="center"
+                placeholder="Enter the streamer code here and press ENTER"
                 value={streamerCode}
                 onChange={(e) => setStreamerCode(e.target.value)}
               />
@@ -184,11 +184,11 @@ function Home() {
             }}
           >
             <img src={SadGirl} draggable={"false"} center />
-            <h1> Il n'y a pas de flux actifs pour le moment...</h1>
+            {/* <h1>There are no active feeds at the moment...</h1>
 
             <h3>
-            Lancez une diffusion ou rejoignez-en une en tapant dans le champ ci-dessus.
-            </h3>
+            Start a broadcast or join one by typing in the field above.
+            </h3> */}
           </div>
         ) : null}
 
@@ -197,7 +197,7 @@ function Home() {
         <div className="streamer-data">
           <div>
             <h1>{id}</h1>
-            <h3>ID de  Streaming</h3>
+            <h3>Streaming ID </h3>
           </div>
 
           <div></div>
@@ -206,11 +206,12 @@ function Home() {
         <div className="bottom-section">
           {!isStreaming ? (
             <button id="start-stream" onClick={() => startStream()}>
-              Lancer le streaming
+              
+               Start streaming
             </button>
           ) : isStreamer ? (
             <button id="start-stream" onClick={() => stopStream()}>
-              Arreter le streaming
+              Stop streaming
             </button>
           ) : null}
         </div>

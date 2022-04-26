@@ -68,6 +68,7 @@ import { getEvents } from './Redux/slices/events';
 import EventsDetails from './Components/Frontend/Event/EventsDetails';
 //ContactUs
 import ContactUs from './Components/Frontend/ContactUs/ContactUs';
+import SendStreamId from './Components/Frontend/ContactUs/SendStreamId';
 import Chats from './Components/Frontend/Chats.js/Chats';
 import KommunicateChat from './chat';
 
@@ -89,6 +90,7 @@ useEffect(() => {
     <PrivateRoute exact path="/" component={PrivateScreen} />
     <ClientRoute path="/ProjectDetails/:id" component={ProjectDetails} />
     <ClientRoute path="/ContactUs" component={ContactUs} />
+    <ClientRoute path="/SendStreamId" component={SendStreamId} />
       <ClientRoute path="/Home" component={Home} />
       <ClientRoute path="/HomeDoner" component={HomeDoner} />
       <ClientRoute exact path="/HomeCreator" component={HomeCreator} />

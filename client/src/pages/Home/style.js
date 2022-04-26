@@ -61,7 +61,7 @@ export const Container = styled.div`
     padding: 15px;
 
     #start-stream {
-      background: #5a00cb;
+      background: #02a95c;
 
       font-size: 16px;
       font-weight: 600;

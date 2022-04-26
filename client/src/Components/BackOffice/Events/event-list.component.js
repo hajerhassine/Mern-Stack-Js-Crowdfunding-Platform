@@ -33,6 +33,7 @@ const Event = props => (
         <td>{props.event.participant_number}</td>
         <td>{props.event.fee_participation}</td>
         <td>{props.event.program}</td>
+        <td>{props.event.eventImage}</td>
         <td>
            <td><tr><Link to={"/edit/event/" + props.event._id}><button className="btn  btn-sm btn-info ">  edit </button></Link></tr>
            <tr><button className="btn btn-sm btn-danger" onClick={() => { props.deleteEvent(props.event._id) }}>delete</button></tr></td>
@@ -162,6 +163,7 @@ export default class EventList extends Component {
                             <th>Participant Number</th>
                             <th>Fee Participation</th>
                             <th>Program</th>
+                            <th>Image</th>
                             <th></th>
                         </tr>
                       </thead>

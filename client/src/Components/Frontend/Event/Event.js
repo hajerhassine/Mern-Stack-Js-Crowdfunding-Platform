@@ -107,6 +107,11 @@ const handlePageClick = async (data) => {
                             
                         </div>
                         ))}
+                        {/* <Paginate 
+            pages={pages}
+            page={page}
+            keyword={keyword ? keyword : ''}
+          /> */}
                            <ReactPaginate
         previousLabel={"previous"}
         nextLabel={"next"}
