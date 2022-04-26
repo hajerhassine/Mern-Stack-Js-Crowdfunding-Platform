@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Projecti from "../Project/projecti";
 import { listprojects } from "./../../../actions/projectActions";
+import PostData from "../data/investors.json"
 
 const Home= () => {
     const dispatch = useDispatch()
@@ -475,6 +476,7 @@ const Home= () => {
                    </div>
                </div>
            </div>
+          
            <div className="emergency-project-slider">
                <div className="container">
                    <div className="common-heading text-center mb-60">
@@ -482,125 +484,44 @@ const Home= () => {
                            <i className="fas fa-plus"></i> Donate Projects
                            <span className="heading-shadow-text">Donate</span>
                        </span>
-                       <h2 className="title">Emergency Needed</h2>
+                       <h2 className="title">Investors</h2>
                    </div>
+                  
                    <div className="row project-slider-two project-items project-style-four">
+                   {PostData.map((postDetail,index)=>{return <div>
                        <div className="col">
                            <div className="project-item">
-                               <div className="thumb" style={{backgroundImage:`url(assets/img/project/project-slider-01.jpg)`}}></div>
-                               <div className="content">
-                                   <div className="cats">
-                                       <a href="#">Covid -19</a>
-                                   </div>
-   
-                                   <div className="author">
-                                       <img src="assets/img/author-thumbs/01.jpg" alt="Thumb"/>
-                                       <a href="#">James W. Barrows</a>
-                                   </div>
-   
-                                   <h5 className="title">
-                                       <a href="project-details.html">Fundraising For The People And Causes You Car About</a>
-                                   </h5>
-                                   <div className="project-stats">
-                                       <div className="stats-value">
-                                           <span className="value-title">Raised of <span className="value">$59,689</span></span>
-                                           <span className="stats-percentage">83%</span>
-                                       </div>
-                                       <div className="stats-bar" data-value="90">
-                                           <div className="bar-line"></div>
-                                       </div>
-                                   </div>
-                                   <span className="date"><i className="far fa-calendar-alt"></i> 25 February 2021</span>
+                             
+                              
+                           <div className="content">
+                           <div className="cats">
+                               <a href="#">{postDetail.round}</a>
+                           </div>
+
+                           <div className="author">
+                               
+                               <a href="#">{postDetail.name}</a>
+                           </div>
+
+                           <h5 className="title">
+                               <a href="project-details.html">{postDetail.curr}</a>
+                           </h5>
+                           <div className="project-stats">
+                               <div className="stats-value">
+                                   <span className="value-title">Raised of <span className="value">{postDetail.min_range}</span></span>
+                                   <span className="stats-percentage">{postDetail.max_range}</span>
+                               </div>
+                               <div className="stats-bar" data-value="90">
+                                   <div className="bar-line"></div>
                                </div>
                            </div>
+                           <span className="date">{postDetail.cat}</span>
                        </div>
-                       <div className="col">
-                           <div className="project-item">
-                               <div className="thumb" style={{backgroundImage: `url(assets/img/project/project-slider-02.jpg)`}}></div>
-                               <div className="content">
-                                   <div className="cats">
-                                       <a href="#">Covid -19</a>
-                                   </div>
-   
-                                   <div className="author">
-                                       <img src="assets/img/author-thumbs/01.jpg" alt="Thumb"/>
-                                       <a href="#">James W. Barrows</a>
-                                   </div>
-   
-                                   <h5 className="title">
-                                       <a href="project-details.html">Fundraising For The People And Causes You Car About</a>
-                                   </h5>
-                                   <div className="project-stats">
-                                       <div className="stats-value">
-                                           <span className="value-title">Raised of <span className="value">$59,689</span></span>
-                                           <span className="stats-percentage">83%</span>
-                                       </div>
-                                       <div className="stats-bar" data-value="90">
-                                           <div className="bar-line"></div>
-                                       </div>
-                                   </div>
-                                   <span className="date"><i className="far fa-calendar-alt"></i> 25 February 2021</span>
                                </div>
                            </div>
-                       </div>
-                       <div className="col">
-                           <div className="project-item">
-                               <div className="thumb" style={{backgroundImage: `url(assets/img/project/project-slider-01.jpg)`}}></div>
-                               <div className="content">
-                                   <div className="cats">
-                                       <a href="#">Covid -19</a>
-                                   </div>
-   
-                                   <div className="author">
-                                       <img src="assets/img/author-thumbs/01.jpg" alt="Thumb"/>
-                                       <a href="#">James W. Barrows</a>
-                                   </div>
-   
-                                   <h5 className="title">
-                                       <a href="project-details.html">Fundraising For The People And Causes You Car About</a>
-                                   </h5>
-                                   <div className="project-stats">
-                                       <div className="stats-value">
-                                           <span className="value-title">Raised of <span className="value">$59,689</span></span>
-                                           <span className="stats-percentage">83%</span>
-                                       </div>
-                                       <div className="stats-bar" data-value="90">
-                                           <div className="bar-line"></div>
-                                       </div>
-                                   </div>
-                                   <span className="date"><i className="far fa-calendar-alt"></i> 25 February 2021</span>
-                               </div>
-                           </div>
-                       </div>
-                       <div className="col">
-                           <div className="project-item">
-                               <div className="thumb" style={{backgroundImage: `url(assets/img/project/project-slider-02.jpg)`}}></div>
-                               <div className="content">
-                                   <div className="cats">
-                                       <a href="#">Covid -19</a>
-                                   </div>
-   
-                                   <div className="author">
-                                       <img src="assets/img/author-thumbs/01.jpg" alt="Thumb"/>
-                                       <a href="#">James W. Barrows</a>
-                                   </div>
-   
-                                   <h5 className="title">
-                                       <a href="project-details.html">Fundraising For The People And Causes You Car About</a>
-                                   </h5>
-                                   <div className="project-stats">
-                                       <div className="stats-value">
-                                           <span className="value-title">Raised of <span className="value">$59,689</span></span>
-                                           <span className="stats-percentage">83%</span>
-                                       </div>
-                                       <div className="stats-bar" data-value="90">
-                                           <div className="bar-line"></div>
-                                       </div>
-                                   </div>
-                                   <span className="date"><i className="far fa-calendar-alt"></i> 25 February 2021</span>
-                               </div>
-                           </div>
-                       </div>
+                       </div>})}
+                     
+
                    </div>
                </div>
            </div>
