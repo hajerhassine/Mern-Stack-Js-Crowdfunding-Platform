@@ -15,12 +15,6 @@ export default class EditExercise extends Component {
         this.onChangeTitle = this.onChangeTitle.bind(this);
         this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
-        this.onChangeModality = this.onChangeModality.bind(this);
-        this.onChangeCategory = this.onChangeCategory.bind(this);
-        this.onChangeSponsors = this.onChangeSponsors.bind(this);
-        this.onChangeParticipant_Number = this.onChangeParticipant_Number.bind(this);
-        this.onChangeFee_Participation = this.onChangeFee_Participation.bind(this);
-        this.onChangeProgram = this.onChangeProgram.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.deleteEvent = this.deleteEvent.bind(this);
 
@@ -28,13 +22,7 @@ export default class EditExercise extends Component {
             // username: '',
             title: '',
             description: '',
-            date: new Date(),
-            modality: '',
-            category: '',
-            sponsors: '',
-            participant_number: '',
-            fee_participation:'',
-            program:'',
+            date: new Date()
             // ,
             // users: []
         }
@@ -48,23 +36,28 @@ export default class EditExercise extends Component {
                     // username: response.data.username,
                     title: response.data.title,
                     description: response.data.description,
-                    date: new Date(response.data.date),
-                    modality: response.data.modality,
-                    category: response.data.category,
-                    sponsors: response.data.sponsors,
-                    participant_number: response.data.participant_number,
-                    fee_participation: response.data.fee_participation,
-                    program: response.data.program,
+                    date: new Date(response.data.date)
                 })
             })
             .catch(function (error) {
                 console.log(error);
             })
 
-     
+        // api_uri = routeGenerator.getURI("users/");
+        // axios.get(api_uri)
+        //     .then(response => {
+        //         this.setState({ users: response.data.map(user => user.username) });
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     })
     }
 
-  
+    // onChangeUsername(e) {
+    //     this.setState({
+    //         username: e.target.value
+    //     });
+    // }
 
     onChangeTitle(e) {
         this.setState({
@@ -84,36 +77,7 @@ export default class EditExercise extends Component {
             date: date
         });
     }
-    onChangeModality(e) {
-        this.setState({
-            modality: e.target.value
-        });
-    }
-    onChangeCategory(e) {
-        this.setState({
-            category: e.target.value
-        });
-    }
-    onChangeSponsors(e) {
-        this.setState({
-            sponsors: e.target.value
-        });
-    }
-    onChangeParticipant_Number(e) {
-        this.setState({
-            participant_number: e.target.value
-        });
-    }
-    onChangeFee_Participation(e) {
-        this.setState({
-            fee_participation: e.target.value
-        });
-    }
-    onChangeProgram(e) {
-        this.setState({
-            program: e.target.value
-        });
-    }
+    
     
     onSubmit(e) {
         e.preventDefault();
@@ -123,12 +87,6 @@ export default class EditExercise extends Component {
             title: this.state.title,
             description: this.state.description,
             date: this.state.date,
-            modality: this.state.modality,
-            category: this.state.category,
-            sponsors: this.state.sponsors,
-            participant_number: this.state.participant_number,
-            fee_participation: this.state.fee_participation,
-            program: this.state.program,
         };
         
         let api_uri = routeGenerator.getURI('events/update/' + this.props.match.params.id);
@@ -145,7 +103,7 @@ export default class EditExercise extends Component {
         axios.delete(api_uri)
             .then(response => { console.log(response.data) });
 
-            window.location = '/listevent';
+        window.location = '/';
     }
     
     render() {
@@ -197,83 +155,7 @@ export default class EditExercise extends Component {
                             />
                         </div>
           </div>
-          <div className="form-group">
-          <label>Modality: </label>
-          <select className="custom-select form-select-sm"   aria-label=".form-select-sm example"required
-                            
-                            value={this.state.modality}
-                            onChange={this.onChangeModality}> 
-                            <option value=""> </option>
-                            <option value="Presential"> Presential</option>
-                            <option value="Online"> Online</option>
-                            
-                          
-
-                          </select>
-          </div>
-        
          
-         
-          <div className="form-group">
-          <label>Category: </label>
-          <select className="custom-select form-select-sm"   aria-label=".form-select-sm example" required
-                            
-                            value={this.state.category}
-                            onChange={this.onChangeCategory}> 
-                            <option value=""> </option>
-                            <option value="Education"> Education</option>
-                            <option value="Commercial"> Commercial</option>
-                            <option value="Art"> Art</option>
-                            <option value="Technlogy"> Technlogy</option>
-                            <option value=" Health"> Health</option>
-                            <option value="Design"> Design</option>
-                            <option value="Agriculture"> Agriculture</option>
-                            <option value="Liberal"> Liberal</option>
-                            
-                          
-
-                          </select>
-          </div>
-
-
-
-          <div className="form-group">
-          <label>Sponsors: </label>
-          <input type="text"
-                            required
-                            className="form-control"
-                            value={this.state.sponsors}
-                            onChange={this.onChangeSponsors}
-                        />
-          </div>
-          <div className="form-group">
-          <label>Participant Number: </label>
-          <input type="text"
-                            required
-                            className="form-control"
-                            value={this.state.participant_number}
-                            onChange={this.onChangeParticipant_Number}
-                        />
-          </div>
-          <div className="form-group">
-          <label>Fee Participation: </label>
-          <input type="text"
-                            required
-                            className="form-control"
-                            value={this.state.fee_participation}
-                            onChange={this.onChangeFee_Participation}
-                        />
-          </div>
-          <div className="form-group">
-          <label>Program: </label>
-          <textarea
-                            required
-                            className="form-control"
-                            value={this.state.program}
-                            onChange={this.onChangeProgram}
-                        />
-          </div>
-
         </div>
         <div className="card-footer text-right">
             <tr>
@@ -286,7 +168,7 @@ export default class EditExercise extends Component {
           <input type="reset" value="Delete" className="btn btn-danger ml-1" onClick={this.deleteEvent}/>
           </td>
           </tr>
-         
+          {/* <button className="btn btn-danger ml-1" onClick={this.deleteEvent}>Delete Event</button> */}
         </div>
       </form>
     </div>

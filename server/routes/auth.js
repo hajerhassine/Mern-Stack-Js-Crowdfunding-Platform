@@ -8,13 +8,10 @@ const {loginInvestor,verify,verified,registerInvestor,updateInvestor,getAllInves
 const{loginCreator,registerCreator,forgotpasswordCreator,resetpasswordCreator,CompleteprofileCreator,updateCreator,getAllCreator,findCreatorById,deleteCreator} = require('../controllers/creator');
 const{loginDoner,getAllDoner,registerDoner,CompleteprofileDoner,updateDoner,findDonerById,DeleteDoner, forgotpasswordDoner,resetpasswordDoner} = require('../controllers/doner');
 const{loginAdmin,registerAdmin} = require('../controllers/admin');
-const{loginOrganizer,registerOrganizer} = require('../controllers/organizer');
 router.route("/register").post(register);
 router.route("/loginInvestor").post(loginInvestor);
-router.route("/loginOrganizer").post(loginOrganizer);
 router.route("/login").post(login);
 router.route("/registerInvestor").post(registerInvestor);
-router.route("/registerOrganizer").post(registerOrganizer);
 router.route("/forgotpassword").post(forgotpassword);
 //router.get("/verify/:userId/uniqueString",verify);
 //router.get("/verified",verified);

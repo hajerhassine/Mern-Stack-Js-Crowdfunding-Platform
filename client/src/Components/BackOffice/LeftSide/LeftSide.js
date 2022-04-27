@@ -37,10 +37,10 @@ class LeftSide extends React.Component{
               <Link to='/ProjectListScreen' className="menu-toggle nav-link has-dropdown">Project</Link>
               </ul>
               <ul className="dropdown">
-              <Link to='/eventcalendar' className="menu-toggle nav-link has-dropdown">Events</Link>
+              <Link to='/listevent' className="menu-toggle nav-link has-dropdown">Events</Link>
               </ul>
               <ul className="dropdown">
-              <Link to='/bankslist"' className="menu-toggle nav-link has-dropdown">Banking Partners</Link>
+              <Link to='/banking' className="menu-toggle nav-link has-dropdown">Banking Partners</Link>
               </ul>
             </li>
            

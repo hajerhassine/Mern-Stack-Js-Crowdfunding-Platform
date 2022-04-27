@@ -9,7 +9,7 @@ const LoginCreator = ({ history }) => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (sessionStorage.getItem("authToken")) {
+    if (localStorage.getItem("authToken")) {
       history.push("/myProfileCreator");
     }
   }, [history]);
@@ -30,7 +30,7 @@ const LoginCreator = ({ history }) => {
         config
       );
       console.log('logged');
-      sessionStorage.setItem("authToken", data.token);
+      localStorage.setItem("authToken", data.token);
 
       history.push("/myProfileCreator");
     } catch (error) {

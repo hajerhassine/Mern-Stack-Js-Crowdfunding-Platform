@@ -1,92 +1,65 @@
-import React, { useEffect , useState} from 'react';
-import axios from 'axios';
-import Footer from '../Footer/Footer'
-import Header from '../Header/Header'
-import { useDispatch, useSelector } from "react-redux";
-import { Link} from "react-router-dom";
+import React, { Component } from "react";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import {FacebookShareButton} from "react-share";
 import {FacebookIcon} from "react-share";
 import {WhatsappIcon} from "react-share"; 
 import {WhatsappShareButton} from "react-share";
+import { useDispatch, useSelector } from "react-redux";
 
-import ReactPaginate from "react-paginate";
-const Events= ({ match }) => {
-	const keyword = match.params.keyword
-	const pageNumber = match.params.pageNumber || 1
-	const dispatch = useDispatch()
-const [events, setEvent] = useState([]);
-// const [currentPage, setCurrentPage] = useState(1);
-// const [eventsPerPage] = useState(2);
-const event = useSelector(state => state.event.event);
-const fetchEvents = async (currentPage) => {
-  const res = await fetch(
-  event
-  );
-  const data = await res.json();
-  return data;
-};
 
-const handlePageClick = async (data) => {
-  console.log(data.selected);
 
-  let currentPage = event.selected + 1;
-
-  const commentsFormServer = await fetchEvents(currentPage);
-
-  setEvent(commentsFormServer);
-  // scroll to the top
-  //window.scrollTo(0, 0)
-};
-  console.log(event);
-  const shareUrl = 'https://www.youtube.com/watch?v=9WzIACv_mxs';
-  return (
-    <>
-    <Header/>
-   
-    <section className="event-area section-gap-extra-bottom">
-    
+   function Event(props){
+    const shareUrl = 'https://www.youtube.com/watch?v=9WzIACv_mxs';
+         return(
+             
+           <div>
+               <Header/>
+	        <section className="page-title-area">
+            
+		        <div className="container" >
+               
+			        <div className="row align-items-center justify-content-between"  >
+				    <div className="col-lg-8">
+					<h1 className="page-title" >Events</h1>
+				    </div>
+				<div className="col-auto">
+					<ul className="page-breadcrumb">
+						<li><a href="index.html">Home</a></li>
+						<li>Events</li>
+					</ul>
+				</div>
+			         </div>
+		        </div>
+	        </section>
+            <section className="event-area section-gap-extra-bottom">
                     <div className="container">
-                    <div className="event-items">
-                    <div className="single-event-item mb-30 wow fadeInUp" data-wow-delay="0s">
-                           
-                    <div className="event-button" >
-                                <Link className="nav-link" to={`/stream`}>  <a href="project-details.html" className="main-btn bordered-btn">
-                                    Navigate to Streaming <i className="far fa-arrow-right"></i></a></Link>
-                          
-                                </div>
-                                <div className="event-button" >
-                                <Link className="nav-link" to={`/SendStreamId`}>  <a href="project-details.html" className="main-btn bordered-btn">
-                                    Send Stream Id <i className="far fa-arrow-right"></i></a></Link>
-                                    </div>
-                                </div>
-                                
-                                </div>
-                    {event.map((event ,id)=>(
-                        <div className="event-items" key = {id}>
+                        <div className="event-items">
                             <div className="single-event-item mb-30 wow fadeInUp" data-wow-delay="0s">
-                            <div className="event-thumb">
-                            <img src={`/assets/img/project/${event.eventImage}`} alt="Image"/>
+                                <div className="event-thumb">
+                                    <img src="assets/img/event/01.jpg" alt="Image"/>
                                 </div>
-                                
                                 <div className="event-content">
                                     <ul className="meta">
                                         <li>
-                                            <a href="project-details.html" className="category">{event.category}</a>
+                                            <a  className="category">Education</a>
                                         </li>
-                                       
+                                        <li>
+                                            <a  className="date"><i className="fal fa-map-marker-alt"></i>Esprit </a>
+                                        </li>
                                     </ul>
-                                    <h4 className="event-title"><a href="#">{event.title}</a></h4>
+                                    <h4 className="event-title"><a href="#">Pegasus Road</a></h4>
                                     <p>
-                                    {event.description}
+                                    As Chris Grosser once said : "Opportunities Don't Happen. You Create Them”, and as the leaders of a newer 
+                                    and improved tomorrow, we are pleased to announce that this Wednesday, March 30th at 10:30 A.M, our Student 
+                                    Branch is hosting our 1st Annual Pegasus Road Conference.
                                     </p>
                                 </div>
-                                
+                        
                                 <div className="event-button">
-                                <Link className="nav-link" to={`/EventsDetails/${event._id}`}>  <a href="project-details.html" className="main-btn bordered-btn">
-                                    More Details <i className="far fa-arrow-right"></i></a></Link>
-                          
-                                </div>
-                                <div className="event-button">
+                                    <a href="/EventDetails" className="main-btn bordered-btn">For more details <i className="far fa-arrow-right"></i></a>
+                                </div>   
+                 <div className="event-button">
                  <FacebookShareButton
           url={shareUrl}
           quote={"heyy join a video streaming noww !!"} hashtag="#React"
@@ -103,34 +76,36 @@ const handlePageClick = async (data) => {
                                 </div> 
                                 
                             </div>
-    
-                            
+                          
+                            {/* <div className="single-event-item mb-30 wow fadeInUp" data-wow-delay="0.2s">
+                                <div className="event-thumb">
+                                    <img src="assets/img/event/03.jpg" alt="Image"/>
+                                </div>
+                                <div className="event-content">
+                                    <ul className="meta">
+                                        <li>
+                                            <a href="project-details.html" className="category">Technology</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" className="date"><i className="fal fa-map-marker-alt"></i>25 Main Street ,New York</a>
+                                        </li>
+                                    </ul>
+                                    <h4 className="event-title"><a href="#">App Development Hawaiian Airlines</a></h4>
+                                    <p>
+                                        Sed ut perspiciatis unde omnis iste natus error voluptatem accus laudantium totam rem aperiam eaque
+                                    </p>
+                                </div>
+                                <div className="event-button">
+                                    <a href="project-details.html" className="main-btn bordered-btn">Join Event <i className="far fa-arrow-right"></i></a>
+                                </div>
+                            </div> */}
+                           
+                           
+                           
+                            <div className="view-more-btn text-center mt-80">
+                                <a  className="main-btn bordered-btn">View More Events <i className="far fa-arrow-right"></i></a>
+                            </div>
                         </div>
-                        ))}
-                        {/* <Paginate 
-            pages={pages}
-            page={page}
-            keyword={keyword ? keyword : ''}
-          /> */}
-                           <ReactPaginate
-        previousLabel={"previous"}
-        nextLabel={"next"}
-        breakLabel={"..."}
-        pageCount={4}
-        marginPagesDisplayed={4}
-        pageRangeDisplayed={4}
-        onPageChange={handlePageClick}
-        containerClassName={"pagination justify-content-center"}
-        pageClassName={"page-item"}
-        pageLinkClassName={"page-link"}
-        previousClassName={"page-item"}
-        previousLinkClassName={"page-link"}
-        nextClassName={"page-item"}
-        nextLinkClassName={"page-link"}
-        breakClassName={"page-item"}
-        breakLinkClassName={"page-link"}
-        activeClassName={"active"}
-      />
                     </div>
                 
                 <script src="assets/js/jquery.min.js"></script>
@@ -147,9 +122,9 @@ const handlePageClick = async (data) => {
                 
                 <script src="assets/js/main.js"></script>
                 </section>
-                <Footer/>
-    </>
-  )
+            <Footer/>
+    </div>
+    )
 }
 
-export default Events
+    export default Event;

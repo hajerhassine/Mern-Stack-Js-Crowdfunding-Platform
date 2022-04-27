@@ -7,6 +7,7 @@ import HomeCreator from "./Components/Frontend/Home/HomeCreator";
 import ClientRoute from "./Routes/ClientRoute";
 import { BrowserRouter as Router, Routes,Route, Switch } from "react-router-dom";
 import FAQ from './Components/Frontend/FAQ/FAQ';
+
 import Header from './Components/Frontend/Header/Header';
 import Project from './Components/Frontend/Project/Project';
 import Finance from './Components/Frontend/Finance/Finance';
@@ -25,7 +26,6 @@ import EventDetails from './Components/Frontend/Event/EventDetails';
 import ProjectDetails from './Components/Frontend/Project/ProjectDetails';
 import ProjectListScreen from './Components/BackOffice/Project/projectListScreen';
 import Addproject from './Components/Frontend/Project/Addproject';
-import indexstream from './pages/Home/indexstream';
 //import Streaming from './Components/Frontend/Streaming/index';
 // Screens
 import PrivateScreen from "./Components/screens/PrivateScreen";
@@ -53,54 +53,41 @@ import QuestionDetail from './Components/BackOffice/FAQ/QuestionDetail';
 import Converter from './Components/Frontend/Converter/Converter';
 import { getBankingPartners } from './Redux/slices/bankingpartners';
 import Partners from './Components/Frontend/Partners/Partners';
-import PartnersDetails from './Components/Frontend/Partners/PartnersDetails'
+import banksback from './Components/BankingPartners/BankingPartners';
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector  } from "react-redux";
 import EventCreator from './Components/Frontend/Event/EventCreator';
 import EventCreatorDetail from './Components/Frontend/Event/EventCreatorDetail';
-import LoginOrganizer from './Components/BackOffice/Login/LoginOrganizer';
-//Banks
-import AddBankPartner from './Components/Banks/AddBankPartner';
-import BanksPartnersList from './Components/Banks/BanksPartnersList';
-import EditBankPartner from './Components/Banks/EditBankPartner';
-import Request from './Components/Frontend/Partners/Request';
-import { getEvents } from './Redux/slices/events';
-import EventsDetails from './Components/Frontend/Event/EventsDetails';
-//ContactUs
-import ContactUs from './Components/Frontend/ContactUs/ContactUs';
-import SendStreamId from './Components/Frontend/ContactUs/SendStreamId';
 import Chats from './Components/Frontend/Chats.js/Chats';
-import KommunicateChat from './chat';
-
+import Cbot from './Components/Frontend/chatbot/chatbot';
+import Icon from './Components/Frontend/chatbot/Icon';
+//import KommunicateChat from './chat';
 function App() {
+
+
   const dispatch = useDispatch();
 useEffect(() => {
 
   dispatch(getBankingPartners());
   
 }, [dispatch]);
-useEffect(() => {
-
-  dispatch(getEvents());
-  
-}, [dispatch]);
   return (
+  
+  
     <Router>
     <Switch>
     <PrivateRoute exact path="/" component={PrivateScreen} />
-    <ClientRoute path="/ProjectDetails/:id" component={ProjectDetails} />
-    <ClientRoute path="/ContactUs" component={ContactUs} />
-    <ClientRoute path="/SendStreamId" component={SendStreamId} />
+     
       <ClientRoute path="/Home" component={Home} />
       <ClientRoute path="/HomeDoner" component={HomeDoner} />
       <ClientRoute exact path="/HomeCreator" component={HomeCreator} />
       <ClientRoute path="/Event" component={Event} />
       <ClientRoute path="/FAQ" component={FAQ} />
-      <ClientRoute exact path="/Chats" component={Chats}/>
+     
       <ClientRoute path="/project" component={Project} />
       <ClientRoute path="/bankings" component={Finance} />
       <ClientRoute path="/Event" component={Event} />
-      <ClientRoute path="/EventsDetails/:id" component={EventsDetails} />
+      <ClientRoute path="/EventDetails" component={EventDetails} />
       <ClientRoute path="/EventCreator" component={EventCreator} />
       <ClientRoute path="/EventDetailsCreator" component={EventCreatorDetail} />
       <ClientRoute exact path="/loginDoner" component={LoginDonerScreen} />
@@ -112,6 +99,8 @@ useEffect(() => {
       <ClientRoute exact path="/myProfile" component={ProfileInvestor} />
       <ClientRoute exact path="/myProfileDoner" component={ProfileDoner} />
       <ClientRoute exact path="/myProfileCreator" component={ProfileCreator} />
+      <ClientRoute exact path="/Chats" component={Chats}/>
+      <ClientRoute exact path="/cb" component={Cbot}/>
       <ClientRoute
         exact
         path="/forgotpassword"
@@ -124,25 +113,18 @@ useEffect(() => {
       />
       <ClientRoute path="/converter" component={Converter} />
       <ClientRoute path="/Partners" component={Partners} />
-      <ClientRoute path="/PartnersDetails/:id" component={PartnersDetails} />
-
-
-      
+      <ClientRoute path="/ProjectDetails/:id" component={ProjectDetails} />
       <ClientRoute path="/addproject" component={Addproject} />
       <ClientRoute path='/search/:keyword' component={Project} />
-      <ClientRoute exact path='/search/:keyword/page/:pageNumber' component={Project} />
-      <ClientRoute exact path="/project" component={Project} />
-      <ClientRoute exact path="/stream" component={indexstream} />
-     
-      <ClientRoute exact path="/project/search/:keyword/page/:pageNumber" component={Project} />
+      <ClientRoute path="/project" component={Project} />
       <AdminRoute exact path="/admin" component={HomeBack} />
       <AdminRoute exact path="/login" component={Login} />
-      <AdminRoute exact path="/loginOrganizer" component={LoginOrganizer} />
       <AdminRoute exact path="/List" component={List} />
       <AdminRoute exact path="/Form" component={Form} />
       <AdminRoute exact path="/investors" component={ContentInvestor} />
       <AdminRoute exact path="/creators" component={ContentCreator} />
       <AdminRoute exact path="/doners" component={ContentDoner} />
+      <AdminRoute exact path="/banking" component={banksback} />
       <Route path="/CategoryQt"  component={Category} />
       <Route path="/Questions" exact component={Questions} />
       <Route path="/Questions/:id"  exact component={QuestionDetail} />
@@ -150,20 +132,15 @@ useEffect(() => {
       <AdminRoute exact path="/listevent" component={ListEvent} />
       <AdminRoute exact path="/createevent" component={CreateEvent} />
       <AdminRoute exact path="/edit/event/:id" component={EditEvent} />
-      <AdminRoute exact path="/bankslist" component={BanksPartnersList} />
-      <AdminRoute exact path="/addbankspartners" component={AddBankPartner} />
-      <AdminRoute exact path="/editbankpartner/:id" component={EditBankPartner} />
-      
       <AdminRoute exact path="/ProjectListScreen" component={ProjectListScreen} />
-      <AdminRoute exact path="/ProjectListScreen/:pageNumber" component={ProjectListScreen} />
-      <ClientRoute exact path='/page/:pageNumber' component={Project} />
       
     </Switch>
-
+    <Icon/>
   </Router>
-
+   
   );
-  <KommunicateChat />
+
+
 }
 
 export default App;

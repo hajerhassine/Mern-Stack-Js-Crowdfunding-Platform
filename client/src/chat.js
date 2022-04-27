@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/*import React, { Component } from 'react';
 
 class KommunicateChat extends Component {
     constructor(props) {
@@ -24,4 +24,4 @@ class KommunicateChat extends Component {
     }
 }
 
-export default KommunicateChat;
+export default KommunicateChat; */

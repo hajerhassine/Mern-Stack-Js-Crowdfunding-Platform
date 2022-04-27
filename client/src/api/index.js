@@ -15,6 +15,4 @@ export const updateBankingPartners = (id, updatedBankingPartners) => axios.patch
 export const deleteBankingPartners = (id) => axios.delete(`${url}/bankingpartners/${id}`);
 
 
-//events
 
-export const fetchEvents = ()=> axios.get(`${url}/api/events`);

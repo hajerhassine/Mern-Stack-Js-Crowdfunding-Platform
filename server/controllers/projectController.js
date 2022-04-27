@@ -5,8 +5,6 @@ const project =require ('../models/projectmodel.js')
 // @route   GET /api/projects
 // @access  Public
 const getprojects = asyncHandler(async (req, res) => {
-  const pageSize = 3
-  const page = Number(req.query.pageNumber) || 1
   const keyword = req.query.keyword
   ? {
       name: {
@@ -15,12 +13,9 @@ const getprojects = asyncHandler(async (req, res) => {
       },
     }
   : {}
-  const count = await project.countDocuments({ ...keyword })
-  const projects = await project.find({ ...keyword })
-    .limit(pageSize)
-    .skip(pageSize * (page - 1))
 
-  res.json({ projects, page, pages: Math.ceil(count / pageSize) })
+const projects = await project.find({ ...keyword })
+  res.json(projects)
 })
 // @desc    Fetch single project
 // @route   GET /api/projects/:id
@@ -58,21 +53,16 @@ const createproject = asyncHandler(async (req, res) => {
     price,
     description,
      image,
-     username,
-    Userid,
+    // brand,
      category,
-     video,
      p,
-     Position
   } = req.body
   const projects = new project({
     name: name,
     price: price,
-    creator:Userid,
+   // user: req.user._id,
     image: image,
-    video:video,
-    creatorname: username,
-    Position: Position,
+    
     category: category,
     countInStock: 0,
     numReviews: 0,
@@ -116,47 +106,6 @@ const updateproject = asyncHandler(async (req, res) => {
     res.status(404)
     throw new Error('project not found')
   }
-}
-)
-// @desc    Create new review
-// @route   POST /api/projects/:id/reviews
-// @access  Private
-const createprojectReview = asyncHandler(async (req, res) => {
-  const { rating, comment ,username ,Userid } = req.body
-
-  const projects = await project.findById(req.params.id)
-
-  if (projects) {
-    const alreadyReviewed = projects.reviews.find(
-      (r) => r.creator.toString() === Userid.toString()
-    )
-
-    if (alreadyReviewed) {
-      res.status(400)
-      throw new Error('project already reviewed')
-    }
-
-    const review = {
-      name: username,
-      rating: Number(rating),
-      comment :comment,
-      creator: Userid ,
-    }
-
-    projects.reviews.push(review)
-
-    projects.numReviews = projects.reviews.length
-
-    projects.rating =
-      projects.reviews.reduce((acc, item) => item.rating + acc, 0) /
-      projects.reviews.length
-
-    await projects.save()
-    res.status(201).json({ message: 'Review added' })
-  } else {
-    res.status(404)
-    throw new Error('project not found')
-  }
 })
 
 module.exports = {
@@ -165,5 +114,4 @@ module.exports = {
   deleteproject,
   createproject,
   updateproject,
-  createprojectReview,
 }

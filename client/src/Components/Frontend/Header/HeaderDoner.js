@@ -5,7 +5,7 @@ import { useState } from "react";
 
 class HeaderDoner extends React.Component{
     logout() {
-        sessionStorage.clear();
+        localStorage.clear();
           
     }
   
@@ -77,10 +77,7 @@ class HeaderDoner extends React.Component{
                                            </ul>
                                       
                                            <li><Link to="/FAQ">FAQ</Link></li>
-                                           <li >
-                                           <Link to="/ContactUs">Contact</Link>
-                                            
-                                           </li>
+                                       <li><a href="contact.html">Contact</a></li>
                                    </ul>
         
                                </div>

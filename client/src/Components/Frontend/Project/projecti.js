@@ -31,19 +31,15 @@ const Projecti = ({ project }) => {
 <>
 <Link to={`/ProjectDetails/${project._id}`}>
     
-                           <div className="thumb"style={{backgroundImage: `url('/assets/img/project/${project.image}')`}}></div>
+                           <div className="thumb"style={{backgroundImage: `url('${project.image}')`}}></div>
                            <div className="content">
                                <div className="cats">
                                    <a >{project.category}</a>
                                </div>
-                               <div class="author">
-								<img src={`/assets/img/project/user.png`} alt="Thumb"/>
-								<a href="#">{project.creatorname}</a>
-							</div>
                                <div className="author">
                                    
                                    <Rating
-                                   value={project.rating} 
+                                   value={project.rating}
                                    text={`${project.numReviews} reviews`}
                                    />
 
@@ -61,7 +57,7 @@ const Projecti = ({ project }) => {
                                     <div className="bar-line" style={{width: `${project.p}%`}} ></div>
                                    </div>
                                </div>
-                               <span className="date"><i className="far fa-calendar-alt"></i> {project.createdAt.substring(0, 10)}</span>
+                               <span className="date"><i className="far fa-calendar-alt"></i> 25 February 2021</span>
                            </div>
 
                            </Link>

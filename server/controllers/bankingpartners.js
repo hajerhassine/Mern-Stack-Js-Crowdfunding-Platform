@@ -28,9 +28,9 @@ const bankingpartners = require( '../models/bankingpartners.js');
 }
 
  const createBankingPartners = async (req, res) => {
-    const { bank_name, description ,offer , email  , bankImage } = req.body;
+    const { bank_name, description } = req.body;
  
-    const newbankingpartner = new bankingpartners({ bank_name, description  , offer , email , bankImage })
+    const newbankingpartner = new bankingpartners({ bank_name, description })
 
     try {
         await newbankingpartner.save();
@@ -43,11 +43,11 @@ const bankingpartners = require( '../models/bankingpartners.js');
 
  const updateBankingPartners = async (req, res) => {
     const { id } = req.params;
-    const { bank_name, description , offer , email  , bankImage  } = req.body;
+    const { bank_name, description  } = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const updateBankingPartners = { bank_name, description  , offer , email , bankImage  , _id: id };
+    const updateBankingPartners = { bank_name, description , _id: id };
 
     await bankingpartners.findByIdAndUpdate(id, updateBankingPartners, { new: true });
 
