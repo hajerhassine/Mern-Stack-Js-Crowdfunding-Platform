@@ -61,7 +61,9 @@ class HeaderCreator extends React.Component{
                                <li >
                                <Link >Banks</Link>
                                    <ul className="submenu">
+                                   <li> <Link to="/BanksOffers">Banks Offers</Link></li>
                                        <li> <Link to="/Partners">Our partners</Link></li>
+                                       
                                        <li><Link to="/converter">converter</Link></li>
                                       
                                    </ul>
@@ -87,7 +89,8 @@ class HeaderCreator extends React.Component{
                                    </ul>
                               
                                    <li><Link to="/FAQ">FAQ</Link></li>
-                               <li><a href="contact.html">Contact</a></li>
+                                   <li><Link to="/ContactUs">Contact</Link></li>
+                                   
                            </ul>
 
                        </div>

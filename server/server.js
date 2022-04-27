@@ -1,6 +1,7 @@
 'use strict';
 
 require("dotenv").config({path: "./config.env"});
+
 const socket = require('socket.io');
 var QuestionRouter = require('./routes/routerquestions');
 var CategoriesRouter = require('./routes/routercategories');
@@ -16,7 +17,14 @@ const app = express();
 var bodyParser = require('body-parser')
 const projectRoutes = require( './routes/projectRoutes.js');
 const path =require( 'path');
-const uploadRoutes = require('./routes/uploadRoutes.js');
+const uploadRoutes = require('./routes/uploadRoutes.js'); 
+//rania
+const banksuploadRoutes = require('./routes/banksuploadsRoutes.js');
+// const scrapperRoutes = require('./routes');
+const scraper=require('./routes/scraper.js')
+
+
+
 //connect DB 
 connectDB();
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -30,8 +38,15 @@ app.use("/api", require("./routes/routercategories"));
 app.use("/api", require("./routes/routerquestions"));
 app.use("/private",require("./routes/private"));
 app.use('/bankingpartners', bankingRoutes);
+app.use('/banksoffers',scraper)
+
 app.use('/api/projects', projectRoutes)
 app.use('/api/upload', uploadRoutes)
+
+//rania photo 
+app.use('/banks/upload',banksuploadRoutes)
+
+
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => console.log(`server running on port ${PORT}`));
@@ -42,40 +57,13 @@ process.on("unhandledRejection",(err,promise)=>{
 
 
 // socket setup
-/*const io = socket(server);
+const io = socket(server);
 let interval;
 io.on('connection', socket => {
     console.log(`socket connected, id = ${socket.id}`);
     if (interval) clearInterval(interval);
     interval = setInterval(() => getApiAndEmit(socket), 1000);
-})*/
-
-//chat process
-const io = require('socket.io')(server, {
-    cors: {
-      origin: '*',
-      credentials:true
-    }
-  });
-  io.on('connection',(socket)=> {
-    console.log(socket.id);
-  
-    //recieving an event
-    socket.on('join_room',(data)=> {
-        socket.join(data)
-        console.log("User Joined Room:" +data)
-    })
-   //create an event (2events exactly here )
-    socket.on("send_message", (data)=> {
-        console.log(data);
-        socket.to(data.room).emit("recieve_message", data.content);
-    })
-  
-    socket.on('disconnect',()=>{
-        console.log('USER DISCONNECTED')
-    })
-  })
-
+})
 
 const getApiAndEmit = async socket => {
     try {

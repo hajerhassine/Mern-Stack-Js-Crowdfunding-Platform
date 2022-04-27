@@ -1,17 +1,23 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-import cors from 'cors';
 
-import eventRoutes from './routes/events.js';
 
-const app = express();
+const express = require('express');
+const mongoose =require("mongoose");
+const bodyParser =require("body-parser");
+const cors =require("cors");
+const bankingRoutes =require('./routes/bankingpartners.js')
 
-app.use(bodyParser.json({ limit: '30mb', extended: true }))
-app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
-app.use(cors());
+var app = express();
+app.use(cors({origin:"http://localhost:3000"}));
+app.use(express.json());
 
-app.use('/events', eventRoutes);
+//routes
+app.use('/bankingpartners', bankingRoutes);
+
+
+app.use(bodyParser.json({limit :"30mb" , extended : true}));
+app.use(bodyParser.urlencoded({limit :"30mb" , extended : true}));
+
+
 
 const CONNECTION_URL = 'mongodb+srv://lancini:lancini2022@lancinicluster.pnavc.mongodb.net/lanciniDatabase';
 const PORT = process.env.PORT|| 5000;

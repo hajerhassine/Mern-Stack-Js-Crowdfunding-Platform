@@ -7,7 +7,6 @@ import HomeCreator from "./Components/Frontend/Home/HomeCreator";
 import ClientRoute from "./Routes/ClientRoute";
 import { BrowserRouter as Router, Routes,Route, Switch } from "react-router-dom";
 import FAQ from './Components/Frontend/FAQ/FAQ';
-
 import Header from './Components/Frontend/Header/Header';
 import Project from './Components/Frontend/Project/Project';
 import Finance from './Components/Frontend/Finance/Finance';
@@ -53,18 +52,26 @@ import QuestionDetail from './Components/BackOffice/FAQ/QuestionDetail';
 import Converter from './Components/Frontend/Converter/Converter';
 import { getBankingPartners } from './Redux/slices/bankingpartners';
 import Partners from './Components/Frontend/Partners/Partners';
-import banksback from './Components/BankingPartners/BankingPartners';
+import PartnersDetails from './Components/Frontend/Partners/PartnersDetails'
+import Map from './Components/Frontend/ContactUs/Map'
+// import banksback from './Components/BankingPartners/BankingPartners';
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector  } from "react-redux";
 import EventCreator from './Components/Frontend/Event/EventCreator';
 import EventCreatorDetail from './Components/Frontend/Event/EventCreatorDetail';
-import Chats from './Components/Frontend/Chats.js/Chats';
-import Cbot from './Components/Frontend/chatbot/chatbot';
-import Icon from './Components/Frontend/chatbot/Icon';
-//import KommunicateChat from './chat';
+//Banks
+import AddBankPartner from './Components/Banks/AddBankPartner';
+import BanksPartnersList from './Components/Banks/BanksPartnersList';
+import EditBankPartner from './Components/Banks/EditBankPartner';
+import Request from './Components/Frontend/Partners/Request';
+//ContactUs
+import ContactUs from './Components/Frontend/ContactUs/ContactUs';
+//Banks Offers
+import BanksOffers from './Components/Frontend/BanksOffers/BanksOffers';
+
+
+
 function App() {
-
-
   const dispatch = useDispatch();
 useEffect(() => {
 
@@ -72,18 +79,16 @@ useEffect(() => {
   
 }, [dispatch]);
   return (
-  
-  
     <Router>
     <Switch>
     <PrivateRoute exact path="/" component={PrivateScreen} />
      
       <ClientRoute path="/Home" component={Home} />
+      <ClientRoute path="/Map" component={Map} />
       <ClientRoute path="/HomeDoner" component={HomeDoner} />
       <ClientRoute exact path="/HomeCreator" component={HomeCreator} />
       <ClientRoute path="/Event" component={Event} />
       <ClientRoute path="/FAQ" component={FAQ} />
-     
       <ClientRoute path="/project" component={Project} />
       <ClientRoute path="/bankings" component={Finance} />
       <ClientRoute path="/Event" component={Event} />
@@ -99,8 +104,6 @@ useEffect(() => {
       <ClientRoute exact path="/myProfile" component={ProfileInvestor} />
       <ClientRoute exact path="/myProfileDoner" component={ProfileDoner} />
       <ClientRoute exact path="/myProfileCreator" component={ProfileCreator} />
-      <ClientRoute exact path="/Chats" component={Chats}/>
-      <ClientRoute exact path="/cb" component={Cbot}/>
       <ClientRoute
         exact
         path="/forgotpassword"
@@ -111,9 +114,14 @@ useEffect(() => {
         path="/passwordreset/:resetToken"
         component={ResetPasswordScreen}
       />
+      {/* contactsus */}
+      <ClientRoute path="/ContactUs" component={ContactUs} />
+      <ClientRoute path="/BanksOffers" component={BanksOffers} />
       <ClientRoute path="/converter" component={Converter} />
       <ClientRoute path="/Partners" component={Partners} />
+      <ClientRoute path="/PartnersDetails/:id" component={PartnersDetails} />
       <ClientRoute path="/ProjectDetails/:id" component={ProjectDetails} />
+      <ClientRoute path="/Request" component={Request} />
       <ClientRoute path="/addproject" component={Addproject} />
       <ClientRoute path='/search/:keyword' component={Project} />
       <ClientRoute path="/project" component={Project} />
@@ -124,7 +132,13 @@ useEffect(() => {
       <AdminRoute exact path="/investors" component={ContentInvestor} />
       <AdminRoute exact path="/creators" component={ContentCreator} />
       <AdminRoute exact path="/doners" component={ContentDoner} />
-      <AdminRoute exact path="/banking" component={banksback} />
+      {/* <AdminRoute exact path="/banking" component={banksback} /> */}
+
+      {/* Banks */}
+      <AdminRoute exact path="/bankslist" component={BanksPartnersList} />
+      <AdminRoute exact path="/addbankspartners" component={AddBankPartner} />
+      <AdminRoute exact path="/editbankpartner/:id" component={EditBankPartner} />
+
       <Route path="/CategoryQt"  component={Category} />
       <Route path="/Questions" exact component={Questions} />
       <Route path="/Questions/:id"  exact component={QuestionDetail} />
@@ -135,12 +149,8 @@ useEffect(() => {
       <AdminRoute exact path="/ProjectListScreen" component={ProjectListScreen} />
       
     </Switch>
-    <Icon/>
   </Router>
-   
   );
-
-
 }
 
 export default App;

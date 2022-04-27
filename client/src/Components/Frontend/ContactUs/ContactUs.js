@@ -2,6 +2,7 @@ import React, { Component, useRef }from 'react'
 import Footer from '../Footer/Footer'
 import HeaderCreator from '../Header/HeaderCreator'
 import emailjs from '@emailjs/browser';
+import Quotes from './Quotes';
 
 class  ContactUs  extends Component{
 
@@ -54,7 +55,8 @@ class  ContactUs  extends Component{
            
             <div className="row align-items-center justify-content-center">
                 <div className="col-lx-4 col-lg-5 col-sm-10">
-                    <div className="contact-info-text mb-md-70">
+                    <Quotes></Quotes>
+                    {/* <div className="contact-info-text mb-md-70">
                         <div className="common-heading mb-30">
                             <span className="tagline">
                                 <i className="fas fa-plus"></i> Donate Projects
@@ -66,7 +68,7 @@ class  ContactUs  extends Component{
                             Sedut perspiciatis unde omnis natus voluptatem accusantium dolore dantiumy totam apeam eaquey quaventore veritatis architecto beatae.
                         </p>
                         <a href="events.html" className="main-btn mt-35">Get Free Quote <i className="far fa-arrow-right"></i></a>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="col-xl-6 col-lg-7 offset-xl-1">
                     <div className="contact-info-boxes">

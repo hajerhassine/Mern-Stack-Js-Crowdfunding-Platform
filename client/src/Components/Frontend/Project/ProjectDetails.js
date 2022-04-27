@@ -2,6 +2,10 @@ import React, {  useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import {FacebookShareButton} from "react-share";
+import {FacebookIcon} from "react-share";
+import {WhatsappIcon} from "react-share"; 
+import {WhatsappShareButton} from "react-share";
 
 import { listprojectDetails } from "./../../../actions/projectActions";
 
@@ -13,6 +17,7 @@ const ProjectDetails = ({ match }) => {
 	useEffect(() => {
 		dispatch(listprojectDetails(match.params.id))
 	  }, [dispatch, match])
+	  const shareUrl = 'https://www.youtube.com/watch?v=9WzIACv_mxs';
 return( 
         <>
             
@@ -71,6 +76,19 @@ return(
 								<span class="info-title">Days Left</span>
 							</div>
 						</div>
+						<FacebookShareButton
+          url={shareUrl}
+          quote={"heyy join a video streaming noww !!"} hashtag="#React"
+        >
+          <FacebookIcon size={40} round={true} />
+        </FacebookShareButton>
+                 <WhatsappShareButton
+          url={shareUrl}
+          quote={'Title or jo bhi aapko likhna ho'}
+          hashtag={'#portfolio...'}
+        >
+          <WhatsappIcon size={40} round={true} />
+        </WhatsappShareButton>
 						<div class="project-raised clearfix">
 							<div class="d-flex align-items-center justify-content-between">
 								<div class="raised-label">Raised of {project.price}</div>
