@@ -5,7 +5,10 @@ import { useState } from "react";
 
 class HeaderCreator extends React.Component{
  
- 
+    logout() {
+        sessionStorage.clear();
+          
+    }
     render(){
         return(
         <div>
@@ -92,7 +95,7 @@ class HeaderCreator extends React.Component{
 
                        </div>
                        <div className="navbar-extra d-flex align-items-center">
-                       <Link to='/loginCreator' className="main-btn nav-btn d-none d-sm-inline-block" >LOGOUT</Link>
+                       <Link to='/loginCreator' className="main-btn nav-btn d-none d-sm-inline-block" onClick={this.logout()}>LOGOUT</Link>
                            <a href="#" className="nav-toggler">
                                <span></span>
                            </a>

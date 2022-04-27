@@ -4,7 +4,10 @@ import { useState } from "react";
 
 
 class Header extends React.Component{
-  
+    logout() {
+        sessionStorage.clear();
+          
+    }
 
     render(){
       
@@ -73,7 +76,7 @@ class Header extends React.Component{
                            </ul>
                        </div>
                        <div className="navbar-extra d-flex align-items-center">
-                       <Link to='/loginInvestor' className="main-btn nav-btn d-none d-sm-inline-block" >LOGOUT</Link>
+                       <Link to='/loginInvestor' className="main-btn nav-btn d-none d-sm-inline-block" onClick={this.logout()}>LOGOUT</Link>
                        
                            <a href="#" className="nav-toggler">
                                <span></span>

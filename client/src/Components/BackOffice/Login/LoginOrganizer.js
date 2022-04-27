@@ -10,7 +10,7 @@ const LoginOrganizer = ({ history }) => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (sessionStorage.getItem("authToken")) {
+    if (localStorage.getItem("authToken")) {
       history.push("/loginOrganizer");
     }
   }, [history]);
@@ -31,7 +31,7 @@ const LoginOrganizer = ({ history }) => {
         config
       );
       console.log('logged');
-      sessionStorage.setItem("authToken", data.token);
+      localStorage.setItem("authToken", data.token);
 
       history.push("/admin");
     } catch (error) {

@@ -7,9 +7,9 @@ const LoginInvestor = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  sessionStorage.clear();
+
   useEffect(() => {
-    if (sessionStorage.getItem("authToken")) {
+    if (localStorage.getItem("authToken")) {
       history.push("/");
     }
   }, [history]);
@@ -30,7 +30,7 @@ const LoginInvestor = ({ history }) => {
         config
       );
       console.log('logged');
-      sessionStorage.setItem("authToken", data.token);
+      localStorage.setItem("authToken", data.token);
 
       history.push("/myProfile");
     } catch (error) {

@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Routes,Route, Switch } from "react-router-dom"
 import FAQ from './Components/Frontend/FAQ/FAQ';
 import Header from './Components/Frontend/Header/Header';
 import Project from './Components/Frontend/Project/Project';
-
 import Finance from './Components/Frontend/Finance/Finance';
 import Login from './Components/BackOffice/Login/Login';
 import AdminRoute from './Routes/AdminRoute';
@@ -26,6 +25,7 @@ import EventDetails from './Components/Frontend/Event/EventDetails';
 import ProjectDetails from './Components/Frontend/Project/ProjectDetails';
 import ProjectListScreen from './Components/BackOffice/Project/projectListScreen';
 import Addproject from './Components/Frontend/Project/Addproject';
+import indexstream from './pages/Home/indexstream';
 //import Streaming from './Components/Frontend/Streaming/index';
 // Screens
 import PrivateScreen from "./Components/screens/PrivateScreen";
@@ -68,6 +68,7 @@ import { getEvents } from './Redux/slices/events';
 import EventsDetails from './Components/Frontend/Event/EventsDetails';
 //ContactUs
 import ContactUs from './Components/Frontend/ContactUs/ContactUs';
+import SendStreamId from './Components/Frontend/ContactUs/SendStreamId';
 import Chats from './Components/Frontend/Chats.js/Chats';
 import KommunicateChat from './chat';
 
@@ -89,6 +90,7 @@ useEffect(() => {
     <PrivateRoute exact path="/" component={PrivateScreen} />
     <ClientRoute path="/ProjectDetails/:id" component={ProjectDetails} />
     <ClientRoute path="/ContactUs" component={ContactUs} />
+    <ClientRoute path="/SendStreamId" component={SendStreamId} />
       <ClientRoute path="/Home" component={Home} />
       <ClientRoute path="/HomeDoner" component={HomeDoner} />
       <ClientRoute exact path="/HomeCreator" component={HomeCreator} />
@@ -96,7 +98,6 @@ useEffect(() => {
       <ClientRoute path="/FAQ" component={FAQ} />
       <ClientRoute exact path="/Chats" component={Chats}/>
       <ClientRoute path="/project" component={Project} />
-    
       <ClientRoute path="/bankings" component={Finance} />
       <ClientRoute path="/Event" component={Event} />
       <ClientRoute path="/EventsDetails/:id" component={EventsDetails} />
@@ -131,6 +132,7 @@ useEffect(() => {
       <ClientRoute path='/search/:keyword' component={Project} />
       <ClientRoute exact path='/search/:keyword/page/:pageNumber' component={Project} />
       <ClientRoute exact path="/project" component={Project} />
+      <ClientRoute exact path="/stream" component={indexstream} />
      
       <ClientRoute exact path="/project/search/:keyword/page/:pageNumber" component={Project} />
       <AdminRoute exact path="/admin" component={HomeBack} />

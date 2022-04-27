@@ -7,10 +7,10 @@ const LoginCreator = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-sessionStorage.clear();
+
   useEffect(() => {
-    if (sessionStorage.getItem('authToken')) {
-      history.push("/LoginCreator");
+    if (sessionStorage.getItem("authToken")) {
+      history.push("/myProfileCreator");
     }
   }, [history]);
 
@@ -30,9 +30,9 @@ sessionStorage.clear();
         config
       );
       console.log('logged');
-      sessionStorage.setItem('authToken', data.token);
-      
-      history.push("/addproject");
+      sessionStorage.setItem("authToken", data.token);
+
+      history.push("/myProfileCreator");
     } catch (error) {
       setError(error.response.data.error);
       setTimeout(() => {
